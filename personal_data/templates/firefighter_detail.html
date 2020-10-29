@@ -1,0 +1,414 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+{% load mathfilters %}
+{% load personal_data_filters %}
+
+{% block page_title %}
+    {{ firefighter.first_name }} {{ firefighter.last_name }}
+{% endblock %}
+{% block action_button %}
+    <a href="{% url 'firefighter-update' pk=firefighter.id %}"
+       class="btn btn-dark btn-sm float-right">
+        {% translate "Edit Personal Data" %}
+    </a>
+    <strong style="font-size: 2em"
+            class="text-center text-{% if firefighter.status.active %}success{% else %}danger{% endif %}">
+        {% if firefighter.status.active %} {% translate "active" %} {% else %} {% translate "inactive" %} {% endif %}
+    </strong>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm">
+            <table>
+                <tr>
+                    <td class="field-description">{% translate "Staff ID" %}:</td>
+                    <td>{{ firefighter.staff_id }}</td>
+                </tr>
+                <tr>
+                    <td class="field-description">{% translate "First Name" %}:</td>
+                    <td>{{ firefighter.first_name }}</td>
+                </tr>
+                <tr>
+                    <td class="field-description">{% translate "Last Name" %}:</td>
+                    <td>{{ firefighter.last_name }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm">
+            <table>
+                <tr>
+                    <td class="field-description">{% translate "Date of birth" %}:</td>
+                    <td>{{ firefighter.date_of_birth|date:"SHORT_DATE_FORMAT" }}</td>
+                </tr>
+                <tr>
+                    <td class="field-description">{% translate "Age" %}:</td>
+                    <td>{{ firefighter.age }}</td>
+                </tr>
+                <tr>
+                    <td class="field-description">{% translate "Phone" %}:</td>
+                    <td>{{ firefighter.phone_number }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm">
+            <table>
+                <tr>
+                    <td class="field-description">{% translate "Address" %}:</td>
+                    <td>
+                        {{ firefighter.street }}<br>
+                        {{ firefighter.zip }} {{ firefighter.city }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="field-description">{% translate "E-Mail" %}:</td>
+                    <td>
+                        {{ firefighter.email }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h4 class="separator">{% translate "Membership" %}</h4>
+    <div class="row">
+        <div class="col-sm">
+            <table>
+                <tr>
+                    <td class="field-description">{% translate "Active since" %}:</td>
+                    <td>
+                        {{ firefighter.active_since }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="field-description">{% translate "Member since" %}:</td>
+                    <td>
+                        {{ firefighter.joined }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="sub-section-heading">
+                        <h4>{% translate "Promotions" %}</h4>
+                        <a href="{% url 'promote-firefighter' pk=firefighter.id %}"
+                           class="btn btn-dark btn-sm float-right">
+                            {% translate "Promote" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% translate "Rank" %}</th>
+                        <th scope="col">{% translate "Date" %}</th>
+                        <th scope="col">{% translate "Issuing Authority" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rank in ranks %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ rank.name }}</td>
+                            {% if rank in promotions %}
+                                <td>{{ promotions|get_item:rank|get_obj_attr:"issue_date"|date:"SHORT_DATE_FORMAT" }}</td>
+                                <td>{{ promotions|get_item:rank|get_obj_attr:"issuer" }}</td>
+                            {% else %}
+                                <td class="text-center"><span data-feather="x" class="text-danger"></span></td>
+                                <td class="text-center">-</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="sub-section-heading">
+                        <h4>{% translate "Qualifications" %}</h4>
+                        <a href="{% url 'qualification-create-for-firefighter' pk=firefighter.id %}"
+                           class="btn btn-dark btn-sm float-right">
+                            {% translate "Add Qualification" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% translate "Qualification" %}</th>
+                        <th scope="col">{% translate "Date" %}</th>
+                        <th scope="col">{% translate "Issuing Authority" %}</th>
+                        <th scope="col">{% translate "Valid" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for course in courses %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ course.name }}</td>
+                            {% if course in qualifications %}
+                                <td>{{ qualifications|get_item:course|get_obj_attr:"issue_date"|date:"SHORT_DATE_FORMAT" }}</td>
+                                <td>{{ qualifications|get_item:course|get_obj_attr:"issuer" }}</td>
+                                <td>
+                                    {% if qualifications|get_item:course|call_obj_func:"valid" %}
+                                        <span data-feather="check" class="text-success"></span>
+                                    {% else %}
+                                        <span data-feather="alert-triangle" class="text-warning"></span>
+                                    {% endif %}
+                                </td>
+                            {% else %}
+                                <td class="text-center"><span data-feather="x" class="text-danger"></span></td>
+                                <td class="text-center">-</td>
+                                <td class="text-center">-</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="sub-section-heading">
+                        <h4>{% translate "Driver Licenses" %}</h4>
+                        <a href="{% url 'fitness-create-for-firefighter' pk=firefighter.id %}"
+                           class="btn btn-dark btn-sm float-right">
+                            {% translate "Add Fitness" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% for f in fitness %}
+                <div class="card">
+                    <div class="card-header">
+                        <strong>{{ f.level.name }}</strong>
+                    </div>
+                    <div class="card-body" style="padding-top: .5rem; padding-bottom: .5rem">
+                        <div class="row">
+                            <div class="col-9">
+                                <table>
+                                    <tr>
+                                        <td><strong>{% translate "Issued" %}:</strong></td>
+                                        <td>{{ f.issue_date|date:"SHORT_DATE_FORMAT" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>{% translate "Expires" %}:</strong></td>
+                                        <td>{{ f.expiration_date|date:"SHORT_DATE_FORMAT" }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-3 text-center d-flex align-items-center">
+                                {% if f.valid %}
+                                    <div><span data-feather="check" class="text-success feather-32"></span>
+                                    </div>
+                                {% else %}
+                                    <div><span data-feather="x" class="text-danger feather-32"></span></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="sub-section-heading">
+                        <h4>{% translate "Driver Licenses" %}</h4>
+                        <a href="{% url 'license-create-for-firefighter' pk=firefighter.id %}"
+                           class="btn btn-dark btn-sm">
+                            {% translate "Add License" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% if driver_license|length > 0 %}
+                <div class="card">
+                    <div class="card-header">
+                        <strong>{% translate "License" %} {{ driver_license.0.license_id }}</strong>
+                    </div>
+                    <div class="card-body" style="padding-top: .5rem; padding-bottom: .5rem">
+                        <div class="row">
+                            <div class="col-9">
+                                <table>
+                                    <tr>
+                                        <td><strong>{% translate "Expires" %}:</strong></td>
+                                        <td>{{ driver_license.0.expiration_date|date:"SHORT_DATE_FORMAT" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>{% translate "Categories" %}:</strong></td>
+                                        <td>
+                                            {% for category in driver_license.0.categories.all %}
+                                                <span class="badge badge-pill badge-primary">{{ category.name }}</span>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-3 d-flex align-items-center">
+                                {% if driver_license.0.valid %}
+                                    {% if driver_license.0.about_to_expire|date:"SHORT_DATE_FORMAT" %}
+                                        <div>
+                                                <span data-feather="alert-triangle"
+                                                      class="text-warning feather-32"></span></div>
+                                    {% else %}
+                                        <div><span data-feather="check" class="text-success feather-32"></span>
+                                        </div>
+                                    {% endif %}
+                                {% else %}
+                                    <div><span data-feather="x" class="text-danger feather-32"></span></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="sub-section-heading">
+                        <h4>{% translate "Equipment" %}</h4>
+                        <a href="{% url 'firefighter-update' pk=firefighter.id %}"
+                           class="btn btn-dark btn-sm float-right">
+                            {% translate "Edit Equipment" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-deck">
+                {% if firefighter.pager %}
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>{% translate "Pager" %}</strong>
+                        </div>
+                        <div class="card-body" style="padding-top: .5rem; padding-bottom: .5rem">
+                            <strong>ID:</strong> {{ firefighter.pager.pager_id }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if firefighter.locker %}
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>{% translate "Locker" %}</strong>
+                        </div>
+                        <div class="card-body" style="padding-top: .5rem; padding-bottom: .5rem">
+                            <strong>ID:</strong> {{ firefighter.locker.locker_id }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if firefighter.key %}
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>{% translate "Key" %}</strong>
+                        </div>
+                        <div class="card-body" style="padding-top: .5rem; padding-bottom: .5rem">
+                            {% for room in firefighter.key.access_rights.all %}
+                                <span class="badge badge-pill badge-primary">{{ room.room_id }} - {{ room.name }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="sub-section-heading">
+                        <h4>{% translate "Honors" %}</h4>
+                        <a href="{% url 'honor-assignment-create-for-firefighter' pk=firefighter.id %}"
+                           class="btn btn-dark btn-sm float-right">
+                            {% translate "Add Honor" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% translate "Honor" %}</th>
+                        <th scope="col" class="text-center">{% translate "Date" %}</th>
+                        <th scope="col" class="text-center">{% translate "Issuing Authority" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for honor in honors %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ honor.name }}</td>
+                            {% if honor in honors_received %}
+                                <td class="text-center">{{ honors_received|get_item:honor|get_obj_attr:"issue_date"|date:"SHORT_DATE_FORMAT" }}</td>
+                                <td class="text-center">{{ honors_received|get_item:honor|get_obj_attr:"issuer" }}</td>
+                            {% else %}
+                                <td class="text-center"><span data-feather="x" class="text-danger"></span></td>
+                                <td class="text-center">-</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="sub-section-heading">
+                        <h4>{% translate "Roles" %}</h4>
+                        <a href="{% url 'role-assignment-create-for-firefighter' pk=firefighter.id %}"
+                           class="btn btn-dark btn-sm float-right">
+                            {% translate "Add Role" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% translate "Role" %}</th>
+                        <th scope="col">{% translate "Begin" %}</th>
+                        <th scope="col">{% translate "End" %}</th>
+                        <th scope="col">{% translate "Authority" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for role in roles %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ role.role.name }}</td>
+                            <td>{{ role.start|date:"SHORT_DATE_FORMAT" }}</td>
+                            <td>{% if role.end %}{{ role.end|date:"SHORT_DATE_FORMAT" }}{% else %}
+                                {% translate "today" %}{% endif %}</td>
+                            <td>{{ role.issuer }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

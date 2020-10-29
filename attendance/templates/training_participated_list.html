@@ -1,0 +1,70 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+{% load mathfilters %}
+
+{% block page_title %}{% translate "Participated Trainings in" %} {% now "Y" %}{% endblock %}
+
+{% block content %}
+    {% if trainings|length < 1 %}
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like you have not participated in any training this year." %}
+        </div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{% translate "Start" %}</th>
+                <th scope="col">{% translate "End" %}</th>
+                <th scope="col">{% translate "Topic" %}</th>
+                <th scope="col">{% translate "Duration" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for training in trainings %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ training.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+                    <td>{{ training.end|date:"SHORT_DATETIME_FORMAT" }}</td>
+                    <td>{{ training.topic }}</td>
+                    <td>{{ training.duration|div:60|floatformat }} min</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">{% translate "Required Trainings in" %} {% now "Y" %}</h1>
+    </div>
+    {% if required_trainings|length < 1 %}
+    <div class="alert alert-warning text-center" role="alert">
+        {% translate "It seems like you have no obligatory training this year." %}
+    </div>
+    {% else %}
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for required_training in required_trainings %}
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-row justify-content-between align-content-center">
+                                <div class="p-2">
+                                    <h5 class="card-title">{{ required_training.name }}</h5>
+                                    <strong>{% translate "Required for: " %}</strong>
+                                    {{ required_training.training_course.name }}
+                                </div>
+                                <div class="p-2 d-flex align-items-center">
+                                    {% if required_training in fulfilled_required_trainings %}
+                                        <span data-feather="check" class="feather-64 text-success"></span>
+                                    {% else %}
+                                        <span data-feather="x" class="feather-64 text-danger"></span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

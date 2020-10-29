@@ -1,0 +1,69 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load mathfilters %}
+
+{% block page_title %}{% translate "Welcome" %} {{ firefighter.first_name }} {{ firefighter.last_name }}!{% endblock %}
+
+{% block content %}
+    <div class="card-deck">
+        {% for ex in expiring_fitness %}
+            <div class="card bg-light mb-3">
+                <div class="card-header">{{ ex.get_level_display }} {% translate "expires" %} {{ ex.expiration_date }}</div>
+                <div class="card-body text-center">
+                    <span data-feather="alert-triangle" class="feather-128 text-danger"></span>
+                    <p class="card-text">
+                        {% translate "Your fitness" %} {{ ex.get_category_display }} {% translate "is about to expire!" %}<br>
+                        {% translate "Please take care off extending your fitness in order to be ready for operation." %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+        {% for ex in expiring_driver_license %}
+            <div class="card bg-light mb-3">
+                <div class="card-header">{% translate "Your Driver License" %} {% translate "expires" %} {{ ex.expiration_date }}</div>
+                <div class="card-body text-center">
+                    <span data-feather="alert-triangle" class="feather-128 text-danger"></span>
+                    <p class="card-text">
+                        {% translate "Your Driver License" %} {{ ex.license_id }} {% translate "expires on" %} {{ ex.expiration_date }}.<br>
+                        {% translate "Take all necessary steps to extend your driver's license as soon as possible." %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="card-deck">
+        <div class="card bg-light mb-3">
+            <div class="card-header">{% translate "Your last five participations" %}</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% translate "Begin" %}</th>
+                        <th scope="col">{% translate "Kind" %}</th>
+                        <th scope="col">{% translate "Duration" %}</th>
+                        <th scope="col">{% translate "Supervisor" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for attendance in attendances %}
+                        <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ attendance.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+                        <td>{{ attendance.content_type.name|capfirst }}</td>
+                        <td>{{ attendance.duration|div:60|floatformat }} {% translate "min" %}</td>
+                        <td>{{ attendance.person_in_charge.first_name }} {{ attendance.person_in_charge.last_name }}</td>
+                    {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card bg-light mb-3">
+            <div class="card-header">{% translate "Hours served" %} {% now "Y" %}</div>
+            <div class="card-body h-100 d-flex justify-content-center align-items-center">
+                <p class="card-text" style="font-size: 5em">{{ hours_served }}/40</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

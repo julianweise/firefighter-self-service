@@ -1,0 +1,68 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+{% load mathfilters %}
+
+{% block page_title %}{% translate "Attendances" %}{% endblock %}
+{% block action_button %}
+    <a href="{% url 'operation-add' %}" class="btn btn-dark">{% translate "Add Operation" %}</a>
+    <a href="{% url 'other_service-add' %}" class="btn btn-dark">{% translate "Add Other Service" %}</a>
+    <a href="{% url 'training-add' %}" class="btn btn-dark">{% translate "Add Training" %}</a>
+{% endblock %}
+
+{% block content %}
+    {% if attendances|length < 1 %}
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like you have not been resonsible for any operation yet." %}
+        </div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{% translate "Art" %}</th>
+                <th scope="col">{% translate "Start" %}</th>
+                <th scope="col">{% translate "End" %}</th>
+                <th scope="col">{% translate "Person in charge" %}</th>
+                <th scope="col">{% translate "Duration" %}</th>
+                <th scope="col">{% translate "Attendees" %}</th>
+                <th scope="col">{% translate "Comment" %}</th>
+                <th scope="col">{% translate "Action" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for attendance in attendances %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ attendance.content_type }}</td>
+                    <td>{{ attendance.start }}</td>
+                    <td>{{ attendance.end }}</td>
+                    <td>{{ attendance.person_in_charge }}</td>
+                    <td>{{ attendance.duration|div:60|floatformat }} min</td>
+                    <td>
+                        {% for attendee in attendance.attendees.all %}
+                            <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ attendance.comment }}</td>
+                    <td>
+                        <a href="{% url 'update_attendance' pk=attendance.pk %}"
+                           title="Edit Attendance">
+                            <span data-feather="edit" style="float: left;"></span>
+                        </a>
+                        <a data-toggle="modal"
+                           data-target="#confirmModal"
+                           data-title="{% translate "Are you sure?" %}"
+                           data-body="{% translate "Do you really want to delete this attendance?" %}"
+                           data-post="{% url "delete_attendance" pk=attendance.pk %}"
+                           class="inline-table-action">
+                            <span data-feather="trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}

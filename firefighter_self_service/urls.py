@@ -16,12 +16,19 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('personal/', include('personal_data.urls')),
-    path('', RedirectView.as_view(url='personal/', permanent=True))
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+                  path('admin/', admin.site.urls),
+                  path('overview/', include('overview.urls')),
+                  path('personal-data/', include('personal_data.urls')),
+                  path('equipment/', include('equipment.urls')),
+                  path('attendance/', include('attendance.urls')),
+                  path('fitness/', include('fitness.urls')),
+                  path('qualification/', include('qualification.urls')),
+                  path('accounts/login/', auth_views.LoginView.as_view()),
+                  path('accounts/', include('django.contrib.auth.urls')),
+                  path('', RedirectView.as_view(url='overview/', permanent=True))
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

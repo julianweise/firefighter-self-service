@@ -1,0 +1,79 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+{% load mathfilters %}
+{% load personal_data_filters %}
+
+{% block page_title %}{% translate "Firefighters" %}{% endblock %}
+{% block action_button %}
+    <a href="{% url 'firefighter-add' %}" class="btn btn-dark">{% translate "Add Firefighter" %}</a>
+{% endblock %}
+
+{% block content %}
+    {% if firefighters|length < 1 %}
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like you have not added any firefighter yet." %}
+            {% translate "Simplay start adding firefighters by clicking the button 'Add Firefighter'." %}
+        </div>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">{% translate "Staff ID" %}</th>
+                    <th scope="col">{% translate "First Name" %}</th>
+                    <th scope="col">{% translate "Last Name" %}</th>
+                    <th scope="col">{% translate "Birth Date" %}</th>
+                    <th scope="col">{% translate "Age" %}</th>
+                    {% for course in courses %}
+                        <th scope="col" class="text-center">{{ course.abbreviation }}</th>
+                    {% endfor %}
+                    <th scope="col">{% translate "Action" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for firefighter in firefighters %}
+                    <tr>
+                        <td>{{ firefighter.staff_id }}</td>
+                        <td>{{ firefighter.first_name }}</td>
+                        <td>{{ firefighter.last_name }}</td>
+                        <td>{{ firefighter.date_of_birth|date:"SHORT_DATE_FORMAT" }}</td>
+                        <td>{{ firefighter.age }}</td>
+                        {% for course in courses %}
+                            <td class="text-center">
+                                {% if course in qualifications|get_item:firefighter.id %}
+                                    {% if not qualifications|get_item:firefighter.id|get_item:course|call_obj_func:"valid" %}
+                                        <span data-feather="alert-triangle" class="text-warning"></span>
+                                    {% else %}
+                                        <span data-feather="check" class="text-success"></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span data-feather="x" class="text-danger"></span>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                        <td>
+                            <a href="{% url 'firefighter-update' pk=firefighter.pk %}"
+                               title="Edit Operation {{ firefighter.topic }}">
+                                <span data-feather="edit" style="float: left;"></span>
+                            </a>
+                            <a data-toggle="modal"
+                               data-target="#confirmModal"
+                               data-title="{% translate "Are you sure?" %}"
+                               data-body="{% translate "Do you really want to delete this firefighter?" %}"
+                               data-post="{% url "firefighter-delete" pk=firefighter.pk %}"
+                               class="inline-table-action">
+                                <span data-feather="trash"></span>
+                            </a>
+                            <a class="inline-table-action" href="{% url 'firefighter-detail' pk=firefighter.pk %}">
+                                <span data-feather="search"></span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock %}

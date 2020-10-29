@@ -1,0 +1,66 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+{% load mathfilters %}
+
+{% block page_title %}{% translate "Other Services" %}{% endblock %}
+{% block action_button %}
+    <a href="{% url 'other_service-add' %}" class="btn btn-dark">{% translate "Add Training" %}</a>
+{% endblock %}
+
+{% block content %}
+    {% if other_services|length < 1 %}
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like no other sevice has been taken place yet." %}
+        </div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{% translate "Start" %}</th>
+                <th scope="col">{% translate "End" %}</th>
+                <th scope="col">{% translate "Topic" %}</th>
+                <th scope="col">{% translate "Person in charge" %}</th>
+                <th scope="col">{% translate "Duration" %}</th>
+                <th scope="col">{% translate "Attendees" %}</th>
+                <th scope="col">{% translate "Comment" %}</th>
+                <th scope="col">{% translate "Action" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for other_service in other_services %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ other_service.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+                    <td>{{ other_service.end|date:"SHORT_DATETIME_FORMAT" }}</td>
+                    <td>{{ other_service.name }}</td>
+                    <td>{{ other_service.person_in_charge }}</td>
+                    <td>{{ other_service.duration|div:60|floatformat }} min</td>
+                    <td>
+                        {% for attendee in other_service.attendees.all %}
+                            <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ other_service.comment }}</td>
+                    <td>
+                        <a href="{% url 'other_service-edit' pk=other_service.pk %}"
+                           title="Edit Training {{ other_service.topic }}">
+                            <span data-feather="edit" style="float: left;"></span>
+                        </a>
+                        <a data-toggle="modal"
+                           data-target="#confirmModal"
+                           data-title="{% translate "Are you sure?" %}"
+                           data-body="{% translate "Do you really want to delete this other_service?" %}"
+                           data-post="{% url "other_service-delete" pk=other_service.pk %}"
+                           class="inline-table-action">
+                            <span data-feather="trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}

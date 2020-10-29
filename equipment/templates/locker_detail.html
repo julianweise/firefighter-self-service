@@ -1,0 +1,13 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+
+{% block page_title %}{% translate "Locker" %} {{ locker.locker_id }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <strong>{% translate "ID" %}:</strong> {{ locker.locker_id }}<br>
+            <strong>{% translate "Owned by" %}:</strong> {{ locker.owner }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Equipment" %}{% endblock %}
+
+{% block content %}
+    {% if not pager and not locker and not key %}
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like no equipment has been assigned to yet. Don't worry, this will change soon!" %}
+        </div>
+    {% else %}
+        <div class="row row-cols-1 row-cols-md-3">
+            {% if pager %}
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{% translate "Pager" %}</h5>
+                            <p class="card-text"><strong>{% translate "ID" %}:</strong> {{ pager.pager_id }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if locker %}
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{% translate "Locker" %}</h5>
+                            <p class="card-text"><strong>{% translate "Name" %}:</strong> {{ locker.name }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if key %}
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{% translate "Key" %}</h5>
+                            <p class="card-text">
+                                {% for right in key.access_rights.all %}
+                                    <span class="badge badge-pill badge-primary">{{ right.room_id }} - {{ right.name }}</span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

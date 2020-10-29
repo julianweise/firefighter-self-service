@@ -1,0 +1,34 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Add new Fitness Level to" %} {{ firefighter.first_name }}
+    {{ firefighter.last_name }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.firefighter|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.level|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.issue_date|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.expiration_date|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">{% translate "Save" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

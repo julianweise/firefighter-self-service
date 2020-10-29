@@ -1,0 +1,44 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Fitness" %}{% endblock %}
+
+{% block content %}
+    {% if fitness_statements|length < 1 %}
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like there is no need for a fitness statement yet. This will change once you complete more advanced courses." %}
+        </div>
+    {% else %}
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for fit in fitness_statements %}
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body {% if fit.about_to_expire %}expires{% elif fit.valid %}valid{% else %}invalid{% endif %}">
+                            <div class="d-flex flex-row justify-content-between align-content-center">
+                                <div class="p-2 flex-grow-1">
+                                    <h5 class="card-title">{{ fit.level.name }}</h5>
+                                    <table>
+                                        <tr>
+                                            <td style="width: 50%"><strong>{% translate "Issued" %}:</strong></td>
+                                            <td>{{ fit.issue_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>{% translate "Valid until" %}:</strong></td>
+                                            <td>{{ fit.expiration_date }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                {% if fit.about_to_expire %}
+                                    <div class="d-inline-flex p-2 d-flex align-items-center">
+                                        <span data-feather="alert-triangle" class="feather-64 text-danger"></span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Personal data" %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="staff_id_input">{% translate "Staff Number" %}</label>
+                        <input type="text" class="form-control" id="staff_id_input" disabled
+                               value="{{ firefighter.staff_id }}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="status_input">{% translate "Status" %}</label>
+                        <input type="text" class="form-control" id="status_input" disabled
+                               value="{{ firefighter.status }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="joined_input">{% translate "Staff member since" %}</label>
+                        <input type="text" class="form-control" id="joined_input" disabled
+                               value="{{ firefighter.joined }}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="active_since_input">{% translate "Active since" %}</label>
+                        <input type="text" class="form-control" id="active_since_input" disabled
+                               value="{{ firefighter.active_since }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="rank_input">{% translate "Rank" %}</label>
+                        <input type="text" class="form-control" id="rank_input" disabled
+                               value="{{ ranks.0.rank.name }}">
+                    </div>
+                </div>
+            </form>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form.street|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.zip|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.city|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.phone_number|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">{% translate "Save" %}</button>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px">
+        <div class="col">
+            <h3>{% translate "Your history" %}</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">{% translate "Date" %}</th>
+                    <th scope="col">{% translate "Rank" %}</th>
+                    <th scope="col">{% translate "Issuing Authority" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rank in ranks %}
+                    <tr>
+                        <td>{{ rank.issue_date }}</td>
+                        <td>{{ rank.rank.name }}</td>
+                        <td>{{ rank.issuer }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h3>{% translate "Your honors" %}</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">{% translate "Date" %}</th>
+                    <th scope="col">{% translate "Honor" %}</th>
+                    <th scope="col">{% translate "Issuing Authority" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for honor in honors %}
+                    <tr>
+                        <td>{{ honor.issue_date }}</td>
+                        <td>{{ honor.honor.name }}</td>
+                        <td>{{ honor.issuer }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

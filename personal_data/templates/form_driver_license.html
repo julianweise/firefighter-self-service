@@ -1,0 +1,37 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Add new Driver License for" %} {{ firefighter.first_name }}
+    {{ firefighter.last_name }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{ form.owner|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.license_id|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.categories|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.issue_date|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.expiration_date|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">{% translate "Save" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

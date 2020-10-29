@@ -1,0 +1,13 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+
+{% block page_title %}{% translate "Pager" %} {{ pager.pager_id }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <strong>{% translate "ID" %}:</strong> {{ pager.pager_id }}<br>
+            <strong>{% translate "Owned by" %}:</strong> {{ pager.owner }}
+        </div>
+    </div>
+{% endblock %}

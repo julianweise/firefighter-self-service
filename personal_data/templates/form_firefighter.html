@@ -1,0 +1,70 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Add new Firefighter" %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h5 class="h5">{% translate "General Information" %}</h5>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{ form.date_of_birth|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.status|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.active_since|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form.street|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.zip|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.city|as_crispy_field }}
+                    </div>
+                </div>
+                <h5 class="h5">{% translate "Contact Information" %}</h5>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.phone_number|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+                </div>
+                <h5 class="h5">{% translate "Equipment" %}</h5>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{ form.pager|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.locker|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.key|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">{% translate "Save" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

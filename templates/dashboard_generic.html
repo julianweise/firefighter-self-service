@@ -1,0 +1,169 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Firefighter Self-Service</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% translate "Firefighter Self-Service" %}">
+    <meta name="author" content="Freiwillige Feuerwehr Potsdam Zentrum">
+    <!-- Add additional CSS in static file -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+</head>
+<body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">FF Zentrum</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="{% url 'logout' %}">{% translate "Sign out" %}</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-3">
+                {% block sidebar %}
+                    <ul class="nav flex-column">
+                        {% with request.resolver_match.url_name as url_name %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'overview' %}active{% endif %}"
+                                   href="{% url 'overview' %}">
+                                    <span data-feather="home"></span>
+                                    {% translate "Overview" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'personal-data-update' %}active{% endif %}"
+                                   href="{% url 'personal-data-update' %}">
+                                    <span data-feather="user"></span>
+                                    {% translate "Personal Data" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'equipment-personal' %}active{% endif %}"
+                                   href="{% url 'equipment-personal' %}">
+                                    <span data-feather="tool"></span>
+                                    {% translate "Equipment" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'qualification-personal' %}active{% endif %}"
+                                   href="{% url 'qualification-personal' %}">
+                                    <span data-feather="trello"></span>
+                                    {% translate "Qualifications" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'fitness-personal-list' %}active{% endif %}"
+                                   href="{% url 'fitness-personal-list' %}">
+                                    <span data-feather="file-plus"></span>
+                                    {% translate "Fitness" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'training-participated-list' %}active{% endif %}"
+                                   href="{% url 'training-participated-list' %}">
+                                    <span data-feather="book"></span>
+                                    {% translate "Participated Trainings" %}
+                                </a>
+                            </li>
+                        {% endwith %}
+                    </ul>
+                    <h5 class="border-bottom" style="padding-left: .5em; margin-top: 1em">Activities</h5>
+                    <ul class="nav flex-column">
+                        {% with request.resolver_match.url_name as url_name %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'firefighter-list' %}active{% endif %}"
+                                   href="{% url 'firefighter-list' %}">
+                                    <span data-feather="users"></span>
+                                    {% translate "Firefighters" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'training-list' %}active{% endif %}"
+                                   href="{% url 'training-list' %}">
+                                    <span data-feather="briefcase"></span>
+                                    {% translate "Trainings" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'operation-list' %}active{% endif %}"
+                                   href="{% url 'operation-list' %}">
+                                    <span data-feather="target"></span>
+                                    {% translate "Operations" %}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if url_name == 'other_service-list' %}active{% endif %}"
+                                   href="{% url 'other_service-list' %}">
+                                    <span data-feather="watch"></span>
+                                    {% translate "Other Services" %}
+                                </a>
+                            </li>
+                        {% endwith %}
+                    </ul>
+                {% endblock %}
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{% block page_title %}{% endblock %}</h1>
+                {% block action_button %}{% endblock %}
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</div>
+
+<!-- Universal Modal -->
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"><p class="modal-body-text"></p></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate "No" %}</button>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary">{% translate "Yes" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/feather.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'js/defaults-de_DE.js' %}"></script>
+<script src="{% static 'js/defaults-en_US.js' %}"></script>
+<script type="application/javascript">
+    $('.selectmultiple').selectpicker();
+</script>
+</body>
+</html>

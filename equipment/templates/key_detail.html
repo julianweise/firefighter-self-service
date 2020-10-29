@@ -1,0 +1,17 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+
+{% block page_title %}{% translate "Key" %} {{ key.id }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <strong>{% translate "ID" %}:</strong> {{ key.id }}<br>
+            <strong>{% translate "Owned by" %}:</strong> {{ key.owner }}
+            <strong>{% translate "Access Rights" %}:</strong>
+            {% for room in key.access_rights %}
+                <span class="badge badge-pill badge-primary">{{ room.room_id }} - {{ room.name }}</span>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
