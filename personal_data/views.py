@@ -173,8 +173,9 @@ class RankAssignmentCreateForFirefighterView(CreateView):
 
     def get_initial(self):
         firefighter = Firefighter.objects.get(pk=self.kwargs['pk'])
-        rank = RankAssignment.objects.filter(firefighter=firefighter).order_by("-issue_date")[:1][0].rank
-        next_rank = Rank.objects.filter(sorting_order__gt=rank.sorting_order).order_by("sorting_order")[:1][0]
+        rank = RankAssignment.objects.filter(firefighter=firefighter).order_by("-issue_date")[:1]
+        next_rank = Rank.objects.filter(sorting_order__gt=rank.sorting_order).order_by("sorting_order")[:1][0] \
+            if len(rank) > 0 else None
         issuer = Authority.objects.filter().order_by('id')[:1][0]
         return {'firefighter': firefighter, 'rank': next_rank, 'issuer': issuer,
                 'issue_date': now().date}
