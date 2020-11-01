@@ -22,7 +22,7 @@ class FitnessPersonalListView(TemplateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('fitness.create_fitness'), name='dispatch')
+@method_decorator(permission_required('fitness.add_fitness'), name='dispatch')
 class FitnessCreateForFirefighterView(CreateView):
     model = Fitness
     form_class = CreateFitnessForm

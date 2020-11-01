@@ -112,7 +112,7 @@ class PersonalDataDeleteView(SuccessMessageMixin, DeleteView):
 
 
 @method_decorator(login_required(login_url='/accounts/login'), name='dispatch')
-@method_decorator(permission_required('personal_data.create_firefighter'), name='dispatch')
+@method_decorator(permission_required('personal_data.add_firefighter'), name='dispatch')
 class PersonalDataCreateView(SuccessMessageMixin, CreateView):
     model = Firefighter
     success_url = reverse_lazy('firefighter-list')
@@ -122,7 +122,7 @@ class PersonalDataCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login'), name='dispatch')
-@method_decorator(permission_required('personal_data.update_firefighter'), name='dispatch')
+@method_decorator(permission_required('personal_data.change_firefighter'), name='dispatch')
 class PersonalDataUpdateView(SuccessMessageMixin, UpdateView):
     model = Firefighter
     success_message = _("Successfully updated Firefighter")
@@ -134,7 +134,7 @@ class PersonalDataUpdateView(SuccessMessageMixin, UpdateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('personal_data.create_driver_license'), name='dispatch')
+@method_decorator(permission_required('personal_data.add_driver_license'), name='dispatch')
 class DriverLicenseCreateForFirefighterView(CreateView):
     model = DriverLicense
     form_class = CreateDriverLicenseForm
@@ -157,7 +157,7 @@ class DriverLicenseCreateForFirefighterView(CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('personal_data.create_rank_assignment'), name='dispatch')
+@method_decorator(permission_required('personal_data.add_rank_assignment'), name='dispatch')
 class RankAssignmentCreateForFirefighterView(CreateView):
     model = RankAssignment
     form_class = CreateRankAssignmentForm
@@ -186,7 +186,7 @@ class RankAssignmentCreateForFirefighterView(CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('personal_data.create_honor_assignment'), name='dispatch')
+@method_decorator(permission_required('personal_data.add_honor_assignment'), name='dispatch')
 class HonorAssignmentCreateForFirefighterView(CreateView):
     model = HonorAssignment
     form_class = CreateHonorAssignmentForm
@@ -213,7 +213,7 @@ class HonorAssignmentCreateForFirefighterView(CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('personal_data.create_role_assignment'), name='dispatch')
+@method_decorator(permission_required('personal_data.add_role_assignment'), name='dispatch')
 class RoleAssignmentCreateForFirefighterView(CreateView):
     model = RoleAssignment
     form_class = CreateRoleAssignmentForm

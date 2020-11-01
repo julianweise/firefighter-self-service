@@ -33,7 +33,7 @@ class OperationCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.update_operation'), name='dispatch')
+@method_decorator(permission_required('attendance.change_operation'), name='dispatch')
 class OperationUpdateView(SuccessMessageMixin, UpdateView):
     model = Operation
     template_name = 'form_operation.html'
@@ -72,7 +72,7 @@ class OtherServiceCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.update_other_service'), name='dispatch')
+@method_decorator(permission_required('attendance.change_other_service'), name='dispatch')
 class OtherServiceUpdateView(SuccessMessageMixin, UpdateView):
     model = OtherService
     template_name = "form_other_service.html"
@@ -111,7 +111,7 @@ class TrainingCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.update_training'), name='dispatch')
+@method_decorator(permission_required('attendance.change_training'), name='dispatch')
 class TrainingUpdateView(SuccessMessageMixin, UpdateView):
     model = Training
     template_name = "form_training.html"

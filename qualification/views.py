@@ -21,7 +21,7 @@ class QualificationPersonalListView(TemplateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('personal_data.create_qualification'), name='dispatch')
+@method_decorator(permission_required('personal_data.add_qualification'), name='dispatch')
 class QualificationCreateForFirefighterView(CreateView):
     model = Qualification
     form_class = CreateQualificationForm
