@@ -32,34 +32,36 @@
         {% endfor %}
     </div>
     <div class="card-deck">
-        <div class="card bg-light mb-3">
+        <div class="card bg-light">
             <div class="card-header">{% translate "Your last five participations" %}</div>
             <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">{% translate "Begin" %}</th>
-                        <th scope="col">{% translate "Kind" %}</th>
-                        <th scope="col">{% translate "Duration" %}</th>
-                        <th scope="col">{% translate "Supervisor" %}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for attendance in attendances %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ attendance.start|date:"SHORT_DATETIME_FORMAT" }}</td>
-                        <td>{{ attendance.content_type.name|capfirst }}</td>
-                        <td>{{ attendance.duration|div:60|floatformat }} {% translate "min" %}</td>
-                        <td>{{ attendance.person_in_charge.first_name }} {{ attendance.person_in_charge.last_name }}</td>
-                    {% endfor %}
-                    </tr>
-                    </tbody>
-                </table>
+                            <th scope="col">#</th>
+                            <th scope="col">{% translate "Begin" %}</th>
+                            <th scope="col">{% translate "Kind" %}</th>
+                            <th scope="col">{% translate "Duration" %}</th>
+                            <th scope="col">{% translate "Supervisor" %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for attendance in attendances %}
+                            <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ attendance.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+                            <td>{{ attendance.content_type.name|capfirst }}</td>
+                            <td>{{ attendance.duration|div:60|floatformat }} {% translate "min" %}</td>
+                            <td>{{ attendance.person_in_charge.first_name }} {{ attendance.person_in_charge.last_name }}</td>
+                        {% endfor %}
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="card bg-light mb-3">
+        <div class="card bg-light">
             <div class="card-header">{% translate "Hours served" %} {% now "Y" %}</div>
             <div class="card-body h-100 d-flex justify-content-center align-items-center">
                 <p class="card-text" style="font-size: 5em">{{ hours_served }}/40</p>

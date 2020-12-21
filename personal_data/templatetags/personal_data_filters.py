@@ -1,4 +1,5 @@
 from django.template.defaulttags import register
+from django.utils.translation import gettext
 
 
 @register.filter(name='get_item')
@@ -14,3 +15,11 @@ def get_obj_attr(obj, attr):
 @register.filter
 def call_obj_func(obj, attr):
     return getattr(obj, attr)()
+
+
+@register.filter(name='template_trans')
+def template_trans(text):
+    try:
+        return gettext(text)
+    except:
+        return text

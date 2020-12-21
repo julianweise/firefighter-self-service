@@ -93,7 +93,7 @@ class Migration(migrations.Migration):
         Honor.objects.using(db_alias).create(
             name="Feuerwehr-Leistungsabzeichen für technische Hilfe in Silber, Brandenburg", sorting_order=20)
         Honor.objects.using(db_alias).create(
-            ame="Feuerwehr-Leistungsabzeichen für technische Hilfe in Gold, Brandenburg", sorting_order=21)
+            name="Feuerwehr-Leistungsabzeichen für technische Hilfe in Gold, Brandenburg", sorting_order=21)
         Honor.objects.using(db_alias).create(
             name="Feuerwehr-Leistungsabzeichen für technische Hilfe in Gold (Sonderstufe), Brandenburg",
             sorting_order=22)

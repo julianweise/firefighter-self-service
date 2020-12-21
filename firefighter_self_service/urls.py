@@ -27,6 +27,7 @@ urlpatterns = [
                   path('equipment/', include('equipment.urls')),
                   path('attendance/', include('attendance.urls')),
                   path('fitness/', include('fitness.urls')),
+                  path('events/', include('event.urls')),
                   path('qualification/', include('qualification.urls')),
                   path('accounts/login/', auth_views.LoginView.as_view()),
                   path('accounts/', include('django.contrib.auth.urls')),

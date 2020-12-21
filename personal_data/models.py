@@ -160,26 +160,6 @@ class DriverLicense(models.Model):
         return f'DriverLicense#{self.license_id}-for-{self.owner}'
 
 
-class Event(models.Model):
-    name = models.CharField(max_length=200)
-    start = models.DateTimeField()
-    end = models.DateTimeField()
-    person_in_charge = models.ForeignKey(Firefighter, on_delete=models.PROTECT, related_name='event_person_in_charge')
-    positive_responses = models.ManyToManyField(Firefighter, blank=True, related_name='event_positive_response',
-                                                help_text='Select firefighter participating in this event')
-    negative_responses = models.ManyToManyField(Firefighter, blank=True, related_name='event_negative_response',
-                                                help_text='Select firefighter participating in this event')
-
-    CATEGORY = (
-        ('tr', 'Training'),
-        ('se', 'SocialEvent'),
-        ('is', 'IntermediateService'),
-        ('oe', 'OfficialService'),
-    )
-
-    category = models.CharField(max_length=10, choices=CATEGORY)
-
-
 class Honor(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
     sorting_order = models.IntegerField(null=False, blank=False, unique=True)

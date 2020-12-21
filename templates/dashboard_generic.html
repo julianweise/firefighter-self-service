@@ -90,24 +90,10 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if url_name == 'training-list' %}active{% endif %}"
-                                   href="{% url 'training-list' %}">
-                                    <span data-feather="briefcase"></span>
-                                    {% translate "Trainings" %}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if url_name == 'operation-list' %}active{% endif %}"
-                                   href="{% url 'operation-list' %}">
-                                    <span data-feather="target"></span>
-                                    {% translate "Operations" %}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if url_name == 'other_service-list' %}active{% endif %}"
-                                   href="{% url 'other_service-list' %}">
+                                <a class="nav-link {% if url_name == 'attendance-list' %}active{% endif %}"
+                                   href="{% url 'attendance-list' %}">
                                     <span data-feather="watch"></span>
-                                    {% translate "Other Services" %}
+                                    {% translate "Attendances" %}
                                 </a>
                             </li>
                         {% endwith %}

@@ -15,6 +15,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='FitnessLevel',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=200)),
+            ],
+        ),
+        migrations.CreateModel(
             name='Fitness',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -26,12 +33,5 @@ class Migration(migrations.Migration):
             options={
                 'ordering': ['-expiration_date'],
             },
-        ),
-        migrations.CreateModel(
-            name='FitnessLevel',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-            ],
         ),
     ]

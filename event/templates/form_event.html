@@ -1,0 +1,32 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Add new Event" %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.person_in_charge|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.start|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.end|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">{% translate "Save" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

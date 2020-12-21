@@ -66,7 +66,7 @@ class PersonalDataListView(ListView):
         context.update({
             'firefighters': Firefighter.objects.filter(is_active=True).order_by("last_name", "first_name"),
             'qualifications': grouped,
-            'courses': Course.objects.all(),
+            'courses': Course.objects.filter(show_in_overview=True),
         })
         return context
 
@@ -202,10 +202,8 @@ class HonorAssignmentCreateForFirefighterView(CreateView):
 
     def get_initial(self):
         firefighter = Firefighter.objects.get(pk=self.kwargs['pk'])
-        honor = HonorAssignment.objects.filter(firefighter=firefighter).order_by("-issue_date")[:1][0].honor
-        next_honor = Honor.objects.filter(sorting_order__gt=honor.sorting_order).order_by("sorting_order")[:1][0]
         issuer = Authority.objects.filter().order_by('id')[:1][0]
-        return {'firefighter': firefighter, 'honor': next_honor, 'issuer': issuer, 'issue_date': now().date}
+        return {'firefighter': firefighter, 'issuer': issuer, 'issue_date': now().date}
 
     def get_success_message(self):
         firefighter = Firefighter.objects.get(pk=self.kwargs['pk'])

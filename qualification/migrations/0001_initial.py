@@ -23,6 +23,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
                 ('abbreviation', models.CharField(max_length=5)),
+                ('show_in_overview', models.BooleanField(default=False, help_text='Show Course in Overview of Firefighter?', verbose_name='show in overview')),
                 ('sorting_order', models.IntegerField(unique=True)),
                 ('administration_level', models.CharField(choices=[('ci', 'City'), ('co', 'County'), ('st', 'State')], default='ci', help_text='Administration level', max_length=2)),
                 ('requirements', models.ManyToManyField(blank=True, help_text='Select required courses', related_name='_course_requirements_+', to='qualification.Course')),

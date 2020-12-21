@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'qualification',
     'overview',
     'attendance',
+    'event',
     'mathfilters',
 ]
 

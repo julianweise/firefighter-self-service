@@ -8,14 +8,14 @@
     {{ firefighter.first_name }} {{ firefighter.last_name }}
 {% endblock %}
 {% block action_button %}
-    <a href="{% url 'firefighter-update' pk=firefighter.id %}"
-       class="btn btn-dark btn-sm float-right">
-        {% translate "Edit Personal Data" %}
-    </a>
     <strong style="font-size: 2em"
             class="text-center text-{% if firefighter.status.active %}success{% else %}danger{% endif %}">
         {% if firefighter.status.active %} {% translate "active" %} {% else %} {% translate "inactive" %} {% endif %}
     </strong>
+    <a href="{% url 'firefighter-update' pk=firefighter.id %}"
+       class="btn btn-dark btn-sm float-right">
+        {% translate "Edit Personal Data" %}
+    </a>
 {% endblock %}
 
 {% block content %}

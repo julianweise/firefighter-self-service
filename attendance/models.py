@@ -11,7 +11,7 @@ class Attendance(models.Model):
                                        related_name='attendee')
     person_in_charge = models.ForeignKey(Firefighter, on_delete=models.PROTECT, related_name='person_in_charge')
     comment = models.CharField(max_length=2000, null=True, blank=True, default="")
-    content_type = models.ForeignKey(ContentType, editable=False, null=True, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, editable=False, null=True, on_delete=models.PROTECT)
 
     def duration(self):
         return (self.end - self.start).total_seconds()

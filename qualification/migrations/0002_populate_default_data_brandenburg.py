@@ -9,34 +9,35 @@ class Migration(migrations.Migration):
         db_alias = schema_editor.connection.alias
         Course = apps.get_model('qualification', 'Course')
         tm1 = Course.objects.using(db_alias).create(name="Truppmann 1", abbreviation="TM1", sorting_order="1",
-                                                    administration_level="ci")
+                                                    administration_level="ci", show_in_overview=True)
         funk = Course.objects.using(db_alias).create(name="Sprechfunker", abbreviation="Funk", sorting_order="2",
-                                                     administration_level="co")
+                                                     administration_level="co", show_in_overview=True)
         funk.requirements.set([tm1])
         agt = Course.objects.using(db_alias).create(name="Atemschutzgeräteträger", abbreviation="AGT",
-                                                    sorting_order="3", administration_level="co")
+                                                    sorting_order="3", administration_level="co", show_in_overview=True)
         agt.requirements.set([tm1, funk])
         tm2 = Course.objects.using(db_alias).create(name="Truppmann 2", abbreviation="TM2", sorting_order="4",
-                                                    administration_level="ci")
+                                                    administration_level="ci", show_in_overview=True)
         tm2.requirements.set([tm1, funk])
-        tf = Course.objects.using(db_alias).create(name="Truppführer", abbreviation="TF", sorting_order="5",
-                                                   administration_level="co")
-        tf.requirements.set([tm1, tm2, funk])
         th = Course.objects.using(db_alias).create(name="Technische Hilfeleistung", abbreviation="TH",
-                                                   sorting_order="6", administration_level="co")
+                                                   sorting_order="5", administration_level="co", show_in_overview=True)
         th.requirements.set([tm1, tm2])
         ma = Course.objects.using(db_alias).create(name="Maschinisten", abbreviation="MA",
-                                                   sorting_order="7", administration_level="co")
+                                                   sorting_order="6", administration_level="co", show_in_overview=True)
         ma.requirements.set([tm1, tm2, funk])
         abc_ei = Course.objects.using(db_alias).create(name="ABC-Einsatz", abbreviation="ABCEi",
-                                                       sorting_order="8", administration_level="co")
+                                                       sorting_order="7", administration_level="co", show_in_overview=True)
         abc_ei.requirements.set([tm1, tm2, agt])
         abc_er = Course.objects.using(db_alias).create(name="ABC-Erkundung", abbreviation="ABCEr",
-                                                       sorting_order="9", administration_level="co")
+                                                       sorting_order="8", administration_level="co")
         abc_er.requirements.set([abc_ei])
         abc_de = Course.objects.using(db_alias).create(name="ABC-Dekon P/G", abbreviation="ABCDe",
-                                                       sorting_order="10", administration_level="co")
+                                                       sorting_order="9", administration_level="co",
+                                                       show_in_overview=True)
         abc_de.requirements.set([abc_ei])
+        tf = Course.objects.using(db_alias).create(name="Truppführer", abbreviation="TF", sorting_order="10",
+                                                   administration_level="co", show_in_overview=True)
+        tf.requirements.set([tm1, tm2, funk])
         gwt = Course.objects.using(db_alias).create(name="Gerätewart", abbreviation="GWT",
                                                     sorting_order="11", administration_level="st")
         gwt.requirements.set([tf, ma])
@@ -45,13 +46,14 @@ class Migration(migrations.Migration):
         gwt_pa.requirements.set([tf, agt])
 
         gf = Course.objects.using(db_alias).create(name="Gruppenführer", abbreviation="FIII",
-                                                   sorting_order="13", administration_level="st")
+                                                   sorting_order="13", administration_level="st", show_in_overview=True)
         gf.requirements.set([tf, funk])
         zf = Course.objects.using(db_alias).create(name="Zugführer", abbreviation="FIV",
                                                    sorting_order="14", administration_level="st")
         zf.requirements.set([gf])
         l_e_fw = Course.objects.using(db_alias).create(name="Leiter einer Freiwilligen Feuerwehr", abbreviation="FV",
-                                                       sorting_order="15", administration_level="st")
+                                                       sorting_order="15", administration_level="st",
+                                                       show_in_overview=True)
         l_e_fw.requirements.set([zf])
         vf = Course.objects.using(db_alias).create(name="Verbandsführer", abbreviation="FVI",
                                                    sorting_order="16", administration_level="st")

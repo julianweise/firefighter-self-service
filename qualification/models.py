@@ -10,7 +10,33 @@ from django.utils.translation import ugettext_lazy as _
 
 from attendance.models import Attendance
 from fitness.models import FitnessLevel, Fitness
-from personal_data.models import Firefighter, Authority
+from personal_data.models import Firefighter, Authority, CategoryOfDriverLicense, Role, DriverLicense, RoleAssignment
+
+
+class CourseRequirement(models.Model):
+    fitness_requirement = models.ManyToManyField(FitnessLevel, help_text="Select fitness levels that each individually "
+                                                                         "satisfy this requirement.", blank=True)
+    driver_license_requirement = models.ManyToManyField(CategoryOfDriverLicense,
+                                                        help_text="Select driver license categories that each "
+                                                                  "individually satisfy this requirement.", blank=True)
+    qualification_requirement = models.ManyToManyField("Course", help_text="Select courses that each individually"
+                                                                           "satisfy this requirement.", blank=True)
+
+    def fulfilled_by(self, firefighter: Firefighter):
+        for fitness_level in self.fitness_requirement.all():
+            if not Fitness.objects.filter(firefighter=firefighter, level=fitness_level).exists():
+                return False
+
+        if self.driver_license_requirement:
+            if not DriverLicense.objects.filter(owner=firefighter, categories__in=self.driver_license_requirement,
+                                                expiration_date__gte=now()).exists():
+                return False
+
+        for course in self.qualification_requirement.all():
+            if not Qualification.objects.filter(firefighter=firefighter, course=course).exists():
+                return False
+
+        return True
 
 
 class Course(models.Model):
@@ -22,10 +48,18 @@ class Course(models.Model):
 
     name = models.CharField(max_length=200)
     abbreviation = models.CharField(max_length=5, null=False, blank=False)
+    show_in_overview = models.BooleanField(default=False, help_text="Show Course in Overview of Firefighter?",
+                                           verbose_name="show in overview")
     sorting_order = models.IntegerField(null=False, blank=False, unique=True)
     administration_level = models.CharField(max_length=2, choices=ADMINISTRATION_LEVEL, blank=False, default='ci',
                                             help_text='Administration level')
-    requirements = models.ManyToManyField("self", blank=True, help_text='Select required courses')
+    requirements = models.ManyToManyField(CourseRequirement, blank=True, help_text='Specify admission restrictions')
+
+    def requirements_satisfied_by(self, firefighter: Firefighter):
+        for requirement in self.requirements.all():
+            if requirement.satisfied_by(firefighter):
+                return True
+            return False
 
     def __str__(self):
         return f'{_("Course")} {self.name}'
