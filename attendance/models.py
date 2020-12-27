@@ -13,6 +13,11 @@ class Attendance(models.Model):
     comment = models.CharField(max_length=2000, null=True, blank=True, default="")
     content_type = models.ForeignKey(ContentType, editable=False, null=True, on_delete=models.PROTECT)
 
+    class Meta:
+        permissions = [
+            ("view_all", "Get an overview of all firefighters"),
+        ]
+
     def duration(self):
         return (self.end - self.start).total_seconds()
 

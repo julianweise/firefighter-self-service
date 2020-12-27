@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-# Create your views here.
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.timezone import now
@@ -51,6 +50,7 @@ class PersonalDataPersonalUpdateView(View):
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
 @method_decorator(permission_required('personal_data.view_firefighter'), name='dispatch')
+@method_decorator(permission_required('personal_data.view_all'), name='dispatch')
 class PersonalDataListView(ListView):
     model = Firefighter
     context_object_name = "firefighters"
@@ -73,6 +73,7 @@ class PersonalDataListView(ListView):
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
 @method_decorator(permission_required('personal_data.view_firefighter'), name='dispatch')
+@method_decorator(permission_required('personal_data.view_detail'), name='dispatch')
 class PersonalDataDetailView(DetailView):
     model = Firefighter
     context_object_name = "firefighter"

@@ -10,6 +10,7 @@ from personal_data.models import Firefighter
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
+@method_decorator(permission_required('fitness.view_fitness'), name='dispatch')
 class FitnessPersonalListView(TemplateView):
     template_name = "fitness_personal_view.html"
 

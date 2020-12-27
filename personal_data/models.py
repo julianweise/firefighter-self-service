@@ -106,6 +106,10 @@ class Firefighter(AbstractUser):
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        permissions = [
+            ("view_all", "Get an overview of all firefighters"),
+            ("view_detail", "Get detailed information about a firefighter")
+        ]
 
     def age(self):
         date_of_birth = self.date_of_birth

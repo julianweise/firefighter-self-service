@@ -127,9 +127,6 @@ class Training(Attendance):
                                                           help_text="Select satisfied required trainings",
                                                           related_name="satisfied_by")
 
-    class Meta:
-        default_permissions = ('add', 'view', 'delete')
-
     def __str__(self):
         return f'{self.topic} {self.start}'
 
