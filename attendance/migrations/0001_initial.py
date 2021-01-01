@@ -22,8 +22,9 @@ class Migration(migrations.Migration):
                 ('attendees', models.ManyToManyField(help_text='Select all attendees of this event', related_name='attendee', to=settings.AUTH_USER_MODEL)),
                 ('person_in_charge', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='person_in_charge', to=settings.AUTH_USER_MODEL)),
                 ('comment', models.CharField(blank=True, default='', max_length=2000, null=True)),
-                ('content_type', models.ForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype'),)
+                ('content_type', models.ForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.PROTECT, to='contenttypes.contenttype'),)
             ],
+            options={'permissions': [('view_all', 'Get an overview of all firefighters')]},
         ),
         migrations.CreateModel(
             name='Operation',

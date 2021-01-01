@@ -8,86 +8,159 @@ class Migration(migrations.Migration):
     def populate_course(apps, schema_editor):
         db_alias = schema_editor.connection.alias
         Course = apps.get_model('qualification', 'Course')
+        CourseRequirement = apps.get_model('qualification', 'CourseRequirement')
         tm1 = Course.objects.using(db_alias).create(name="Truppmann 1", abbreviation="TM1", sorting_order="1",
                                                     administration_level="ci", show_in_overview=True)
+
         funk = Course.objects.using(db_alias).create(name="Sprechfunker", abbreviation="Funk", sorting_order="2",
                                                      administration_level="co", show_in_overview=True)
-        funk.requirements.set([tm1])
+        funk_requirements = CourseRequirement.objects.using(db_alias).create()
+        funk_requirements.qualification_requirement.set([tm1])
+        funk.requirements.set([funk_requirements])
+
         agt = Course.objects.using(db_alias).create(name="Atemschutzgeräteträger", abbreviation="AGT",
                                                     sorting_order="3", administration_level="co", show_in_overview=True)
-        agt.requirements.set([tm1, funk])
+        agt_requirements = CourseRequirement.objects.using(db_alias).create()
+        agt_requirements.qualification_requirement.set([tm1, funk])
+        agt.requirements.set([agt_requirements])
+
         tm2 = Course.objects.using(db_alias).create(name="Truppmann 2", abbreviation="TM2", sorting_order="4",
                                                     administration_level="ci", show_in_overview=True)
-        tm2.requirements.set([tm1, funk])
+        tm2_requirements = CourseRequirement.objects.using(db_alias).create()
+        tm2_requirements.qualification_requirement.set([tm1, funk])
+        tm2.requirements.set([tm2_requirements])
+
         th = Course.objects.using(db_alias).create(name="Technische Hilfeleistung", abbreviation="TH",
                                                    sorting_order="5", administration_level="co", show_in_overview=True)
-        th.requirements.set([tm1, tm2])
+        th_requirements = CourseRequirement.objects.using(db_alias).create()
+        th_requirements.qualification_requirement.set([tm1, tm2])
+        th.requirements.set([th_requirements])
         ma = Course.objects.using(db_alias).create(name="Maschinisten", abbreviation="MA",
                                                    sorting_order="6", administration_level="co", show_in_overview=True)
-        ma.requirements.set([tm1, tm2, funk])
+        ma_requirements = CourseRequirement.objects.using(db_alias).create()
+        ma_requirements.qualification_requirement.set([tm1, tm2, funk])
+        ma.requirements.set([ma_requirements])
+
         abc_ei = Course.objects.using(db_alias).create(name="ABC-Einsatz", abbreviation="ABCEi",
-                                                       sorting_order="7", administration_level="co", show_in_overview=True)
-        abc_ei.requirements.set([tm1, tm2, agt])
+                                                       sorting_order="7", administration_level="co",
+                                                       show_in_overview=True)
+        abc_ei_requirements = CourseRequirement.objects.using(db_alias).create()
+        abc_ei_requirements.qualification_requirement.set([tm1, tm2, agt])
+        abc_ei.requirements.set([abc_ei_requirements])
+
         abc_er = Course.objects.using(db_alias).create(name="ABC-Erkundung", abbreviation="ABCEr",
                                                        sorting_order="8", administration_level="co")
-        abc_er.requirements.set([abc_ei])
+        abc_er_requirements = CourseRequirement.objects.using(db_alias).create()
+        abc_er_requirements.qualification_requirement.set([abc_ei])
+        abc_er.requirements.set([abc_er_requirements])
+
         abc_de = Course.objects.using(db_alias).create(name="ABC-Dekon P/G", abbreviation="ABCDe",
                                                        sorting_order="9", administration_level="co",
                                                        show_in_overview=True)
-        abc_de.requirements.set([abc_ei])
+        abc_de_requirements = CourseRequirement.objects.using(db_alias).create()
+        abc_de_requirements.qualification_requirement.set([abc_ei])
+        abc_de.requirements.set([abc_de_requirements])
+
         tf = Course.objects.using(db_alias).create(name="Truppführer", abbreviation="TF", sorting_order="10",
                                                    administration_level="co", show_in_overview=True)
-        tf.requirements.set([tm1, tm2, funk])
+        tf_requirement = CourseRequirement.objects.using(db_alias).create()
+        tf_requirement.qualification_requirement.set([tm1, tm2, funk])
+        tf.requirements.set([tf_requirement])
+
         gwt = Course.objects.using(db_alias).create(name="Gerätewart", abbreviation="GWT",
                                                     sorting_order="11", administration_level="st")
-        gwt.requirements.set([tf, ma])
+        gwt_requirement = CourseRequirement.objects.using(db_alias).create()
+        gwt_requirement.qualification_requirement.set([tf, ma])
+        gwt.requirements.set([gwt_requirement])
+
         gwt_pa = Course.objects.using(db_alias).create(name="Atemschutzgerätewart", abbreviation="GWTPA",
                                                        sorting_order="12", administration_level="st")
-        gwt_pa.requirements.set([tf, agt])
+        gwt_pa_requirement = CourseRequirement.objects.using(db_alias).create()
+        gwt_pa_requirement.qualification_requirement.set([tf, agt])
+        gwt_pa.requirements.set([gwt_pa_requirement])
 
         gf = Course.objects.using(db_alias).create(name="Gruppenführer", abbreviation="FIII",
-                                                   sorting_order="13", administration_level="st", show_in_overview=True)
-        gf.requirements.set([tf, funk])
+                                                   sorting_order="13", show_in_overview=True, administration_level="st")
+        gf_requirement = CourseRequirement.objects.using(db_alias).create()
+        gf_requirement.qualification_requirement.set([tf, funk])
+        gf.requirements.set([gf_requirement])
+
         zf = Course.objects.using(db_alias).create(name="Zugführer", abbreviation="FIV",
                                                    sorting_order="14", administration_level="st")
-        zf.requirements.set([gf])
+        zf_requirement = CourseRequirement.objects.using(db_alias).create()
+        zf_requirement.qualification_requirement.set([gf])
+        zf.requirements.set([zf_requirement])
+
         l_e_fw = Course.objects.using(db_alias).create(name="Leiter einer Freiwilligen Feuerwehr", abbreviation="FV",
-                                                       sorting_order="15", administration_level="st",
-                                                       show_in_overview=True)
-        l_e_fw.requirements.set([zf])
+                                                       sorting_order="15", show_in_overview=True,
+                                                       administration_level="st")
+        l_e_fw_requirement = CourseRequirement.objects.using(db_alias).create()
+        l_e_fw_requirement.qualification_requirement.set([zf])
+        l_e_fw.requirements.set([l_e_fw_requirement])
+
         vf = Course.objects.using(db_alias).create(name="Verbandsführer", abbreviation="FVI",
                                                    sorting_order="16", administration_level="st")
-        vf.requirements.set([zf])
+        vf_requirement = CourseRequirement.objects.using(db_alias).create()
+        vf_requirement.qualification_requirement.set([zf])
+        vf.requirements.set([vf_requirement])
+
         esa = Course.objects.using(db_alias).create(name="Einführung in die Stabsarbeit", abbreviation="ESA",
                                                     sorting_order="17", administration_level="st")
-        esa.requirements.set([vf])
+        esa_requirement = CourseRequirement.objects.using(db_alias).create()
+        esa_requirement.qualification_requirement.set([vf])
+        esa.requirements.set([esa_requirement])
+
         f_abc = Course.objects.using(db_alias).create(name="Führen im ABC-Einsatz", abbreviation="FABC",
                                                       sorting_order="18", administration_level="st")
-        f_abc.requirements.set([gf, abc_ei])
+        f_abc_requirement = CourseRequirement.objects.using(db_alias).create()
+        f_abc_requirement.qualification_requirement.set([gf, abc_ei])
+        f_abc.requirements.set([f_abc_requirement])
+
         owf = Course.objects.using(db_alias).create(name="Ortswehrführer", abbreviation="OWF",
                                                     sorting_order="19", administration_level="st")
-        owf.requirements.set([gf])
+        owf_requirement = CourseRequirement.objects.using(db_alias).create()
+        owf_requirement.qualification_requirement.set([gf])
+        owf.requirements.set([owf_requirement])
+
         ab = Course.objects.using(db_alias).create(name="Ausbilder in der Feuerwehr", abbreviation="AB",
                                                    sorting_order="20", administration_level="st")
-        ab.requirements.set([gf])
+        ab_requirement = CourseRequirement.objects.using(db_alias).create()
+        ab_requirement.qualification_requirement.set([gf])
+        ab.requirements.set([ab_requirement])
+
         ab_funk = Course.objects.using(db_alias).create(name="Ausbilder in der Feuerwehr Funk", abbreviation="ABF",
                                                         sorting_order="21", administration_level="st")
-        ab_funk.requirements.set([ab, gf, funk])
+        ab_funk_requirement = CourseRequirement.objects.using(db_alias).create()
+        ab_funk_requirement.qualification_requirement.set([ab, gf, funk])
+        ab.requirements.set([ab_funk_requirement])
+
         ab_ma = Course.objects.using(db_alias).create(name="Ausbilder in der Feuerwehr Machinist", abbreviation="ABMa",
                                                       sorting_order="22", administration_level="st")
-        ab_ma.requirements.set([gf, ma])
+        ab_ma_requirement = CourseRequirement.objects.using(db_alias).create()
+        ab_ma_requirement.qualification_requirement.set([gf, ma])
+        ab.requirements.set([ab_ma_requirement])
+
         ab_agt = Course.objects.using(db_alias).create(name="Ausbilder in der Feuerwehr Atemschutzgeräteträger",
                                                        abbreviation="ABAGT", sorting_order="23",
                                                        administration_level="st")
-        ab_agt.requirements.set([gf, agt])
+        ab_agt_requirement = CourseRequirement.objects.using(db_alias).create()
+        ab_agt_requirement.qualification_requirement.set([gf, agt])
+        ab.requirements.set([ab_agt_requirement])
+
         ab_abc = Course.objects.using(db_alias).create(name="Ausbilder in der Feuerwehr ABC",
                                                        abbreviation="ABAGT", sorting_order="24",
                                                        administration_level="st")
-        ab_abc.requirements.set([ab, gf, f_abc])
+        ab_abc_requirement = CourseRequirement.objects.using(db_alias).create()
+        ab_abc_requirement.qualification_requirement.set([ab, gf, f_abc])
+        ab_abc.requirements.set([ab_abc_requirement])
+
         ab_th = Course.objects.using(db_alias).create(name="Ausbilder in der Feuerwehr Technische Hilfeleistung",
-                                                       abbreviation="ABTH", sorting_order="25",
-                                                       administration_level="st")
-        ab_th.requirements.set([gf, th])
+                                                      abbreviation="ABTH", sorting_order="25",
+                                                      administration_level="st")
+        ab_th_requirement = CourseRequirement.objects.using(db_alias).create()
+        ab_th_requirement.qualification_requirement.set([gf, th])
+        ab_th.requirements.set([ab_th_requirement])
+
         juca1 = Course.objects.using(db_alias).create(name="Jugendleitercard (JuLeiCa) Teil 1",
                                                       abbreviation="juca1", sorting_order="26",
                                                       administration_level="st")
@@ -108,9 +181,9 @@ class Migration(migrations.Migration):
         stvo = Training.objects.using(db_alias).create(pk=1, name="Jährliche StVO-Unterweisung",
                                                        recurring_interval='an', training_course=ma)
         agt_t = Training.objects.using(db_alias).create(pk=2, name="Jährliche Atemschutzunterweisung",
-                                                      recurring_interval='an', training_course=agt)
+                                                        recurring_interval='an', training_course=agt)
         agt_p = Training.objects.using(db_alias).create(pk=3, name="Jährliche PA-Belastungsübung",
-                                                      recurring_interval='365', training_course=agt)
+                                                        recurring_interval='365', training_course=agt)
         abc_t = Training.objects.using(db_alias).create(pk=4, name="Jährliche ABC-Ausbildung", recurring_interval='an',
                                                         training_course=abc_ei)
         abc_p = Training.objects.using(db_alias).create(pk=5, name="Jährliche CSA-Belastungsübung",
@@ -145,8 +218,9 @@ class Migration(migrations.Migration):
                                                                 required_training=abc_t)
         QualificationRequirement.objects.using(db_alias).create(course=abc_ei, fitness_level=g26_3,
                                                                 required_training=abc_p)
+
     dependencies = [
-        ('qualification', '0001_initial'),
+        ('qualification', '0002_auto_20201101_2019'),
         ('fitness', '0002_populate_default_data'),
     ]
 

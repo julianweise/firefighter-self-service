@@ -48,9 +48,7 @@ class Migration(migrations.Migration):
                 ('topic', models.CharField(max_length=200)),
                 ('satisfies_required_trainings', models.ManyToManyField(blank=True, help_text='Select satisfied required trainings', related_name='satisfied_by', to='qualification.LegallyRequiredRecurringTraining')),
             ],
-            options={
-                'default_permissions': ('add', 'view', 'delete'),
-            },
+            options={},
             bases=('attendance.attendance',),
         ),
         migrations.CreateModel(
@@ -74,5 +72,20 @@ class Migration(migrations.Migration):
             options={
                 'ordering': ['issue_date'],
             },
+        ),
+        migrations.CreateModel(
+            name='CourseRequirement',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('driver_license_requirement', models.ManyToManyField(blank=True,
+                                                                      help_text='Select driver license categories that each individually satisfy this requirement.',
+                                                                      to='personal_data.CategoryOfDriverLicense')),
+                ('fitness_requirement', models.ManyToManyField(blank=True,
+                                                               help_text='Select fitness levels that each individually satisfy this requirement.',
+                                                               to='fitness.FitnessLevel')),
+                ('qualification_requirement', models.ManyToManyField(blank=True,
+                                                                     help_text='Select courses that each individuallysatisfy this requirement.',
+                                                                     to='qualification.Course')),
+            ],
         ),
     ]

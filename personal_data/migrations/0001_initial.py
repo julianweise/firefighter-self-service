@@ -27,8 +27,8 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('first_name', models.CharField(max_length=200, verbose_name='First Name')),
-                ('last_name', models.CharField(max_length=200, verbose_name='Last Name')),
+                ('first_name', models.CharField(max_length=200, verbose_name='Vorname')),
+                ('last_name', models.CharField(max_length=200, verbose_name='Nachname')),
                 ('email', models.EmailField(max_length=254, unique=True, verbose_name='E-Mail')),
                 ('staff_id', models.IntegerField(blank=True, null=True)),
                 ('joined', models.DateField(auto_now_add=True, null=True)),
@@ -45,6 +45,10 @@ class Migration(migrations.Migration):
             ],
             options={
                 'ordering': ['last_name', 'first_name'],
+                'permissions': [
+                    ('view_all', 'Get an overview of all firefighters'),
+                    ('view_detail', 'Get detailed information about a firefighter')
+                ]
             },
         ),
         migrations.CreateModel(
@@ -131,19 +135,6 @@ class Migration(migrations.Migration):
                 ('firefighter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('honor', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='personal_data.honor')),
                 ('issuer', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='personal_data.authority')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Event',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('start', models.DateTimeField()),
-                ('end', models.DateTimeField()),
-                ('category', models.CharField(choices=[('tr', 'Training'), ('se', 'SocialEvent'), ('is', 'IntermediateService'), ('oe', 'OfficialService')], max_length=10)),
-                ('negative_responses', models.ManyToManyField(blank=True, help_text='Select firefighter participating in this event', related_name='event_negative_response', to=settings.AUTH_USER_MODEL)),
-                ('person_in_charge', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='event_person_in_charge', to=settings.AUTH_USER_MODEL)),
-                ('positive_responses', models.ManyToManyField(blank=True, help_text='Select firefighter participating in this event', related_name='event_positive_response', to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
