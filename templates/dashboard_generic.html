@@ -82,7 +82,7 @@
                     <h5 class="border-bottom" style="padding-left: .5em; margin-top: 1em">Activities</h5>
                     <ul class="nav flex-column">
                         {% with request.resolver_match.url_name as url_name %}
-                            {% if perms.personal_data.view_all %}
+                            {% if perms.personal_data.view_all_firefighter %}
                                 <li class="nav-item">
                                     <a class="nav-link {% if url_name == 'firefighter-list' %}active{% endif %}"
                                        href="{% url 'firefighter-list' %}">
@@ -91,7 +91,7 @@
                                     </a>
                                 </li>
                             {% endif %}
-                            {% if perms.attendance.view_all %}
+                            {% if perms.attendance.view_all_attendance %}
                                 <li class="nav-item">
                                     <a class="nav-link {% if url_name == 'attendance-list' %}active{% endif %}"
                                        href="{% url 'attendance-list' %}">

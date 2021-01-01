@@ -15,7 +15,7 @@ class Attendance(models.Model):
 
     class Meta:
         permissions = [
-            ("view_all", "Get an overview of all firefighters"),
+            ("view_all_attendance", "Get an overview of all attendances"),
         ]
 
     def duration(self):

@@ -50,7 +50,7 @@ class PersonalDataPersonalUpdateView(View):
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
 @method_decorator(permission_required('personal_data.view_firefighter'), name='dispatch')
-@method_decorator(permission_required('personal_data.view_all'), name='dispatch')
+@method_decorator(permission_required('personal_data.view_all_firefighter'), name='dispatch')
 class PersonalDataListView(ListView):
     model = Firefighter
     context_object_name = "firefighters"

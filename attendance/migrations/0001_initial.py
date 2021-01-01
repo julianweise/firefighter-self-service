@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('comment', models.CharField(blank=True, default='', max_length=2000, null=True)),
                 ('content_type', models.ForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.PROTECT, to='contenttypes.contenttype'),)
             ],
-            options={'permissions': [('view_all', 'Get an overview of all firefighters')]},
+            options={'permissions': [('view_all_attendance', 'Get an overview of all attendances')]},
         ),
         migrations.CreateModel(
             name='Operation',
