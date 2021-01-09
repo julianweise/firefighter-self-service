@@ -11,6 +11,8 @@ class Migration(migrations.Migration):
         CourseRequirement = apps.get_model('qualification', 'CourseRequirement')
         tm1 = Course.objects.using(db_alias).create(name="Truppmann 1", abbreviation="TM1", sorting_order="1",
                                                     administration_level="ci", show_in_overview=True)
+        tm1_requirements = CourseRequirement.objects.using(db_alias).create()
+        tm1.requirements.set([tm1_requirements])
 
         funk = Course.objects.using(db_alias).create(name="Sprechfunker", abbreviation="Funk", sorting_order="2",
                                                      administration_level="co", show_in_overview=True)
@@ -35,6 +37,7 @@ class Migration(migrations.Migration):
         th_requirements = CourseRequirement.objects.using(db_alias).create()
         th_requirements.qualification_requirement.set([tm1, tm2])
         th.requirements.set([th_requirements])
+
         ma = Course.objects.using(db_alias).create(name="Maschinisten", abbreviation="MA",
                                                    sorting_order="6", administration_level="co", show_in_overview=True)
         ma_requirements = CourseRequirement.objects.using(db_alias).create()
@@ -166,6 +169,9 @@ class Migration(migrations.Migration):
                                                       administration_level="st")
         juca2 = Course.objects.using(db_alias).create(name="Jugendleitercard (JuLeiCa) Teil 2",
                                                       abbreviation="juca2", sorting_order="27",
+                                                      administration_level="st")
+        rs = Course.objects.using(db_alias).create(name="Rettungssanitäter",
+                                                      abbreviation="RS", sorting_order="28",
                                                       administration_level="st")
 
     def populate_legally_required_recurring_training(apps, schema_editor):

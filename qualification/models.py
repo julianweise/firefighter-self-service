@@ -141,7 +141,7 @@ class QualificationRequirement(models.Model):
         if self.fitness_level:
             fitness = Fitness.objects.filter(firefighter=qualification.firefighter, level=self.fitness_level) \
                 .order_by('-expiration_date').last()
-            if not fitness.valid():
+            if not fitness or not fitness.valid():
                 return False
         if self.required_training:
             training = Training.objects.filter(satisfies_required_trainings__in=[self.required_training],
