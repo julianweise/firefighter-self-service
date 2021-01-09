@@ -3,6 +3,7 @@
 {% load crispy_forms_filters %}
 {% load mathfilters %}
 {% load personal_data_filters %}
+{% load static %}
 
 {% block page_title %}
     {{ firefighter.first_name }} {{ firefighter.last_name }}
@@ -20,54 +21,62 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-sm">
-            <table>
-                <tr>
-                    <td class="field-description">{% translate "Staff ID" %}:</td>
-                    <td>{{ firefighter.staff_id }}</td>
-                </tr>
-                <tr>
-                    <td class="field-description">{% translate "First Name" %}:</td>
-                    <td>{{ firefighter.first_name }}</td>
-                </tr>
-                <tr>
-                    <td class="field-description">{% translate "Last Name" %}:</td>
-                    <td>{{ firefighter.last_name }}</td>
-                </tr>
-            </table>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm">
+                    <table class="data-table">
+                        <tr>
+                            <td class="field-description">{% translate "Staff ID" %}:</td>
+                            <td>{{ firefighter.staff_id }}</td>
+                        </tr>
+                        <tr>
+                            <td class="field-description">{% translate "First Name" %}:</td>
+                            <td>{{ firefighter.first_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="field-description">{% translate "Last Name" %}:</td>
+                            <td>{{ firefighter.last_name }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm">
+                    <table class="data-table">
+                        <tr>
+                            <td class="field-description">{% translate "Date of birth" %}:</td>
+                            <td>{{ firefighter.date_of_birth|date:"SHORT_DATE_FORMAT" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="field-description">{% translate "Age" %}:</td>
+                            <td>{{ firefighter.age }}</td>
+                        </tr>
+                        <tr>
+                            <td class="field-description">{% translate "Phone" %}:</td>
+                            <td>{{ firefighter.phone_number }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm">
+                    <table class="data-table">
+                        <tr>
+                            <td class="field-description">{% translate "Address" %}:</td>
+                            <td>
+                                {{ firefighter.street }}<br>
+                                {{ firefighter.zip }} {{ firefighter.city }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-description">{% translate "E-Mail" %}:</td>
+                            <td>
+                                {{ firefighter.email }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="col-sm">
-            <table>
-                <tr>
-                    <td class="field-description">{% translate "Date of birth" %}:</td>
-                    <td>{{ firefighter.date_of_birth|date:"SHORT_DATE_FORMAT" }}</td>
-                </tr>
-                <tr>
-                    <td class="field-description">{% translate "Age" %}:</td>
-                    <td>{{ firefighter.age }}</td>
-                </tr>
-                <tr>
-                    <td class="field-description">{% translate "Phone" %}:</td>
-                    <td>{{ firefighter.phone_number }}</td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-sm">
-            <table>
-                <tr>
-                    <td class="field-description">{% translate "Address" %}:</td>
-                    <td>
-                        {{ firefighter.street }}<br>
-                        {{ firefighter.zip }} {{ firefighter.city }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="field-description">{% translate "E-Mail" %}:</td>
-                    <td>
-                        {{ firefighter.email }}
-                    </td>
-                </tr>
-            </table>
+        <div class="col-sm-4">
+            <img src="{{ firefighter.picture.url }}" height="200"
+                 alt="{{ firefighter.first_name }} {{ firefighter.last_name }} {% translate "Picture" %}" />
         </div>
     </div>
     <h4 class="separator">{% translate "Membership" %}</h4>

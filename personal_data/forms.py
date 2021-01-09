@@ -13,7 +13,7 @@ from personal_data.models import Firefighter, DriverLicense, RankAssignment, Hon
 class UpdatePersonalDataPersonalForm(ModelForm):
     class Meta:
         model = Firefighter
-        fields = ['first_name', 'last_name', 'email', 'street', 'zip', 'city', 'phone_number']
+        fields = ['first_name', 'last_name', 'email', 'picture', 'street', 'zip', 'city', 'phone_number']
 
     def clean_date_of_birth(self):
         data = self.cleaned_data['date_of_birth']
@@ -27,8 +27,8 @@ class UpdatePersonalDataPersonalForm(ModelForm):
 class CreatePersonalDataForm(ModelForm):
     class Meta:
         model = Firefighter
-        fields = ['first_name', 'last_name', 'date_of_birth', 'email', 'phone_number', 'street', 'zip', 'city', 'pager',
-                  'locker', 'key', 'status', 'active_since']
+        fields = ['first_name', 'last_name', 'date_of_birth', 'picture', 'email', 'phone_number', 'street', 'zip',
+                  'city', 'pager', 'locker', 'key', 'status', 'active_since']
         widgets = {
             'date_of_birth': DateInput(attrs={'type': 'date'}),
             'active_since': DateInput(attrs={'type': 'date'}),
