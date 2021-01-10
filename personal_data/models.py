@@ -82,7 +82,7 @@ class Firefighter(AbstractUser):
     last_name = models.CharField(_('Last Name'), null=False, blank=False, max_length=200)
     email = models.EmailField(_('E-Mail'), unique=True)
     picture = models.ImageField(_('Picture'), upload_to='uploads/profile_pictures',
-                                default='uploads/profile_pictures/None/no-img.jpg')
+                                default='static/img/no_profile_picture.jpg')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'street', 'zip', 'city', 'phone_number', 'date_of_birth']

@@ -194,3 +194,8 @@ body.text-center #div_id_new_password1 small {
 table.data-table tr td {
     padding-bottom: 1em;
 }
+
+img.profile-picture {
+    display: block;
+    margin: 20px auto;
+}

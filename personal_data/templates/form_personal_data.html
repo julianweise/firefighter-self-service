@@ -6,7 +6,11 @@
 
 {% block content %}
     <div class="row">
-        <div class="col">
+        <div class="col-4">
+            <img src="{{ firefighter.picture.url }}" width="150" class="profile-picture"
+                 alt="{{ firefighter.first_name }} {{ firefighter.last_name }} {% translate "Picture" %}"/>
+        </div>
+        <div class="col-8">
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -40,6 +44,10 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="form-row">
@@ -78,45 +86,49 @@
     <div class="row" style="margin-top: 30px">
         <div class="col">
             <h3>{% translate "Your history" %}</h3>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">{% translate "Date" %}</th>
-                    <th scope="col">{% translate "Rank" %}</th>
-                    <th scope="col">{% translate "Issuing Authority" %}</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for rank in ranks %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>{{ rank.issue_date }}</td>
-                        <td>{{ rank.rank.name }}</td>
-                        <td>{{ rank.issuer }}</td>
+                        <th scope="col">{% translate "Date" %}</th>
+                        <th scope="col">{% translate "Rank" %}</th>
+                        <th scope="col">{% translate "Issuing Authority" %}</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for rank in ranks %}
+                        <tr>
+                            <td>{{ rank.issue_date }}</td>
+                            <td>{{ rank.rank.name }}</td>
+                            <td>{{ rank.issuer }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="col">
             <h3>{% translate "Your honors" %}</h3>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">{% translate "Date" %}</th>
-                    <th scope="col">{% translate "Honor" %}</th>
-                    <th scope="col">{% translate "Issuing Authority" %}</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for honor in honors %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>{{ honor.issue_date }}</td>
-                        <td>{{ honor.honor.name }}</td>
-                        <td>{{ honor.issuer }}</td>
+                        <th scope="col">{% translate "Date" %}</th>
+                        <th scope="col">{% translate "Honor" %}</th>
+                        <th scope="col">{% translate "Issuing Authority" %}</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for honor in honors %}
+                        <tr>
+                            <td>{{ honor.issue_date }}</td>
+                            <td>{{ honor.honor.name }}</td>
+                            <td>{{ honor.issuer }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}
