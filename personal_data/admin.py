@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.utils.translation import gettext as _
 
+from personal_data.forms import GroupAdminForm
 from personal_data.models import DriverLicense, UserStatus, CategoryOfDriverLicense, Rank, RankAssignment, \
     Firefighter, Authority, Honor, HonorAssignment, Role, RoleAssignment
 
@@ -154,3 +155,13 @@ class CustomDriverLicenseAdmin(ModelAdmin):
 admin.site.register(DriverLicense, CustomDriverLicenseAdmin)
 
 admin.site.register(Firefighter, CustomUserAdmin)
+
+admin.site.unregister(Group)
+
+
+class GroupAdmin(admin.ModelAdmin):
+    form = GroupAdminForm
+    filter_horizontal = ['permissions']
+
+
+admin.site.register(Group, GroupAdmin)

@@ -1,8 +1,11 @@
 import datetime
 
+from django.contrib.admin.widgets import FilteredSelectMultiple
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from django.core.exceptions import ValidationError
 from django.db.models import Q
-from django.forms import ModelForm
+from django.forms import ModelForm, forms, ModelMultipleChoiceField
 from django.utils.translation import ugettext_lazy as _
 
 from attendance.forms import DateInput
@@ -94,3 +97,28 @@ class CreateRoleAssignmentForm(ModelForm):
             'start': DateInput(attrs={'type': 'date'}),
             'end': DateInput(attrs={'type': 'date'}),
         }
+
+
+class GroupAdminForm(ModelForm):
+    class Meta:
+        model = Group
+        exclude = []
+
+    users = ModelMultipleChoiceField(
+         queryset=get_user_model().objects.all(),
+         required=False,
+         widget=FilteredSelectMultiple('users', False)
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(GroupAdminForm, self).__init__(*args, **kwargs)
+        if self.instance.pk:
+            self.fields['users'].initial = self.instance.user_set.all()
+
+    def save_m2m(self):
+        self.instance.user_set.set(self.cleaned_data['users'])
+
+    def save(self, *args, **kwargs):
+        instance = super(GroupAdminForm, self).save()
+        self.save_m2m()
+        return instance
