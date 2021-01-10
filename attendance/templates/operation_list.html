@@ -14,53 +14,55 @@
             {% translate "It seems like no operation has been taken place yet." %}
         </div>
     {% else %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{% translate "Start" %}</th>
-                <th scope="col">{% translate "End" %}</th>
-                <th scope="col">{% translate "Code Word" %}</th>
-                <th scope="col">{% translate "Operation ID" %}</th>
-                <th scope="col">{% translate "Duration" %}</th>
-                <th scope="col">{% translate "Attendees" %}</th>
-                <th scope="col">{% translate "Comment" %}</th>
-                <th scope="col">{% translate "Action" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for operation in operations %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ operation.start|date:"SHORT_DATETIME_FORMAT" }}</td>
-                    <td>{{ operation.end|date:"SHORT_DATETIME_FORMAT" }}</td>
-                    <td>{{ operation.get_code_word_display }}</td>
-                    <td>{{ operation.operation_id }}</td>
-                    <td>{{ operation.duration|div:60|floatformat }} min</td>
-                    <td>
-                        {% for attendee in operation.attendees.all %}
-                            <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
-                        {% endfor %}
-                    </td>
-                    <td>{{ operation.comment }}</td>
-                    <td>
-                        <a href="{% url 'operation-update' pk=operation.pk %}"
-                           title="Edit Operation {{ operation.topic }}">
-                            <span data-feather="edit" style="float: left;"></span>
-                        </a>
-                        <a data-toggle="modal"
-                           data-target="#confirmModal"
-                           data-title="{% translate "Are you sure?" %}"
-                           data-body="{% translate "Do you really want to delete this operation?" %}"
-                           data-post="{% url "operation-delete" pk=operation.pk %}"
-                           class="inline-table-action">
-                            <span data-feather="trash"></span>
-                        </a>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">{% translate "Start" %}</th>
+                    <th scope="col">{% translate "End" %}</th>
+                    <th scope="col">{% translate "Code Word" %}</th>
+                    <th scope="col">{% translate "Operation ID" %}</th>
+                    <th scope="col">{% translate "Duration" %}</th>
+                    <th scope="col">{% translate "Attendees" %}</th>
+                    <th scope="col">{% translate "Comment" %}</th>
+                    <th scope="col">{% translate "Action" %}</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for operation in operations %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ operation.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+                        <td>{{ operation.end|date:"SHORT_DATETIME_FORMAT" }}</td>
+                        <td>{{ operation.get_code_word_display }}</td>
+                        <td>{{ operation.operation_id }}</td>
+                        <td>{{ operation.duration|div:60|floatformat }} min</td>
+                        <td>
+                            {% for attendee in operation.attendees.all %}
+                                <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>{{ operation.comment }}</td>
+                        <td>
+                            <a href="{% url 'operation-update' pk=operation.pk %}"
+                               title="Edit Operation {{ operation.topic }}">
+                                <span data-feather="edit" style="float: left;"></span>
+                            </a>
+                            <a data-toggle="modal"
+                               data-target="#confirmModal"
+                               data-title="{% translate "Are you sure?" %}"
+                               data-body="{% translate "Do you really want to delete this operation?" %}"
+                               data-post="{% url "operation-delete" pk=operation.pk %}"
+                               class="inline-table-action">
+                                <span data-feather="trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 
 {% endblock %}

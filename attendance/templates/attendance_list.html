@@ -19,57 +19,59 @@
             {% translate "It seems like you have not been responsible for any service yet." %}
         </div>
     {% else %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{% translate "Kind" %}</th>
-                <th scope="col">{% translate "Start" %}</th>
-                <th scope="col">{% translate "End" %}</th>
-                <th scope="col">{% translate "Person in charge" %}</th>
-                <th scope="col">{% translate "Duration" %}</th>
-                <th scope="col">{% translate "Attendees" %}</th>
-                <th scope="col">{% translate "Comment" %}</th>
-                <th scope="col">{% translate "Action" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for attendance in attendances %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{% translate attendance.content_type.name|capfirst %}</td>
-                    <td>{{ attendance.start }}</td>
-                    <td>{{ attendance.end }}</td>
-                    <td>{{ attendance.person_in_charge }}</td>
-                    <td>{{ attendance.duration|div:60|floatformat }} min</td>
-                    <td>
-                        {% for attendee in attendance.attendees.all %}
-                            <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
-                        {% endfor %}
-                    </td>
-                    <td>{{ attendance.comment }}</td>
-                    <td>
-                        {% with attendance.content_type.name|add:"-update" as update_view %}
-                            <a href="{% url update_view pk=attendance.pk %}"
-                               title="Edit Attendance">
-                                <span data-feather="edit" style="float: left;"></span>
-                            </a>
-                        {% endwith %}
-                        {% with attendance.content_type.name|add:"-delete" as delete_view %}
-                            <a data-toggle="modal"
-                               data-target="#confirmModal"
-                               data-title="{% translate "Are you sure?" %}"
-                               data-body="{% translate "Do you really want to delete this attendance?" %}"
-                               data-post="{% url delete_view pk=attendance.pk %}"
-                               class="inline-table-action">
-                                <span data-feather="trash"></span>
-                            </a>
-                        {% endwith %}
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">{% translate "Kind" %}</th>
+                    <th scope="col">{% translate "Start" %}</th>
+                    <th scope="col">{% translate "End" %}</th>
+                    <th scope="col">{% translate "Person in charge" %}</th>
+                    <th scope="col">{% translate "Duration" %}</th>
+                    <th scope="col">{% translate "Attendees" %}</th>
+                    <th scope="col">{% translate "Comment" %}</th>
+                    <th scope="col">{% translate "Action" %}</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for attendance in attendances %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{% translate attendance.content_type.name|capfirst %}</td>
+                        <td>{{ attendance.start }}</td>
+                        <td>{{ attendance.end }}</td>
+                        <td>{{ attendance.person_in_charge }}</td>
+                        <td>{{ attendance.duration|div:60|floatformat }} min</td>
+                        <td>
+                            {% for attendee in attendance.attendees.all %}
+                                <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>{{ attendance.comment }}</td>
+                        <td>
+                            {% with attendance.content_type.name|add:"-update" as update_view %}
+                                <a href="{% url update_view pk=attendance.pk %}"
+                                   title="Edit Attendance">
+                                    <span data-feather="edit" style="float: left;"></span>
+                                </a>
+                            {% endwith %}
+                            {% with attendance.content_type.name|add:"-delete" as delete_view %}
+                                <a data-toggle="modal"
+                                   data-target="#confirmModal"
+                                   data-title="{% translate "Are you sure?" %}"
+                                   data-body="{% translate "Do you really want to delete this attendance?" %}"
+                                   data-post="{% url delete_view pk=attendance.pk %}"
+                                   class="inline-table-action">
+                                    <span data-feather="trash"></span>
+                                </a>
+                            {% endwith %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 
 {% endblock %}

@@ -10,36 +10,38 @@
             {% translate "It seems like you do not have any qualifications yet. Do not be upset. Your first course will start soon" %}.
         </div>
     {% else %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{% translate "Qualification Name" %}</th>
-                <th scope="col">{% translate "Issuing Authority" %}</th>
-                <th scope="col">{% translate "Qualification Level" %}</th>
-                <th scope="col">{% translate "Issue Date" %}</th>
-                <th scope="col">{% translate "Valid?" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for qualification in qualifications %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ qualification.course.name }}</td>
-                <td>{{ qualification.issuer.name }}</td>
-                <td>{{ qualification.course.get_administration_level_display }}</td>
-                <td>{{ qualification.issue_date|date:"SHORT_DATE_FORMAT" }}</td>
-                <td>
-                    {% if qualification.valid %}
-                        <span data-feather="check" class="text-success"></span>
-                    {% else %}
-                        <span data-feather="x" class="text-danger"></span>
-                    {% endif %}
-                </td>
-            {% endfor %}
-            </tr>
-            </tbody>
-        </table>
+                    <th scope="col">#</th>
+                    <th scope="col">{% translate "Qualification Name" %}</th>
+                    <th scope="col">{% translate "Issuing Authority" %}</th>
+                    <th scope="col">{% translate "Qualification Level" %}</th>
+                    <th scope="col">{% translate "Issue Date" %}</th>
+                    <th scope="col">{% translate "Valid?" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for qualification in qualifications %}
+                    <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ qualification.course.name }}</td>
+                    <td>{{ qualification.issuer.name }}</td>
+                    <td>{{ qualification.course.get_administration_level_display }}</td>
+                    <td>{{ qualification.issue_date|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td>
+                        {% if qualification.valid %}
+                            <span data-feather="check" class="text-success"></span>
+                        {% else %}
+                            <span data-feather="x" class="text-danger"></span>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 
 {% endblock %}

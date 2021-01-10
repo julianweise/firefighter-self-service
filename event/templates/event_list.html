@@ -15,45 +15,47 @@
             {% translate "It seems like there are no events planned." %}
         </div>
     {% else %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{% translate "Name" %}</th>
-                <th scope="col">{% translate "Kind" %}</th>
-                <th scope="col">{% translate "Start" %}</th>
-                <th scope="col">{% translate "End" %}</th>
-                <th scope="col">{% translate "Person in charge" %}</th>
-                <th scope="col">{% translate "Action" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for event in events %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ event.name }}</td>
-                    <td>{{ event.content_type }}</td>
-                    <td>{{ event.start }}</td>
-                    <td>{{ event.end }}</td>
-                    <td>{{ event.person_in_charge }}</td>
-                    <td>
-                        <a href="{% url 'update_event' pk=event.pk %}"
-                           title="Edit Attendance">
-                            <span data-feather="edit" style="float: left;"></span>
-                        </a>
-                        <a data-toggle="modal"
-                           data-target="#confirmModal"
-                           data-title="{% translate "Are you sure?" %}"
-                           data-body="{% translate "Do you really want to delete this event?" %}"
-                           data-post="{% url "delete_event" pk=event.pk %}"
-                           class="inline-table-action">
-                            <span data-feather="trash"></span>
-                        </a>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">{% translate "Name" %}</th>
+                    <th scope="col">{% translate "Kind" %}</th>
+                    <th scope="col">{% translate "Start" %}</th>
+                    <th scope="col">{% translate "End" %}</th>
+                    <th scope="col">{% translate "Person in charge" %}</th>
+                    <th scope="col">{% translate "Action" %}</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ event.name }}</td>
+                        <td>{{ event.content_type }}</td>
+                        <td>{{ event.start }}</td>
+                        <td>{{ event.end }}</td>
+                        <td>{{ event.person_in_charge }}</td>
+                        <td>
+                            <a href="{% url 'update_event' pk=event.pk %}"
+                               title="Edit Attendance">
+                                <span data-feather="edit" style="float: left;"></span>
+                            </a>
+                            <a data-toggle="modal"
+                               data-target="#confirmModal"
+                               data-title="{% translate "Are you sure?" %}"
+                               data-body="{% translate "Do you really want to delete this event?" %}"
+                               data-post="{% url "delete_event" pk=event.pk %}"
+                               class="inline-table-action">
+                                <span data-feather="trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 
 {% endblock %}

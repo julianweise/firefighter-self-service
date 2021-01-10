@@ -11,36 +11,38 @@
             {% translate "It seems like you have not participated in any training this year." %}
         </div>
     {% else %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{% translate "Start" %}</th>
-                <th scope="col">{% translate "End" %}</th>
-                <th scope="col">{% translate "Topic" %}</th>
-                <th scope="col">{% translate "Duration" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for training in trainings %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ training.start|date:"SHORT_DATETIME_FORMAT" }}</td>
-                    <td>{{ training.end|date:"SHORT_DATETIME_FORMAT" }}</td>
-                    <td>{{ training.topic }}</td>
-                    <td>{{ training.duration|div:60|floatformat }} min</td>
+                    <th scope="col">#</th>
+                    <th scope="col">{% translate "Start" %}</th>
+                    <th scope="col">{% translate "End" %}</th>
+                    <th scope="col">{% translate "Topic" %}</th>
+                    <th scope="col">{% translate "Duration" %}</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for training in trainings %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ training.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+                        <td>{{ training.end|date:"SHORT_DATETIME_FORMAT" }}</td>
+                        <td>{{ training.topic }}</td>
+                        <td>{{ training.duration|div:60|floatformat }} min</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">{% translate "Required Trainings in" %} {% now "Y" %}</h1>
     </div>
     {% if required_trainings|length < 1 %}
-    <div class="alert alert-warning text-center" role="alert">
-        {% translate "It seems like you have no obligatory training this year." %}
-    </div>
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like you have no obligatory training this year." %}
+        </div>
     {% else %}
         <div class="row row-cols-1 row-cols-md-3">
             {% for required_training in required_trainings %}
