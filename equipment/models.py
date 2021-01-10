@@ -28,4 +28,4 @@ class Key(models.Model):
     access_rights = models.ManyToManyField(Room, blank=True, help_text=_('Select rooms the key provides access to'))
 
     def __str__(self):
-        return f'{_("Key of")} {self.owner}'
+        return f'{_("Key")} {self.pk}'
