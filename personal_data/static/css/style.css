@@ -208,3 +208,7 @@ img.profile-picture {
     display: block;
     margin: 20px auto;
 }
+
+.top-list-button {
+    margin-top: 5px;
+}
