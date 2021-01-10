@@ -8,11 +8,11 @@
     <div class="card-deck">
         {% for ex in expiring_fitness %}
             <div class="card bg-light mb-3">
-                <div class="card-header">{{ ex.get_level_display }} {% translate "expires" %} {{ ex.expiration_date }}</div>
+                <div class="card-header">{{ ex.level.name }} {% translate "expires on" %} {{ ex.expiration_date }}</div>
                 <div class="card-body text-center">
                     <span data-feather="alert-triangle" class="feather-128 text-danger"></span>
                     <p class="card-text">
-                        {% translate "Your fitness" %} {{ ex.get_category_display }} {% translate "is about to expire!" %}<br>
+                        {% translate "Your fitness" %} {{ ex.level.name }} {% translate "is about to expire!" %}<br>
                         {% translate "Please take care off extending your fitness in order to be ready for operation." %}
                     </p>
                 </div>
@@ -20,7 +20,7 @@
         {% endfor %}
         {% for ex in expiring_driver_license %}
             <div class="card bg-light mb-3">
-                <div class="card-header">{% translate "Your Driver License" %} {% translate "expires" %} {{ ex.expiration_date }}</div>
+                <div class="card-header">{% translate "Your Driver License" %} {% translate "expires on" %} {{ ex.expiration_date }}</div>
                 <div class="card-body text-center">
                     <span data-feather="alert-triangle" class="feather-128 text-danger"></span>
                     <p class="card-text">

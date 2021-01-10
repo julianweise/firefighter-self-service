@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 from django.db.models import CASCADE
 from django.utils.timezone import now
+from django.utils.translation import gettext as _
 
 from personal_data.models import Firefighter
 
@@ -15,10 +16,10 @@ class FitnessLevel(models.Model):
 
 
 class Fitness(models.Model):
-    firefighter = models.ForeignKey(Firefighter, on_delete=CASCADE)
-    level = models.ForeignKey(FitnessLevel, on_delete=CASCADE)
-    issue_date = models.DateField()
-    expiration_date = models.DateField()
+    firefighter = models.ForeignKey(Firefighter, verbose_name=_('Firefighter'), on_delete=CASCADE)
+    level = models.ForeignKey(FitnessLevel, verbose_name=_('Fitness Level'), on_delete=CASCADE)
+    issue_date = models.DateField(verbose_name=_('Issue Date'))
+    expiration_date = models.DateField(verbose_name=_('Expiration Date'))
 
     class Meta:
         ordering = ['-expiration_date']

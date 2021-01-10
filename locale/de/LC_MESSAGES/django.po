@@ -1,14 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translations for Firefighter Self Service
+# Copyright (C) 2021 Julian Weise
+# This file is distributed under the same license as the Firefighter Self Service package.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 20:02+0100\n"
+"POT-Creation-Date: 2021-01-10 17:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,108 +33,118 @@ msgstr ""
 "überschneidenden Veranstaltung teilnimmt. Eine Person kann nur an einer "
 "Veranstaltung gleichzeitig teilnehmen."
 
-#: attendance/templates/attendance_list.html:6
-#: templates/dashboard_generic.html:96
+#: attendance/models.py:9 attendance/templates/attendance_list.html:28
+#: attendance/templates/operation_list.html:22
+#: attendance/templates/other_service_list.html:22
+#: attendance/templates/training_list.html:22
+#: attendance/templates/training_participated_list.html:19
+#: event/templates/event_list.html:25 personal_data/models.py:214
+msgid "Start"
+msgstr "Beginn"
+
+#: attendance/models.py:10 attendance/templates/attendance_list.html:29
+#: attendance/templates/operation_list.html:23
+#: attendance/templates/other_service_list.html:23
+#: attendance/templates/training_list.html:23
+#: attendance/templates/training_participated_list.html:20
+#: event/templates/event_list.html:26 personal_data/models.py:215
+#: personal_data/templates/firefighter_detail.html:400
+msgid "End"
+msgstr "Ende"
+
+#: attendance/models.py:11 attendance/templates/attendance_list.html:32
+#: attendance/templates/operation_list.html:27
+#: attendance/templates/other_service_list.html:27
+#: attendance/templates/training_list.html:27
+msgid "Attendees"
+msgstr "Teilnehmer"
+
+#: attendance/models.py:13 attendance/templates/attendance_list.html:30
+#: attendance/templates/other_service_list.html:25
+#: attendance/templates/training_list.html:25
+#: event/templates/event_list.html:27
+msgid "Person in charge"
+msgstr "Verantwortlicher"
+
+#: attendance/models.py:15 attendance/templates/attendance_list.html:33
+#: attendance/templates/operation_list.html:28
+#: attendance/templates/other_service_list.html:28
+#: attendance/templates/training_list.html:28
+msgid "Comment"
+msgstr "Kommentar"
+
+#: attendance/models.py:80 attendance/templates/operation_list.html:24
+msgid "Code Word"
+msgstr "Stichwort"
+
+#: attendance/models.py:81 attendance/templates/operation_list.html:25
+msgid "Operation ID"
+msgstr "Einsatznummer"
+
+#: attendance/models.py:88
+msgid "Service Notation"
+msgstr "Bezeichnung des Dienstes"
+
+#: attendance/templates/attendance_list.html:7
+#: templates/dashboard_generic.html:99
 msgid "Attendances"
 msgstr "Anwesenheit"
 
-#: attendance/templates/attendance_list.html:9
+#: attendance/templates/attendance_list.html:10
 #: attendance/templates/form_operation.html:5
 #: attendance/templates/operation_list.html:8
 msgid "Add Operation"
 msgstr "Einsatz hinzufügen"
 
-#: attendance/templates/attendance_list.html:10
+#: attendance/templates/attendance_list.html:11
 msgid "Add Other Service"
 msgstr "Sonstigen Dienst hinzufügen"
 
-#: attendance/templates/attendance_list.html:11
+#: attendance/templates/attendance_list.html:12
 #: attendance/templates/form_training.html:5
 #: attendance/templates/other_service_list.html:8
 #: attendance/templates/training_list.html:8
 msgid "Add Training"
 msgstr "Übungsdienst hinzufügen"
 
-#: attendance/templates/attendance_list.html:18
-#, fuzzy
-#| msgid "It seems like you have not been responsible for any operation yet."
+#: attendance/templates/attendance_list.html:19
 msgid "It seems like you have not been responsible for any service yet."
 msgstr "Es scheint als hast du noch keinen Einsatz geleitet."
 
-#: attendance/templates/attendance_list.html:25
-#: event/templates/event_list.html:23 overview/templates/overview.html:44
+#: attendance/templates/attendance_list.html:27
+#: event/templates/event_list.html:24 overview/templates/overview.html:44
 msgid "Kind"
 msgstr "Art"
 
-#: attendance/templates/attendance_list.html:26
-#: attendance/templates/operation_list.html:21
-#: attendance/templates/other_service_list.html:21
-#: attendance/templates/training_list.html:21
-#: attendance/templates/training_participated_list.html:18
-#: event/templates/event_list.html:24
-msgid "Start"
-msgstr "Beginn"
-
-#: attendance/templates/attendance_list.html:27
-#: attendance/templates/operation_list.html:22
-#: attendance/templates/other_service_list.html:22
-#: attendance/templates/training_list.html:22
-#: attendance/templates/training_participated_list.html:19
-#: event/templates/event_list.html:25
-#: personal_data/templates/firefighter_detail.html:394
-msgid "End"
-msgstr "Ende"
-
-#: attendance/templates/attendance_list.html:28
-#: attendance/templates/other_service_list.html:24
-#: attendance/templates/training_list.html:24
-#: event/templates/event_list.html:26
-msgid "Person in charge"
-msgstr "Verantwortlicher"
-
-#: attendance/templates/attendance_list.html:29
-#: attendance/templates/operation_list.html:25
-#: attendance/templates/other_service_list.html:25
-#: attendance/templates/training_list.html:25
-#: attendance/templates/training_participated_list.html:21
-#: overview/templates/overview.html:45
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1539
-msgid "Duration"
-msgstr "Dauer"
-
-#: attendance/templates/attendance_list.html:30
+#: attendance/templates/attendance_list.html:31
 #: attendance/templates/operation_list.html:26
 #: attendance/templates/other_service_list.html:26
 #: attendance/templates/training_list.html:26
-msgid "Attendees"
-msgstr "Teilnehmer"
+#: attendance/templates/training_participated_list.html:22
+#: overview/templates/overview.html:45
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1539
+msgid "Duration"
+msgstr "Dauer"
 
-#: attendance/templates/attendance_list.html:31
-#: attendance/templates/operation_list.html:27
-#: attendance/templates/other_service_list.html:27
-#: attendance/templates/training_list.html:27
-msgid "Comment"
-msgstr "Kommentar"
-
-#: attendance/templates/attendance_list.html:32
-#: attendance/templates/operation_list.html:28
-#: attendance/templates/other_service_list.html:28
-#: attendance/templates/training_list.html:28
-#: event/templates/event_list.html:27
+#: attendance/templates/attendance_list.html:34
+#: attendance/templates/operation_list.html:29
+#: attendance/templates/other_service_list.html:29
+#: attendance/templates/training_list.html:29
+#: event/templates/event_list.html:28
 #: personal_data/templates/firefighter_list.html:31
 msgid "Action"
 msgstr "Aktion"
 
-#: attendance/templates/attendance_list.html:60
-#: attendance/templates/operation_list.html:53
-#: attendance/templates/other_service_list.html:53
-#: attendance/templates/training_list.html:53
-#: event/templates/event_list.html:46
+#: attendance/templates/attendance_list.html:62
+#: attendance/templates/operation_list.html:54
+#: attendance/templates/other_service_list.html:54
+#: attendance/templates/training_list.html:54
+#: event/templates/event_list.html:47
 #: personal_data/templates/firefighter_list.html:62
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
 
-#: attendance/templates/attendance_list.html:61
+#: attendance/templates/attendance_list.html:63
 msgid "Do you really want to delete this attendance?"
 msgstr "Möchtest du diese Teilnahme wirklich löschen?"
 
@@ -145,14 +154,28 @@ msgstr "Möchtest du diese Teilnahme wirklich löschen?"
 #: event/templates/form_course_event.html:33 event/templates/form_event.html:28
 #: fitness/templates/form_fitness.html:30
 #: personal_data/templates/form_driver_license.html:33
-#: personal_data/templates/form_firefighter.html:66
+#: personal_data/templates/form_firefighter.html:72
 #: personal_data/templates/form_honor_assignment.html:29
-#: personal_data/templates/form_personal_data.html:74
+#: personal_data/templates/form_personal_data.html:82
 #: personal_data/templates/form_rank_assignment.html:29
 #: personal_data/templates/form_role_assignment.html:32
 #: qualification/templates/form_qualification.html:30
 msgid "Save"
 msgstr "Speichern"
+
+#: attendance/templates/form_operation.html:38
+#: attendance/templates/form_other_service.html:35
+#: attendance/templates/form_training.html:41
+#: event/templates/form_course_event.html:35 event/templates/form_event.html:30
+#: fitness/templates/form_fitness.html:32
+#: personal_data/templates/form_driver_license.html:35
+#: personal_data/templates/form_firefighter.html:73
+#: personal_data/templates/form_honor_assignment.html:31
+#: personal_data/templates/form_rank_assignment.html:31
+#: personal_data/templates/form_role_assignment.html:34
+#: qualification/templates/form_qualification.html:32
+msgid "Cancel"
+msgstr ""
 
 #: attendance/templates/form_other_service.html:5
 msgid "Add other Service"
@@ -162,31 +185,11 @@ msgstr "Sonstigen Dienst hinzufügen"
 msgid "Operations"
 msgstr "Einsätze"
 
-# dynamic: attendance -> kind
-msgid "operation"
-msgstr "Einsatz"
-
-# dynamic: attendance -> kind
-msgid "training"
-msgstr "Ausbildungsdienst"
-
-# dynamic: attendance -> kind
-msgid "other_service"
-msgstr "sonstiger Dienst"
-
 #: attendance/templates/operation_list.html:14
 msgid "It seems like no operation has been taken place yet."
 msgstr "Es scheint als habe noch kein Einsatz stattgefunden."
 
-#: attendance/templates/operation_list.html:23
-msgid "Code Word"
-msgstr "Stichwort"
-
-#: attendance/templates/operation_list.html:24
-msgid "Operation ID"
-msgstr "Einsatznummer"
-
-#: attendance/templates/operation_list.html:54
+#: attendance/templates/operation_list.html:55
 msgid "Do you really want to delete this operation?"
 msgstr "Möchtest du diesen Einsatz wirklich löschen?"
 
@@ -198,13 +201,14 @@ msgstr "Sonstige Dienste"
 msgid "It seems like no other sevice has been taken place yet."
 msgstr "Es scheint als habe noch kein sonstiger Dienst stattgefunden."
 
-#: attendance/templates/other_service_list.html:23
-#: attendance/templates/training_list.html:23
-#: attendance/templates/training_participated_list.html:20
+#: attendance/templates/other_service_list.html:24
+#: attendance/templates/training_list.html:24
+#: attendance/templates/training_participated_list.html:21
+#: qualification/models.py:128
 msgid "Topic"
 msgstr "Thema"
 
-#: attendance/templates/other_service_list.html:54
+#: attendance/templates/other_service_list.html:55
 msgid "Do you really want to delete this other_service?"
 msgstr "Möchtest du wirklich diesen sonstigen Dienst löschen?"
 
@@ -216,7 +220,7 @@ msgstr "Übungsdienste"
 msgid "It seems like no training has been taken place yet."
 msgstr "Es scheint als haben noch keine Übungsdienste stattgefunden."
 
-#: attendance/templates/training_list.html:54
+#: attendance/templates/training_list.html:55
 msgid "Do you really want to delete this training?"
 msgstr "Möchtest du wirklich diesen Übungsdienst löschen?"
 
@@ -230,15 +234,15 @@ msgstr ""
 "Es scheint als habest du noch an keinem Übungsdienst dieses Jahr "
 "teilgenommen."
 
-#: attendance/templates/training_participated_list.html:38
+#: attendance/templates/training_participated_list.html:40
 msgid "Required Trainings in"
 msgstr "Obligatorische Ausbildungen"
 
-#: attendance/templates/training_participated_list.html:42
+#: attendance/templates/training_participated_list.html:44
 msgid "It seems like you have no obligatory training this year."
 msgstr "Es scheint als habest du keine obligatorischen Ausbildungen."
 
-#: attendance/templates/training_participated_list.html:53
+#: attendance/templates/training_participated_list.html:55
 msgid "Required for: "
 msgstr "Vorausgesetzt für"
 
@@ -274,9 +278,13 @@ msgstr "Ausbildung erfolgreich aktualisiert"
 msgid "Successfully deleted Training"
 msgstr "Ausbildung erfolgreich gelöscht"
 
+#: equipment/models.py:28
+msgid "Select rooms the key provides access to"
+msgstr "Wähle Räumlichkeiten aus, die mit diesem Schküssel zugänglich sind"
+
 #: equipment/templates/equipment_personal.html:5 personal_data/admin.py:89
-#: personal_data/templates/firefighter_detail.html:290
-#: personal_data/templates/form_firefighter.html:54
+#: personal_data/templates/firefighter_detail.html:296
+#: personal_data/templates/form_firefighter.html:60
 #: templates/dashboard_generic.html:56
 msgid "Equipment"
 msgstr "Ausrüstung"
@@ -290,12 +298,13 @@ msgstr ""
 "Das wird sich sicherlich bald ändern"
 
 #: equipment/templates/equipment_personal.html:18
-#: equipment/templates/pager_detail.html:4
-#: personal_data/templates/firefighter_detail.html:302
+#: equipment/templates/pager_detail.html:4 personal_data/models.py:105
+#: personal_data/templates/firefighter_detail.html:308
 msgid "Pager"
 msgstr "Melder"
 
 #: equipment/templates/equipment_personal.html:19
+#: equipment/templates/equipment_personal.html:29
 #: equipment/templates/key_detail.html:9
 #: equipment/templates/locker_detail.html:9
 #: equipment/templates/pager_detail.html:9
@@ -303,19 +312,14 @@ msgid "ID"
 msgstr "Id"
 
 #: equipment/templates/equipment_personal.html:28
-#: equipment/templates/locker_detail.html:4
-#: personal_data/templates/firefighter_detail.html:312
+#: equipment/templates/locker_detail.html:4 personal_data/models.py:107
+#: personal_data/templates/firefighter_detail.html:318
 msgid "Locker"
 msgstr "Spint"
 
-#: equipment/templates/equipment_personal.html:29
-#: event/templates/event_list.html:22
-msgid "Name"
-msgstr "Name"
-
 #: equipment/templates/equipment_personal.html:38
-#: equipment/templates/key_detail.html:4
-#: personal_data/templates/firefighter_detail.html:322
+#: equipment/templates/key_detail.html:4 personal_data/models.py:109
+#: personal_data/templates/firefighter_detail.html:328
 msgid "Key"
 msgstr "Schlüssel"
 
@@ -345,7 +349,11 @@ msgstr "Lehrgang hinzufügen"
 msgid "It seems like there are no events planned."
 msgstr "Es scheint als seien bisher keine Veranstaltungen geplant."
 
-#: event/templates/event_list.html:47
+#: event/templates/event_list.html:23
+msgid "Name"
+msgstr "Name"
+
+#: event/templates/event_list.html:48
 msgid "Do you really want to delete this event?"
 msgstr "Möchtest du diese Veranstaltung wirklich löschen?"
 
@@ -365,16 +373,36 @@ msgstr "Veranstaltung erfolgreich hinzugefügt"
 msgid "Successfully created Course Event"
 msgstr "Lehrgang erfolgreich hinzugefügt"
 
-#: firefighter_self_service/settings.py:141
+#: firefighter_self_service/settings.py:154
 msgid "German"
 msgstr "Deutsch"
 
-#: firefighter_self_service/settings.py:142
+#: firefighter_self_service/settings.py:155
 msgid "English"
 msgstr "Englisch"
 
+#: fitness/models.py:19 personal_data/models.py:134 personal_data/models.py:155
+#: personal_data/models.py:184 personal_data/models.py:213
+#: qualification/models.py:75
+msgid "Firefighter"
+msgstr "Einsatzkraft"
+
+#: fitness/models.py:20
+msgid "Fitness Level"
+msgstr "Art der Tauglichkeit"
+
+#: fitness/models.py:21 personal_data/models.py:135 personal_data/models.py:157
+#: personal_data/models.py:186 qualification/models.py:72
+#: qualification/templates/qualification_personal.html:21
+msgid "Issue Date"
+msgstr "Ausstellungsdatum"
+
+#: fitness/models.py:22 personal_data/models.py:158
+msgid "Expiration Date"
+msgstr "Ablaufdatum"
+
 #: fitness/templates/fitness_personal_view.html:5
-#: personal_data/templates/firefighter_detail.html:190
+#: personal_data/templates/firefighter_detail.html:196
 #: templates/dashboard_generic.html:70
 msgid "Fitness"
 msgstr "Tauglichkeit"
@@ -389,7 +417,7 @@ msgstr ""
 "besuchst / abschließt."
 
 #: fitness/templates/fitness_personal_view.html:23
-#: personal_data/templates/firefighter_detail.html:208
+#: personal_data/templates/firefighter_detail.html:214
 msgid "Issued"
 msgstr "Ausgestellt am"
 
@@ -401,7 +429,7 @@ msgstr "Gültig bis"
 msgid "Add new Fitness Level to"
 msgstr "Tauglichkeit hinzufügen zu"
 
-#: fitness/views.py:44
+#: fitness/views.py:45
 msgid "Successfully created new Fitness Level for "
 msgstr "Tauglichkeit erfolgreich erstellt für "
 
@@ -410,8 +438,9 @@ msgid "Welcome"
 msgstr "Willkommen"
 
 #: overview/templates/overview.html:11 overview/templates/overview.html:23
-msgid "expires"
-msgstr "läuft ab"
+#: overview/templates/overview.html:27
+msgid "expires on"
+msgstr "läuft ab am"
 
 #: overview/templates/overview.html:15
 msgid "Your fitness"
@@ -426,16 +455,12 @@ msgid ""
 "Please take care off extending your fitness in order to be ready for "
 "operation."
 msgstr ""
-"Bitte kümmere dich um die Verlängerung deiner Tauglichkeit, damit nur weiter "
+"Bitte kümmere dich um die Verlängerung deiner Tauglichkeit, damit du weiter "
 "einsatzfähig bleibst."
 
 #: overview/templates/overview.html:23 overview/templates/overview.html:27
 msgid "Your Driver License"
 msgstr "Dein Führerschein"
-
-#: overview/templates/overview.html:27
-msgid "expires on"
-msgstr "läuft ab am"
 
 #: overview/templates/overview.html:28
 msgid ""
@@ -449,7 +474,7 @@ msgid "Your last five participations"
 msgstr "Deine letzten fünf Teilnahmen"
 
 #: overview/templates/overview.html:43
-#: personal_data/templates/firefighter_detail.html:393
+#: personal_data/templates/firefighter_detail.html:399
 msgid "Begin"
 msgstr "Beginn"
 
@@ -463,7 +488,7 @@ msgstr "min"
 
 #: overview/templates/overview.html:65
 msgid "Hours served"
-msgstr "Stunden geleistet"
+msgstr "Stunden geleistet in"
 
 #: personal_data/admin.py:80
 msgid "Basic information"
@@ -473,7 +498,7 @@ msgstr "Basisinformationen"
 msgid "Extended information"
 msgstr "Weiterführende Informationen"
 
-#: personal_data/admin.py:86 personal_data/templates/firefighter_detail.html:58
+#: personal_data/admin.py:86 personal_data/templates/firefighter_detail.html:83
 msgid "Address"
 msgstr "Adresse"
 
@@ -498,184 +523,224 @@ msgid "Superuser must have is_superuser=True."
 msgstr "Ein Administrator muss is_staff=True sein"
 
 #: personal_data/models.py:81
-#: personal_data/templates/firefighter_detail.html:30
+#: personal_data/templates/firefighter_detail.html:43
 #: personal_data/templates/firefighter_list.html:24
 msgid "First Name"
 msgstr "Vorname"
 
 #: personal_data/models.py:82
-#: personal_data/templates/firefighter_detail.html:34
+#: personal_data/templates/firefighter_detail.html:47
 #: personal_data/templates/firefighter_list.html:25
 msgid "Last Name"
 msgstr "Nachname"
 
 #: personal_data/models.py:83
-#: personal_data/templates/firefighter_detail.html:65
+#: personal_data/templates/firefighter_detail.html:90
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: personal_data/templates/firefighter_detail.html:13
-msgid "active"
-msgstr "aktiv"
-
-#: personal_data/templates/firefighter_detail.html:13
-msgid "inactive"
-msgstr "inaktiv"
-
-#: personal_data/templates/firefighter_detail.html:17
-#, fuzzy
-#| msgid "Personal Data"
-msgid "Edit Personal Data"
-msgstr "Persöhnliche Daten"
-
+#: personal_data/models.py:84
 #: personal_data/templates/firefighter_detail.html:26
+#: personal_data/templates/form_personal_data.html:11
+msgid "Picture"
+msgstr "Foto"
+
+#: personal_data/models.py:92
+#: personal_data/templates/firefighter_detail.html:33
 #: personal_data/templates/firefighter_list.html:23
 msgid "Staff ID"
 msgstr "Personalnummer"
 
-#: personal_data/templates/firefighter_detail.html:42
+#: personal_data/models.py:94
+msgid "Joined"
+msgstr "Mitglied seit"
+
+#: personal_data/models.py:95
+#: personal_data/templates/firefighter_detail.html:51
+#: personal_data/templates/form_personal_data.html:34
+msgid "Active since"
+msgstr "Aktiv seit"
+
+#: personal_data/models.py:96
+msgid "Street"
+msgstr "Straße"
+
+#: personal_data/models.py:97
+msgid "Zip"
+msgstr "Postleitzahl"
+
+#: personal_data/models.py:98 qualification/models.py:44
+msgid "City"
+msgstr "Stadt"
+
+#: personal_data/models.py:101
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: personal_data/models.py:102
+#: personal_data/templates/firefighter_detail.html:67
 msgid "Date of birth"
 msgstr "Geburtsdatum"
 
-#: personal_data/templates/firefighter_detail.html:46
+#: personal_data/models.py:133
+#: personal_data/templates/firefighter_detail.html:118
+#: personal_data/templates/form_personal_data.html:41
+#: personal_data/templates/form_personal_data.html:94
+msgid "Rank"
+msgstr "Dienstrang"
+
+#: personal_data/models.py:136 personal_data/models.py:187
+#: personal_data/models.py:216
+#: personal_data/templates/firefighter_detail.html:120
+#: personal_data/templates/firefighter_detail.html:160
+#: personal_data/templates/firefighter_detail.html:360
+#: personal_data/templates/form_personal_data.html:95
+#: personal_data/templates/form_personal_data.html:118
+#: qualification/models.py:77
+#: qualification/templates/qualification_personal.html:19
+msgid "Issuing Authority"
+msgstr "Ausgebende Behörde"
+
+#: personal_data/models.py:156
+msgid "License ID"
+msgstr "Führerscheinnummer"
+
+#: personal_data/models.py:159
+msgid "Categories of Driver License"
+msgstr "Führerscheinklassen"
+
+#: personal_data/models.py:185
+#: personal_data/templates/firefighter_detail.html:358
+#: personal_data/templates/form_honor_assignment.html:5
+#: personal_data/templates/form_personal_data.html:117
+msgid "Honor"
+msgstr "Ehrung"
+
+#: personal_data/models.py:212
+#: personal_data/templates/firefighter_detail.html:398
+msgid "Role"
+msgstr "Funktion"
+
+#: personal_data/templates/firefighter_detail.html:14
+msgid "active"
+msgstr "aktiv"
+
+#: personal_data/templates/firefighter_detail.html:14
+msgid "inactive"
+msgstr "inaktiv"
+
+#: personal_data/templates/firefighter_detail.html:18
+msgid "Edit Personal Data"
+msgstr "Persöhnliche Daten bearbeiten"
+
+#: personal_data/templates/firefighter_detail.html:38
+#: personal_data/templates/firefighter_list.html:37
+msgid "unknown"
+msgstr "unbekannt"
+
+#: personal_data/templates/firefighter_detail.html:57
+msgid "Member since"
+msgstr "Mitglied seit"
+
+#: personal_data/templates/firefighter_detail.html:71
 #: personal_data/templates/firefighter_list.html:27
 msgid "Age"
 msgstr "Alter"
 
-#: personal_data/templates/firefighter_detail.html:50
+#: personal_data/templates/firefighter_detail.html:75
 msgid "Phone"
 msgstr "Telefon"
 
-#: personal_data/templates/firefighter_detail.html:73
-msgid "Membership"
-msgstr "Mitgliedschaften"
-
-#: personal_data/templates/firefighter_detail.html:78
-#: personal_data/templates/form_personal_data.html:30
-msgid "Active since"
-msgstr "Aktiv (in der Feuerwehr) seit"
-
-#: personal_data/templates/firefighter_detail.html:84
-msgid "Member since"
-msgstr "Mitglied seit"
-
-#: personal_data/templates/firefighter_detail.html:99
+#: personal_data/templates/firefighter_detail.html:105
 msgid "Promotions"
 msgstr "Beförderungen"
 
-#: personal_data/templates/firefighter_detail.html:102
+#: personal_data/templates/firefighter_detail.html:108
 #: personal_data/templates/form_rank_assignment.html:5
 msgid "Promote"
 msgstr "Befördern"
 
-#: personal_data/templates/firefighter_detail.html:112
-#: personal_data/templates/form_personal_data.html:37
-#: personal_data/templates/form_personal_data.html:85
-msgid "Rank"
-msgstr "Dienstrang"
-
-#: personal_data/templates/firefighter_detail.html:113
-#: personal_data/templates/firefighter_detail.html:153
-#: personal_data/templates/firefighter_detail.html:353
-#: personal_data/templates/form_personal_data.html:84
-#: personal_data/templates/form_personal_data.html:105
+#: personal_data/templates/firefighter_detail.html:119
+#: personal_data/templates/firefighter_detail.html:159
+#: personal_data/templates/firefighter_detail.html:359
+#: personal_data/templates/form_personal_data.html:93
+#: personal_data/templates/form_personal_data.html:116
 msgid "Date"
 msgstr "Datum"
 
-#: personal_data/templates/firefighter_detail.html:114
-#: personal_data/templates/firefighter_detail.html:154
-#: personal_data/templates/firefighter_detail.html:354
-#: personal_data/templates/form_personal_data.html:86
-#: personal_data/templates/form_personal_data.html:107
-#: qualification/templates/qualification_personal.html:18
-msgid "Issuing Authority"
-msgstr "Behörde"
-
-#: personal_data/templates/firefighter_detail.html:139
+#: personal_data/templates/firefighter_detail.html:145
 #: templates/dashboard_generic.html:63
 msgid "Qualifications"
 msgstr "Qualifikationen"
 
-#: personal_data/templates/firefighter_detail.html:142
+#: personal_data/templates/firefighter_detail.html:148
 msgid "Add Qualification"
 msgstr "Qualifikation hinzufügen"
 
-#: personal_data/templates/firefighter_detail.html:152
+#: personal_data/templates/firefighter_detail.html:158
 #: qualification/templates/qualification_personal.html:5
 msgid "Qualification"
 msgstr "Qualifikation"
 
-#: personal_data/templates/firefighter_detail.html:155
+#: personal_data/templates/firefighter_detail.html:161
 msgid "Valid"
 msgstr "Gültig"
 
-#: personal_data/templates/firefighter_detail.html:193
+#: personal_data/templates/firefighter_detail.html:199
 msgid "Add Fitness"
 msgstr "Tauglichkeit hinzufügen"
 
-#: personal_data/templates/firefighter_detail.html:212
-#: personal_data/templates/firefighter_detail.html:252
+#: personal_data/templates/firefighter_detail.html:218
+#: personal_data/templates/firefighter_detail.html:258
 msgid "Expires"
 msgstr "Läuft ab"
 
-#: personal_data/templates/firefighter_detail.html:234
+#: personal_data/templates/firefighter_detail.html:240
 msgid "Driver Licenses"
 msgstr "Führerschein"
 
-#: personal_data/templates/firefighter_detail.html:237
+#: personal_data/templates/firefighter_detail.html:243
 msgid "Add License"
 msgstr "Führerschein hinzufügen"
 
-#: personal_data/templates/firefighter_detail.html:245
+#: personal_data/templates/firefighter_detail.html:251
 msgid "License"
 msgstr "Führerschein"
 
-#: personal_data/templates/firefighter_detail.html:256
+#: personal_data/templates/firefighter_detail.html:262
 msgid "Categories"
 msgstr "Kategorien"
 
-#: personal_data/templates/firefighter_detail.html:293
-#, fuzzy
-#| msgid "Equipment"
+#: personal_data/templates/firefighter_detail.html:299
 msgid "Edit Equipment"
-msgstr "Ausrüstung"
+msgstr "Ausrüstung bearbeiten"
 
-#: personal_data/templates/firefighter_detail.html:339
+#: personal_data/templates/firefighter_detail.html:345
 msgid "Honors"
 msgstr "Ehrungen"
 
-#: personal_data/templates/firefighter_detail.html:342
+#: personal_data/templates/firefighter_detail.html:348
 msgid "Add Honor"
 msgstr "Ehrung hinzufügen"
 
-#: personal_data/templates/firefighter_detail.html:352
-#: personal_data/templates/form_honor_assignment.html:5
-#: personal_data/templates/form_personal_data.html:106
-msgid "Honor"
-msgstr "Ehrung"
-
-#: personal_data/templates/firefighter_detail.html:379
+#: personal_data/templates/firefighter_detail.html:385
 msgid "Roles"
 msgstr "Funktion"
 
-#: personal_data/templates/firefighter_detail.html:382
+#: personal_data/templates/firefighter_detail.html:388
 msgid "Add Role"
 msgstr "Funktion hinzufügen"
 
-#: personal_data/templates/firefighter_detail.html:392
-msgid "Role"
-msgstr "Funktion"
-
-#: personal_data/templates/firefighter_detail.html:395
+#: personal_data/templates/firefighter_detail.html:401
 msgid "Authority"
 msgstr "Behörde"
 
-#: personal_data/templates/firefighter_detail.html:405
+#: personal_data/templates/firefighter_detail.html:411
 msgid "today"
 msgstr "heute"
 
 #: personal_data/templates/firefighter_list.html:7
-#: templates/dashboard_generic.html:89
+#: templates/dashboard_generic.html:90
 msgid "Firefighters"
 msgstr "Einsatzkräfte"
 
@@ -704,15 +769,19 @@ msgstr "Möchtest du diese Einsatzkraft wirklich löschen?"
 msgid "Add new Driver License for"
 msgstr "Neuen Führerschein hinzufügen für"
 
-#: personal_data/templates/form_firefighter.html:5
+#: personal_data/templates/form_firefighter.html:6
 msgid "Add new Firefighter"
 msgstr "Neue Einsatzkraft hinzufügen"
 
-#: personal_data/templates/form_firefighter.html:12
+#: personal_data/templates/form_firefighter.html:6
+msgid "Update Firefighter"
+msgstr "Einsatzkraft aktualisieren"
+
+#: personal_data/templates/form_firefighter.html:15
 msgid "General Information"
 msgstr "Generelle Informationen"
 
-#: personal_data/templates/form_firefighter.html:45
+#: personal_data/templates/form_firefighter.html:51
 msgid "Contact Information"
 msgstr "Kontaktinformationen"
 
@@ -720,61 +789,77 @@ msgstr "Kontaktinformationen"
 msgid "Personal data"
 msgstr "Persöhnliche Daten"
 
-#: personal_data/templates/form_personal_data.html:13
+#: personal_data/templates/form_personal_data.html:17
 msgid "Staff Number"
 msgstr "Personalnummer"
 
-#: personal_data/templates/form_personal_data.html:18
+#: personal_data/templates/form_personal_data.html:22
 msgid "Status"
 msgstr "Status"
 
-#: personal_data/templates/form_personal_data.html:25
+#: personal_data/templates/form_personal_data.html:29
 msgid "Staff member since"
-msgstr "Mitglied seid"
+msgstr "Mitglied seit"
 
-#: personal_data/templates/form_personal_data.html:80
+#: personal_data/templates/form_personal_data.html:88
 msgid "Your history"
 msgstr "Deine Laufbahn"
 
-#: personal_data/templates/form_personal_data.html:101
+#: personal_data/templates/form_personal_data.html:111
 msgid "Your honors"
 msgstr "Deine Ehrungen"
 
 #: personal_data/templates/form_role_assignment.html:5
 msgid "Assign new Role to"
-msgstr "Neue Funktion bennen für"
+msgstr "Neue Funktion für"
 
-#: personal_data/views.py:39
+#: personal_data/views.py:38
 msgid "Successfully updated personal data"
 msgstr "Erfolgreich persönliche Daten aktualisiert"
 
-#: personal_data/views.py:48
+#: personal_data/views.py:47
 msgid "The form has not be filled correctly"
 msgstr "Das Formular wurde nicht korrekt ausgefüllt"
 
-#: personal_data/views.py:104
+#: personal_data/views.py:105
 msgid "Successfully deleted Firefighter"
 msgstr "Einsatzkraft erfolgreich gelöscht"
 
-#: personal_data/views.py:119
+#: personal_data/views.py:120
 msgid "Successfully created new Firefighter"
 msgstr "Einsatzkraft erfolgreich erstellt"
 
-#: personal_data/views.py:128
+#: personal_data/views.py:129
 msgid "Successfully updated Firefighter"
 msgstr "Einsatzkraft erfolgreich aktualisiert"
 
-#: personal_data/views.py:156 personal_data/views.py:185
+#: personal_data/views.py:157 personal_data/views.py:186
 msgid "Successfully created new Driver License for "
 msgstr "Führerschein erfolgreich erstellt für"
 
-#: personal_data/views.py:210
+#: personal_data/views.py:211
 msgid "Successfully assigned new Honor to "
 msgstr "Neue Ehrung erfolgreich hinzugefühgt zu"
 
-#: personal_data/views.py:235
+#: personal_data/views.py:236
 msgid "Successfully assigned new Role to "
 msgstr "Neue Fuktion erfolgreich zugewiesen an"
+
+#: qualification/models.py:45
+msgid "County"
+msgstr "Kreis"
+
+#: qualification/models.py:46
+msgid "Federate State"
+msgstr "Bundesland"
+
+#: qualification/models.py:73
+msgid "Course"
+msgstr "Lehrgang"
+
+#: qualification/models.py:132
+msgid "satisfies required training"
+msgstr "Entspricht obligatorischer Ausbildung"
 
 #: qualification/templates/form_qualification.html:5
 msgid "Add new Qualification to"
@@ -788,19 +873,15 @@ msgstr ""
 "Es scheint als habest du noch keine anerkannten Qualifikationen. Keine Sorge "
 "- Dein erster Lehrgang wird bald starten"
 
-#: qualification/templates/qualification_personal.html:17
+#: qualification/templates/qualification_personal.html:18
 msgid "Qualification Name"
 msgstr "Name der Qualifikation"
 
-#: qualification/templates/qualification_personal.html:19
+#: qualification/templates/qualification_personal.html:20
 msgid "Qualification Level"
 msgstr "Level der Qualifikation"
 
-#: qualification/templates/qualification_personal.html:20
-msgid "Issue Date"
-msgstr "Ausstellungsdatum"
-
-#: qualification/templates/qualification_personal.html:21
+#: qualification/templates/qualification_personal.html:22
 msgid "Valid?"
 msgstr "Gültig?"
 
@@ -829,13 +910,13 @@ msgstr "Persöhnliche Daten"
 msgid "Participated Trainings"
 msgstr "Ausbildungsteilnahmen"
 
-#: templates/dashboard_generic.html:135
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:711
+#: templates/dashboard_generic.html:139
+#: venv/lib/python3.9/site-packages/django/forms/widgets.py:711
 msgid "No"
 msgstr "Nein"
 
-#: templates/dashboard_generic.html:138
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:710
+#: templates/dashboard_generic.html:142
+#: venv/lib/python3.9/site-packages/django/forms/widgets.py:710
 msgid "Yes"
 msgstr "Ja"
 
@@ -945,117 +1026,117 @@ msgstr ""
 msgid "Enter your E-Mail-Address to reset your password: "
 msgstr "Gib bitte deine E-Mail-Addresse an: "
 
-#: venv/lib/python3.7/site-packages/crispy_forms/tests/test_form_helper.py:129
-#: venv/lib/python3.7/site-packages/crispy_forms/tests/test_form_helper.py:139
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:54
+#: venv/lib/python3.9/site-packages/crispy_forms/tests/test_form_helper.py:129
+#: venv/lib/python3.9/site-packages/crispy_forms/tests/test_form_helper.py:139
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:54
 msgid "This field is required."
 msgstr "Dies ist ein Pflichtfeld"
 
-#: venv/lib/python3.7/site-packages/crispy_forms/tests/test_layout.py:361
+#: venv/lib/python3.9/site-packages/crispy_forms/tests/test_layout.py:389
 msgid "i18n text"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/crispy_forms/tests/test_layout.py:361
+#: venv/lib/python3.9/site-packages/crispy_forms/tests/test_layout.py:391
 msgid "i18n legend"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/crispy_forms/tests/test_layout_objects.py:129
-#: venv/lib/python3.7/site-packages/django/core/validators.py:20
+#: venv/lib/python3.9/site-packages/crispy_forms/tests/test_layout_objects.py:132
+#: venv/lib/python3.9/site-packages/django/core/validators.py:20
 msgid "Enter a valid value."
 msgstr "Gib bitte einen gültigen Wert an"
 
-#: venv/lib/python3.7/site-packages/django/contrib/messages/apps.py:7
+#: venv/lib/python3.9/site-packages/django/contrib/messages/apps.py:7
 msgid "Messages"
 msgstr "Nachrichten"
 
-#: venv/lib/python3.7/site-packages/django/contrib/sitemaps/apps.py:7
+#: venv/lib/python3.9/site-packages/django/contrib/sitemaps/apps.py:7
 msgid "Site Maps"
 msgstr "Seitenkarte"
 
-#: venv/lib/python3.7/site-packages/django/contrib/staticfiles/apps.py:9
+#: venv/lib/python3.9/site-packages/django/contrib/staticfiles/apps.py:9
 msgid "Static Files"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/contrib/syndication/apps.py:7
+#: venv/lib/python3.9/site-packages/django/contrib/syndication/apps.py:7
 msgid "Syndication"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/core/paginator.py:48
+#: venv/lib/python3.9/site-packages/django/core/paginator.py:48
 msgid "That page number is not an integer"
-msgstr ""
+msgstr "Diese Seitennummer ist keine Ganzzahl"
 
-#: venv/lib/python3.7/site-packages/django/core/paginator.py:50
+#: venv/lib/python3.9/site-packages/django/core/paginator.py:50
 msgid "That page number is less than 1"
-msgstr ""
+msgstr "Diese Seitennummer ist kleiner als 1"
 
-#: venv/lib/python3.7/site-packages/django/core/paginator.py:55
+#: venv/lib/python3.9/site-packages/django/core/paginator.py:55
 msgid "That page contains no results"
-msgstr ""
+msgstr "Diese Seite hat keine Inhalte"
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:91
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:671
+#: venv/lib/python3.9/site-packages/django/core/validators.py:91
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:671
 msgid "Enter a valid URL."
 msgstr "Gib bitte eine gültige URL an."
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:145
+#: venv/lib/python3.9/site-packages/django/core/validators.py:145
 msgid "Enter a valid integer."
 msgstr "Gib bitte einen gültigen numerischen Wert an."
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:156
+#: venv/lib/python3.9/site-packages/django/core/validators.py:156
 msgid "Enter a valid email address."
 msgstr "Gib bitte eine gültige E-Mail-Addresse an."
 
 #. Translators: "letters" means latin letters: a-z and A-Z.
-#: venv/lib/python3.7/site-packages/django/core/validators.py:230
+#: venv/lib/python3.9/site-packages/django/core/validators.py:230
 msgid ""
 "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:237
+#: venv/lib/python3.9/site-packages/django/core/validators.py:237
 msgid ""
 "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
 "hyphens."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:246
-#: venv/lib/python3.7/site-packages/django/core/validators.py:266
+#: venv/lib/python3.9/site-packages/django/core/validators.py:246
+#: venv/lib/python3.9/site-packages/django/core/validators.py:266
 msgid "Enter a valid IPv4 address."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:251
-#: venv/lib/python3.7/site-packages/django/core/validators.py:267
+#: venv/lib/python3.9/site-packages/django/core/validators.py:251
+#: venv/lib/python3.9/site-packages/django/core/validators.py:267
 msgid "Enter a valid IPv6 address."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:261
-#: venv/lib/python3.7/site-packages/django/core/validators.py:265
+#: venv/lib/python3.9/site-packages/django/core/validators.py:261
+#: venv/lib/python3.9/site-packages/django/core/validators.py:265
 msgid "Enter a valid IPv4 or IPv6 address."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:295
+#: venv/lib/python3.9/site-packages/django/core/validators.py:295
 msgid "Enter only digits separated by commas."
 msgstr "Gib bitte nur Ziffern separiert durch Kommas ein"
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:301
+#: venv/lib/python3.9/site-packages/django/core/validators.py:301
 #, python-format
 msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:334
+#: venv/lib/python3.9/site-packages/django/core/validators.py:334
 #, python-format
 msgid "Ensure this value is less than or equal to %(limit_value)s."
 msgstr ""
 "Stelle bitte sicher, dass der Wert kleiner oder gleich als %(limit_value)s "
 "ist."
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:343
+#: venv/lib/python3.9/site-packages/django/core/validators.py:343
 #, python-format
 msgid "Ensure this value is greater than or equal to %(limit_value)s."
 msgstr ""
 "Stelle bitte sicher, dass der Wert größer oder gleich als %(limit_value)s "
 "ist."
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:353
+#: venv/lib/python3.9/site-packages/django/core/validators.py:353
 #, python-format
 msgid ""
 "Ensure this value has at least %(limit_value)d character (it has "
@@ -1066,7 +1147,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:368
+#: venv/lib/python3.9/site-packages/django/core/validators.py:368
 #, python-format
 msgid ""
 "Ensure this value has at most %(limit_value)d character (it has "
@@ -1077,27 +1158,27 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:387
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:292
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:327
+#: venv/lib/python3.9/site-packages/django/core/validators.py:387
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:292
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:327
 msgid "Enter a number."
 msgstr "Gib eine Zahl ein."
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:389
+#: venv/lib/python3.9/site-packages/django/core/validators.py:389
 #, python-format
 msgid "Ensure that there are no more than %(max)s digit in total."
 msgid_plural "Ensure that there are no more than %(max)s digits in total."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:394
+#: venv/lib/python3.9/site-packages/django/core/validators.py:394
 #, python-format
 msgid "Ensure that there are no more than %(max)s decimal place."
 msgid_plural "Ensure that there are no more than %(max)s decimal places."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:399
+#: venv/lib/python3.9/site-packages/django/core/validators.py:399
 #, python-format
 msgid ""
 "Ensure that there are no more than %(max)s digit before the decimal point."
@@ -1106,101 +1187,105 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:461
+#: venv/lib/python3.9/site-packages/django/core/validators.py:461
 #, python-format
 msgid ""
 "File extension “%(extension)s” is not allowed. Allowed extensions are: "
 "%(allowed_extensions)s."
 msgstr ""
+"Dateiendung “%(extension)s” ist nicht erlaubt. Zugelassene Endungensind "
+"%(allowed_extensions)s."
 
-#: venv/lib/python3.7/site-packages/django/core/validators.py:513
+#: venv/lib/python3.9/site-packages/django/core/validators.py:513
 msgid "Null characters are not allowed."
-msgstr ""
+msgstr "Leere Zeichen sind nicht erlaubt."
 
-#: venv/lib/python3.7/site-packages/django/db/models/base.py:1190
-#: venv/lib/python3.7/site-packages/django/forms/models.py:760
+#: venv/lib/python3.9/site-packages/django/db/models/base.py:1190
+#: venv/lib/python3.9/site-packages/django/forms/models.py:760
 msgid "and"
 msgstr "und"
 
-#: venv/lib/python3.7/site-packages/django/db/models/base.py:1192
+#: venv/lib/python3.9/site-packages/django/db/models/base.py:1192
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:100
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:100
 #, python-format
 msgid "Value %(value)r is not a valid choice."
 msgstr "Wert %(value)r ist keine gültige Wahl."
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:101
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:101
 msgid "This field cannot be null."
 msgstr "Dieses Feld kann nicht null sein."
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:102
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:102
 msgid "This field cannot be blank."
 msgstr "Dieses Feld kann nicht leer sein."
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:103
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:103
 #, python-format
 msgid "%(model_name)s with this %(field_label)s already exists."
 msgstr ""
 
 #. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
 #. Eg: "Title must be unique for pub_date year"
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:107
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:107
 #, python-format
 msgid ""
 "%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:126
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:126
 #, python-format
 msgid "Field of type: %(field_type)s"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:939
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:939
 #, python-format
 msgid "“%(value)s” value must be either True or False."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:940
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:940
 #, python-format
 msgid "“%(value)s” value must be either True, False, or None."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:942
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:942
 msgid "Boolean (Either True or False)"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:983
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:983
 #, python-format
 msgid "String (up to %(max_length)s)"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1047
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1047
 msgid "Comma-separated integers"
-msgstr ""
+msgstr "Kommaseparierte Ganzzahlen"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1096
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1096
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
 "format."
 msgstr ""
+"“%(value)s” weist einen ungültigen Wert auf. Es muss im Format YYY-MM-DD "
+"vorliegen."
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1098
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1241
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1098
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1241
 #, python-format
 msgid ""
 "“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
 "date."
-msgstr ""
+msgstr "“%(value)s” hat ein gültiges Format jedoch ein ungültiges Datum"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1101
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1101
 msgid "Date (without time)"
 msgstr "Datum (ohne Zeitangabe)"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1239
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1239
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
@@ -1209,230 +1294,231 @@ msgstr ""
 "“%(value)s” liegt in einem ungültigen Fortmat vor. Es muss im Format YYY-MM-"
 "DD HH:MM[:ss[.uuuuuu]][TZ] sein."
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1243
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1243
 #, python-format
 msgid ""
 "“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
 "[TZ]) but it is an invalid date/time."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1247
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1247
 msgid "Date (with time)"
 msgstr "Datum (mit Zeitangabe)"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1395
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1395
 #, python-format
 msgid "“%(value)s” value must be a decimal number."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1397
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1397
 msgid "Decimal number"
 msgstr "Kommaseparierte Zahl"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1536
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1536
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
 "uuuuuu] format."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1589
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1589
 msgid "Email address"
 msgstr "E-Mail"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1612
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1612
 msgid "File path"
 msgstr "Dateipfad"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1678
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1678
 #, python-format
 msgid "“%(value)s” value must be a float."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1680
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1680
 msgid "Floating point number"
 msgstr "Fließkommazahl"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1718
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1718
 #, python-format
 msgid "“%(value)s” value must be an integer."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1720
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1720
 msgid "Integer"
 msgstr "Ganzzahl"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1803
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1803
 msgid "Big (8 byte) integer"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1819
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1819
 msgid "IPv4 address"
 msgstr "IPv4 Adresse"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1850
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1850
 msgid "IP address"
 msgstr "IP Adresse"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1930
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1931
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1930
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1931
 #, python-format
 msgid "“%(value)s” value must be either None, True or False."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1933
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1933
 msgid "Boolean (Either True, False or None)"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1976
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1976
 msgid "Positive big integer"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1989
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:1989
 msgid "Positive integer"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2002
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2002
 msgid "Positive small integer"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2016
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2016
 #, python-format
 msgid "Slug (up to %(max_length)s)"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2048
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2048
 msgid "Small integer"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2055
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2055
 msgid "Text"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2083
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2083
 #, python-format
 msgid ""
 "“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
 "format."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2085
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2085
 #, python-format
 msgid ""
 "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
 "invalid time."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2088
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2088
 msgid "Time"
 msgstr "Zeit"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2214
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2214
 msgid "URL"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2236
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2236
 msgid "Raw binary data"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2301
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2301
 #, python-format
 msgid "“%(value)s” is not a valid UUID."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2303
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2303
 msgid "Universally unique identifier"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/files.py:231
+#: venv/lib/python3.9/site-packages/django/db/models/fields/files.py:231
 msgid "File"
 msgstr "Datei"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/files.py:379
+#: venv/lib/python3.9/site-packages/django/db/models/fields/files.py:379
 msgid "Image"
 msgstr "Bild"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/json.py:18
+#: venv/lib/python3.9/site-packages/django/db/models/fields/json.py:18
 msgid "A JSON object"
 msgstr "JSON Objekt"
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/json.py:20
+#: venv/lib/python3.9/site-packages/django/db/models/fields/json.py:20
 msgid "Value must be valid JSON."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:790
+#: venv/lib/python3.9/site-packages/django/db/models/fields/related.py:790
 #, python-format
 msgid "%(model)s instance with %(field)s %(value)r does not exist."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:792
+#: venv/lib/python3.9/site-packages/django/db/models/fields/related.py:792
 msgid "Foreign Key (type determined by related field)"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1045
+#: venv/lib/python3.9/site-packages/django/db/models/fields/related.py:1045
 msgid "One-to-one relationship"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1099
+#: venv/lib/python3.9/site-packages/django/db/models/fields/related.py:1099
 #, python-format
 msgid "%(from)s-%(to)s relationship"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1100
+#: venv/lib/python3.9/site-packages/django/db/models/fields/related.py:1100
 #, python-format
 msgid "%(from)s-%(to)s relationships"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1142
+#: venv/lib/python3.9/site-packages/django/db/models/fields/related.py:1142
 msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
 #. characters will prevent the default label_suffix to be appended to the label
-#: venv/lib/python3.7/site-packages/django/forms/boundfield.py:150
+#: venv/lib/python3.9/site-packages/django/forms/boundfield.py:150
 msgid ":?.!"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:247
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:247
 msgid "Enter a whole number."
 msgstr "Gib eine Ganzahl ein."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:398
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:1139
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:398
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:1139
 msgid "Enter a valid date."
 msgstr "Gib ein gültiges Datum an."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:422
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:1140
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:422
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:1140
 msgid "Enter a valid time."
 msgstr "Gib eine gültige Zeit an."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:450
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:450
 msgid "Enter a valid date/time."
 msgstr "Gibt ein gültiges Datum inklusive Zeitangabe ein."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:484
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:484
 msgid "Enter a valid duration."
 msgstr "Gib eine gültige Dauer an."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:485
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:485
 #, python-brace-format
 msgid "The number of days must be between {min_days} and {max_days}."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:545
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:545
 msgid "No file was submitted. Check the encoding type on the form."
 msgstr ""
+"Es wurde keine Datei übertragen. Überprüfe bitte die Encodierung der Datei."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:546
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:546
 msgid "No file was submitted."
-msgstr ""
+msgstr "Es wurde keine Datei übertragen."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:547
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:547
 msgid "The submitted file is empty."
-msgstr ""
+msgstr "Die übertragene Datei ist leer."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:549
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:549
 #, python-format
 msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
@@ -1440,540 +1526,542 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:552
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:552
 msgid "Please either submit a file or check the clear checkbox, not both."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:613
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:613
 msgid ""
 "Upload a valid image. The file you uploaded was either not an image or a "
 "corrupted image."
 msgstr ""
+"Gib bitte ein gültiges Foto an. Die angegebene Datei war entwederbeschädigt "
+"oder kein Foto."
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:775
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:865
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1296
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:775
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:865
+#: venv/lib/python3.9/site-packages/django/forms/models.py:1296
 #, python-format
 msgid "Select a valid choice. %(value)s is not one of the available choices."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:866
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:981
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1295
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:866
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:981
+#: venv/lib/python3.9/site-packages/django/forms/models.py:1295
 msgid "Enter a list of values."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:982
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:982
 msgid "Enter a complete value."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:1198
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:1198
 msgid "Enter a valid UUID."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:1228
+#: venv/lib/python3.9/site-packages/django/forms/fields.py:1228
 msgid "Enter a valid JSON."
 msgstr ""
 
 #. Translators: This is the default suffix added to form field labels
-#: venv/lib/python3.7/site-packages/django/forms/forms.py:78
+#: venv/lib/python3.9/site-packages/django/forms/forms.py:78
 msgid ":"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/forms.py:205
+#: venv/lib/python3.9/site-packages/django/forms/forms.py:205
 #, python-format
 msgid "(Hidden field %(name)s) %(error)s"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:93
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:93
 msgid "ManagementForm data is missing or has been tampered with"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:345
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:345
 #, python-format
 msgid "Please submit %d or fewer forms."
 msgid_plural "Please submit %d or fewer forms."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:352
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:352
 #, python-format
 msgid "Please submit %d or more forms."
 msgid_plural "Please submit %d or more forms."
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:379
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:386
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:379
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:386
 msgid "Order"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:391
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:391
 msgid "Delete"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/models.py:755
+#: venv/lib/python3.9/site-packages/django/forms/models.py:755
 #, python-format
 msgid "Please correct the duplicate data for %(field)s."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/models.py:759
+#: venv/lib/python3.9/site-packages/django/forms/models.py:759
 #, python-format
 msgid "Please correct the duplicate data for %(field)s, which must be unique."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/models.py:765
+#: venv/lib/python3.9/site-packages/django/forms/models.py:765
 #, python-format
 msgid ""
 "Please correct the duplicate data for %(field_name)s which must be unique "
 "for the %(lookup)s in %(date_field)s."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/models.py:774
+#: venv/lib/python3.9/site-packages/django/forms/models.py:774
 msgid "Please correct the duplicate values below."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1096
+#: venv/lib/python3.9/site-packages/django/forms/models.py:1096
 msgid "The inline value did not match the parent instance."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1180
+#: venv/lib/python3.9/site-packages/django/forms/models.py:1180
 msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1298
+#: venv/lib/python3.9/site-packages/django/forms/models.py:1298
 #, python-format
 msgid "“%(pk)s” is not a valid value."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/utils.py:167
+#: venv/lib/python3.9/site-packages/django/forms/utils.py:167
 #, python-format
 msgid ""
 "%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
 "may be ambiguous or it may not exist."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:398
+#: venv/lib/python3.9/site-packages/django/forms/widgets.py:398
 msgid "Clear"
-msgstr ""
+msgstr "Leeren"
 
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:399
+#: venv/lib/python3.9/site-packages/django/forms/widgets.py:399
 msgid "Currently"
-msgstr ""
+msgstr "Aktuell"
 
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:400
+#: venv/lib/python3.9/site-packages/django/forms/widgets.py:400
 msgid "Change"
-msgstr ""
+msgstr "Ändern"
 
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:709
+#: venv/lib/python3.9/site-packages/django/forms/widgets.py:709
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #. Translators: Please do not add spaces around commas.
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:790
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:790
 msgid "yes,no,maybe"
-msgstr ""
+msgstr "Ja, Nein, Vielleicht"
 
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:819
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:836
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:819
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:836
 #, python-format
 msgid "%(size)d byte"
 msgid_plural "%(size)d bytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:838
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:838
 #, python-format
 msgid "%s KB"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:840
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:840
 #, python-format
 msgid "%s MB"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:842
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:842
 #, python-format
 msgid "%s GB"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:844
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:844
 #, python-format
 msgid "%s TB"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:846
+#: venv/lib/python3.9/site-packages/django/template/defaultfilters.py:846
 #, python-format
 msgid "%s PB"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:65
+#: venv/lib/python3.9/site-packages/django/utils/dateformat.py:65
 msgid "p.m."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:66
+#: venv/lib/python3.9/site-packages/django/utils/dateformat.py:66
 msgid "a.m."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:71
+#: venv/lib/python3.9/site-packages/django/utils/dateformat.py:71
 msgid "PM"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:72
+#: venv/lib/python3.9/site-packages/django/utils/dateformat.py:72
 msgid "AM"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:149
+#: venv/lib/python3.9/site-packages/django/utils/dateformat.py:149
 msgid "midnight"
-msgstr ""
+msgstr "Mitternacht"
 
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:151
+#: venv/lib/python3.9/site-packages/django/utils/dateformat.py:151
 msgid "noon"
 msgstr "Mittag"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:6
 msgid "Monday"
 msgstr "Montag"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:6
 msgid "Tuesday"
 msgstr "Dienstag"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:6
 msgid "Wednesday"
 msgstr "Mittwoch"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:6
 msgid "Thursday"
 msgstr "Donnerstag"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:6
 msgid "Friday"
 msgstr "Freitag"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:7
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:7
 msgid "Saturday"
 msgstr "Samstag"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:7
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:7
 msgid "Sunday"
 msgstr "Sonntag"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:10
 msgid "Mon"
 msgstr "Mon"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:10
 msgid "Tue"
 msgstr "Di"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:10
 msgid "Wed"
 msgstr "Mi"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:10
 msgid "Thu"
 msgstr "Do"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:10
 msgid "Fri"
 msgstr "Fr"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:11
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:11
 msgid "Sat"
 msgstr "Sa"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:11
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:11
 msgid "Sun"
 msgstr "So"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:14
 msgid "January"
 msgstr "Januar"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:14
 msgid "February"
 msgstr "Februar"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:14
 msgid "March"
 msgstr "März"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:14
 msgid "April"
 msgstr "April"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:14
 msgid "May"
 msgstr "Mai"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:14
 msgid "June"
 msgstr "Juni"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:15
 msgid "July"
 msgstr "July"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:15
 msgid "August"
 msgstr "August"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:15
 msgid "September"
 msgstr "September"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:15
 msgid "October"
 msgstr "Oktober"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:15
 msgid "November"
 msgstr "November"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:16
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:16
 msgid "December"
 msgstr "Dezember"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:19
 msgid "jan"
 msgstr "Jan"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:19
 msgid "feb"
 msgstr "Feb"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:19
 msgid "mar"
 msgstr "Mär"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:19
 msgid "apr"
 msgstr "Apr"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:19
 msgid "may"
 msgstr "Mai"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:19
 msgid "jun"
 msgstr "Jun"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:20
 msgid "jul"
 msgstr "Jul"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:20
 msgid "aug"
 msgstr "Aug"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:20
 msgid "sep"
 msgstr "Sept"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:20
 msgid "oct"
 msgstr "Okt"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:20
 msgid "nov"
 msgstr "Nov"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:20
 msgid "dec"
 msgstr "Dez"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:23
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:23
 msgctxt "abbrev. month"
 msgid "Jan."
-msgstr ""
+msgstr "Jan."
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:24
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:24
 msgctxt "abbrev. month"
 msgid "Feb."
-msgstr ""
+msgstr "Feb."
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:25
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:25
 msgctxt "abbrev. month"
 msgid "March"
 msgstr "März"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:26
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:26
 msgctxt "abbrev. month"
 msgid "April"
 msgstr "April"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:27
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:27
 msgctxt "abbrev. month"
 msgid "May"
 msgstr "Mai"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:28
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:28
 msgctxt "abbrev. month"
 msgid "June"
 msgstr "Juni"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:29
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:29
 msgctxt "abbrev. month"
 msgid "July"
 msgstr "Juli"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:30
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:30
 msgctxt "abbrev. month"
 msgid "Aug."
 msgstr "Aug."
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:31
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:31
 msgctxt "abbrev. month"
 msgid "Sept."
-msgstr ""
+msgstr "Sept."
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:32
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:32
 msgctxt "abbrev. month"
 msgid "Oct."
 msgstr "Okt."
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:33
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:33
 msgctxt "abbrev. month"
 msgid "Nov."
-msgstr ""
+msgstr "Nov."
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:34
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:34
 msgctxt "abbrev. month"
 msgid "Dec."
 msgstr "Dez."
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:37
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:37
 msgctxt "alt. month"
 msgid "January"
 msgstr "Januar"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:38
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:38
 msgctxt "alt. month"
 msgid "February"
 msgstr "Februar"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:39
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:39
 msgctxt "alt. month"
 msgid "March"
 msgstr "März"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:40
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:40
 msgctxt "alt. month"
 msgid "April"
 msgstr "April"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:41
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:41
 msgctxt "alt. month"
 msgid "May"
 msgstr "Mai"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:42
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:42
 msgctxt "alt. month"
 msgid "June"
 msgstr "Juni"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:43
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:43
 msgctxt "alt. month"
 msgid "July"
 msgstr "Juli"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:44
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:44
 msgctxt "alt. month"
 msgid "August"
 msgstr "August"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:45
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:45
 msgctxt "alt. month"
 msgid "September"
 msgstr "September"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:46
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:46
 msgctxt "alt. month"
 msgid "October"
 msgstr "Oktober"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:47
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:47
 msgctxt "alt. month"
 msgid "November"
 msgstr "November"
 
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:48
+#: venv/lib/python3.9/site-packages/django/utils/dates.py:48
 msgctxt "alt. month"
 msgid "December"
 msgstr "Dezember"
 
-#: venv/lib/python3.7/site-packages/django/utils/ipv6.py:8
+#: venv/lib/python3.9/site-packages/django/utils/ipv6.py:8
 msgid "This is not a valid IPv6 address."
 msgstr "Dies ist keine gültige IPv6 Adressee."
 
-#: venv/lib/python3.7/site-packages/django/utils/text.py:70
+#: venv/lib/python3.9/site-packages/django/utils/text.py:70
 #, python-format
 msgctxt "String to return when truncating text"
 msgid "%(truncated_text)s…"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/utils/text.py:236
+#: venv/lib/python3.9/site-packages/django/utils/text.py:236
 msgid "or"
 msgstr "oder"
 
 #. Translators: This string is used as a separator between list elements
-#: venv/lib/python3.7/site-packages/django/utils/text.py:255
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:83
+#: venv/lib/python3.9/site-packages/django/utils/text.py:255
+#: venv/lib/python3.9/site-packages/django/utils/timesince.py:83
 msgid ", "
 msgstr ", "
 
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:9
+#: venv/lib/python3.9/site-packages/django/utils/timesince.py:9
 #, python-format
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d Jahr"
 msgstr[1] "%d Jahre"
 
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:10
+#: venv/lib/python3.9/site-packages/django/utils/timesince.py:10
 #, python-format
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] "%d Monat"
 msgstr[1] "%d Monate"
 
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:11
+#: venv/lib/python3.9/site-packages/django/utils/timesince.py:11
 #, python-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] "%d Woche"
 msgstr[1] "%d Wochen"
 
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:12
+#: venv/lib/python3.9/site-packages/django/utils/timesince.py:12
 #, python-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d Tag"
 msgstr[1] "%d Tage"
 
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:13
+#: venv/lib/python3.9/site-packages/django/utils/timesince.py:13
 #, python-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d Stunde"
 msgstr[1] "%d Stunden"
 
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:14
+#: venv/lib/python3.9/site-packages/django/utils/timesince.py:14
 #, python-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d Minute"
 msgstr[1] "%d Minuten"
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:110
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:110
 msgid "Forbidden"
 msgstr "Nicht zugelassen"
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:111
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:111
 msgid "CSRF verification failed. Request aborted."
 msgstr "CRSF Verifizierung fehlgeschlagen. Anfrage abgebrochen."
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:115
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:115
 msgid ""
 "You are seeing this message because this HTTPS site requires a “Referer "
 "header” to be sent by your Web browser, but none was sent. This header is "
@@ -1981,14 +2069,14 @@ msgid ""
 "hijacked by third parties."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:120
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:120
 msgid ""
 "If you have configured your browser to disable “Referer” headers, please re-"
 "enable them, at least for this site, or for HTTPS connections, or for “same-"
 "origin” requests."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:124
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:124
 msgid ""
 "If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
 "including the “Referrer-Policy: no-referrer” header, please remove them. The "
@@ -1997,112 +2085,112 @@ msgid ""
 "\" …> for links to third-party sites."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:132
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:132
 msgid ""
 "You are seeing this message because this site requires a CSRF cookie when "
 "submitting forms. This cookie is required for security reasons, to ensure "
 "that your browser is not being hijacked by third parties."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:137
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:137
 msgid ""
 "If you have configured your browser to disable cookies, please re-enable "
 "them, at least for this site, or for “same-origin” requests."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:142
+#: venv/lib/python3.9/site-packages/django/views/csrf.py:142
 msgid "More information is available with DEBUG=True."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:41
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:41
 msgid "No year specified"
 msgstr "Kein Jahr angegeben"
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:61
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:111
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:208
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:61
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:111
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:208
 msgid "Date out of range"
 msgstr "Datum außerhalb der Spanne"
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:90
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:90
 msgid "No month specified"
 msgstr "Kein Monat angegeben"
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:142
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:142
 msgid "No day specified"
 msgstr "Kein Tag angegeben"
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:188
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:188
 msgid "No week specified"
 msgstr "Keine Woche angegeben"
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:338
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:367
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:338
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:367
 #, python-format
 msgid "No %(verbose_name_plural)s available"
 msgstr "Kein %(verbose_name_plural)s verfügbar"
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:589
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:589
 #, python-format
 msgid ""
 "Future %(verbose_name_plural)s not available because %(class_name)s."
 "allow_future is False."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:623
+#: venv/lib/python3.9/site-packages/django/views/generic/dates.py:623
 #, python-format
 msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/generic/detail.py:54
+#: venv/lib/python3.9/site-packages/django/views/generic/detail.py:54
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/generic/list.py:67
+#: venv/lib/python3.9/site-packages/django/views/generic/list.py:67
 msgid "Page is not “last”, nor can it be converted to an int."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/generic/list.py:72
+#: venv/lib/python3.9/site-packages/django/views/generic/list.py:72
 #, python-format
 msgid "Invalid page (%(page_number)s): %(message)s"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/generic/list.py:154
+#: venv/lib/python3.9/site-packages/django/views/generic/list.py:154
 #, python-format
 msgid "Empty list and “%(class_name)s.allow_empty” is False."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/static.py:40
+#: venv/lib/python3.9/site-packages/django/views/static.py:40
 msgid "Directory indexes are not allowed here."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/static.py:42
+#: venv/lib/python3.9/site-packages/django/views/static.py:42
 #, python-format
 msgid "“%(path)s” does not exist"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/static.py:80
+#: venv/lib/python3.9/site-packages/django/views/static.py:80
 #, python-format
 msgid "Index of %(directory)s"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:7
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:7
 msgid "Django: the Web framework for perfectionists with deadlines."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:346
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:346
 #, python-format
 msgid ""
 "View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
 "target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:368
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:368
 msgid "The install worked successfully! Congratulations!"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:369
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:369
 #, python-format
 msgid ""
 "You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
@@ -2111,29 +2199,33 @@ msgid ""
 "URLs."
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:384
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:384
 msgid "Django Documentation"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:385
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:385
 msgid "Topics, references, &amp; how-to’s"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:396
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:396
 msgid "Tutorial: A Polling App"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:397
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:397
 msgid "Get started with Django"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:408
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:408
 msgid "Django Community"
 msgstr ""
 
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:409
+#: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:409
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#~ msgid "Home"
-#~ msgstr "Startseite"
+#~| msgid "Topic"
+#~ msgid "topic"
+#~ msgstr "Thema"
+
+#~ msgid "Membership"
+#~ msgstr "Mitgliedschaften"

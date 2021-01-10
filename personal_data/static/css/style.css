@@ -195,6 +195,15 @@ table.data-table tr td {
     padding-bottom: 1em;
 }
 
+table.data-table tr td:first-child {
+    padding-right: 10px;
+}
+
+
+div.card table.data-table tr td {
+    padding-bottom: 0;
+}
+
 img.profile-picture {
     display: block;
     margin: 20px auto;

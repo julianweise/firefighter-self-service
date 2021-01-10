@@ -1,8 +1,11 @@
 {% extends "dashboard_generic.html" %}
 {% load i18n %}
 {% load crispy_forms_filters %}
-
-{% block page_title %}{% translate "Add new Firefighter" %}{% endblock %}
+{% block page_title %}
+    {% if not object %}
+        {% translate "Add new Firefighter" %}{% else %}{% translate "Update Firefighter" %}
+    {% endif %}
+{% endblock %}
 
 {% block content %}
     <div class="row">
@@ -67,6 +70,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">{% translate "Save" %}</button>
+                <a class="btn btn-dark" id="cancel-button" href="{{ request.META.HTTP_REFERER }}">{% translate "Cancel" %}</a>
             </form>
         </div>
     </div>

@@ -34,7 +34,7 @@
                 <tbody>
                 {% for firefighter in firefighters %}
                     <tr>
-                        <td>{{ firefighter.staff_id }}</td>
+                        <td>{% if firefighter.staff_id %} {{firefighter.staff_id}} {% else %} {% translate "unknown" %} {% endif %}</td>
                         <td>{{ firefighter.first_name }}</td>
                         <td>{{ firefighter.last_name }}</td>
                         <td>{{ firefighter.date_of_birth|date:"SHORT_DATE_FORMAT" }}</td>

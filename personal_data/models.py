@@ -89,22 +89,25 @@ class Firefighter(AbstractUser):
 
     objects = CustomUserManager()
 
-    staff_id = models.IntegerField(null=True, blank=True)
+    staff_id = models.IntegerField(_('Staff ID'), null=True, blank=True)
     status = models.ForeignKey(UserStatus, on_delete=models.PROTECT, null=True)
-    joined = models.DateField(auto_now_add=True, null=True)
-    active_since = models.DateField(default=django.utils.timezone.now, null=False, blank=False)
-    street = models.CharField(max_length=200)
-    zip = models.IntegerField()
-    city = models.CharField(max_length=100)
+    joined = models.DateField(_('Joined'), auto_now_add=True, null=True)
+    active_since = models.DateField(_('Active since'), default=django.utils.timezone.now, null=False, blank=False)
+    street = models.CharField(_('Street'), max_length=200)
+    zip = models.IntegerField(_('Zip'))
+    city = models.CharField(_('City'), max_length=100)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: "
                                                                    "'+999999999'. Up to 15 digits allowed.")
-    phone_number = models.CharField(validators=[phone_regex], max_length=17)
-    date_of_birth = models.DateField()
+    phone_number = models.CharField(_('Phone number'), validators=[phone_regex], max_length=17)
+    date_of_birth = models.DateField(_('Date of birth'))
 
     # Equipment
-    pager = models.OneToOneField(Pager, on_delete=models.SET_NULL, null=True, blank=True, related_name="owner")
-    locker = models.OneToOneField(Locker, on_delete=models.SET_NULL, null=True, blank=True, related_name="owner")
-    key = models.OneToOneField(Key, on_delete=models.SET_NULL, null=True, blank=True, related_name="owner")
+    pager = models.OneToOneField(Pager, verbose_name=_('Pager'), on_delete=models.SET_NULL, null=True, blank=True,
+                                 related_name="owner")
+    locker = models.OneToOneField(Locker, verbose_name=_('Locker'), on_delete=models.SET_NULL, null=True, blank=True,
+                                  related_name="owner")
+    key = models.OneToOneField(Key, verbose_name=_('Key'), on_delete=models.SET_NULL, null=True, blank=True,
+                               related_name="owner")
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -127,10 +130,10 @@ class Firefighter(AbstractUser):
 
 
 class RankAssignment(models.Model):
-    rank = models.ForeignKey(Rank, on_delete=CASCADE, null=False, blank=False)
-    firefighter = models.ForeignKey(Firefighter, on_delete=CASCADE, null=False, blank=False, related_name="ranks")
-    issue_date = models.DateField()
-    issuer = models.ForeignKey(Authority, on_delete=models.PROTECT, null=False, blank=False)
+    rank = models.ForeignKey(Rank, verbose_name=_('Rank'), on_delete=CASCADE, null=False, blank=False)
+    firefighter = models.ForeignKey(Firefighter, verbose_name=_('Firefighter'),  on_delete=CASCADE, null=False, blank=False, related_name="ranks")
+    issue_date = models.DateField(verbose_name=_('Issue Date'))
+    issuer = models.ForeignKey(Authority, verbose_name=_('Issuing Authority'),  on_delete=models.PROTECT, null=False, blank=False)
 
     @staticmethod
     def get_for(firefighter: Firefighter):
@@ -149,12 +152,12 @@ class RankAssignment(models.Model):
 
 
 class DriverLicense(models.Model):
-    owner = models.ForeignKey(Firefighter, on_delete=models.CASCADE)
-    license_id = models.CharField(max_length=11)
-    issue_date = models.DateField()
-    expiration_date = models.DateField()
-    categories = models.ManyToManyField(CategoryOfDriverLicense, help_text='Select a vehicle categories the driver '
-                                                                           'licenses covers')
+    owner = models.ForeignKey(Firefighter, verbose_name=_('Firefighter'), on_delete=models.CASCADE)
+    license_id = models.CharField(max_length=11, verbose_name=_('License ID'))
+    issue_date = models.DateField(verbose_name=_('Issue Date'))
+    expiration_date = models.DateField(verbose_name=_('Expiration Date'))
+    categories = models.ManyToManyField(CategoryOfDriverLicense, verbose_name=_('Categories of Driver License'),
+                                        help_text='Select a vehicle categories the driver licenses covers')
 
     def valid(self):
         return self.expiration_date >= date.today()
@@ -178,10 +181,10 @@ class Honor(models.Model):
 
 
 class HonorAssignment(models.Model):
-    firefighter = models.ForeignKey(Firefighter, on_delete=models.CASCADE, null=False, blank=False)
-    honor = models.ForeignKey(Honor, on_delete=models.PROTECT, null=False, blank=False)
-    issue_date = models.DateField()
-    issuer = models.ForeignKey(Authority, on_delete=models.PROTECT, null=False, blank=False)
+    firefighter = models.ForeignKey(Firefighter, verbose_name=_('Firefighter'), on_delete=models.CASCADE, null=False, blank=False)
+    honor = models.ForeignKey(Honor, verbose_name=_('Honor'), on_delete=models.PROTECT, null=False, blank=False)
+    issue_date = models.DateField(verbose_name=_('Issue Date'))
+    issuer = models.ForeignKey(Authority, verbose_name=_('Issuing Authority'), on_delete=models.PROTECT, null=False, blank=False)
 
     @staticmethod
     def group_by_honor(assignments: List[HonorAssignment]):
@@ -206,11 +209,11 @@ class Role(models.Model):
 
 
 class RoleAssignment(models.Model):
-    role = models.ForeignKey(Role, on_delete=models.PROTECT, null=False, blank=False)
-    firefighter = models.ForeignKey(Firefighter, on_delete=models.CASCADE, null=False, blank=False)
-    start = models.DateField()
-    end = models.DateField(null=True, blank=True)
-    issuer = models.ForeignKey(Authority, on_delete=models.PROTECT, null=False, blank=False)
+    role = models.ForeignKey(Role, verbose_name=_('Role'), on_delete=models.PROTECT, null=False, blank=False)
+    firefighter = models.ForeignKey(Firefighter, verbose_name=_('Firefighter'), on_delete=models.CASCADE, null=False, blank=False)
+    start = models.DateField(verbose_name=_('Start'))
+    end = models.DateField(null=True, blank=True, verbose_name=_('End'))
+    issuer = models.ForeignKey(Authority, verbose_name=_('Issuing Authority'), on_delete=models.PROTECT, null=False, blank=False)
 
     def __str__(self):
         return f'{self.firefighter} is/was {self.role} from {self.start} until {self.end} in {self.issuer}'

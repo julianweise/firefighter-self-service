@@ -41,9 +41,9 @@ class CourseRequirement(models.Model):
 
 class Course(models.Model):
     ADMINISTRATION_LEVEL = (
-        ('ci', 'City'),
-        ('co', 'County'),
-        ('st', 'State'),
+        ('ci', _('City')),
+        ('co', _('County')),
+        ('st', _('Federate State')),
     )
 
     name = models.CharField(max_length=200)
@@ -69,10 +69,13 @@ class Course(models.Model):
 
 
 class Qualification(models.Model):
-    issue_date = models.DateField(null=False, blank=False)
-    course = models.ForeignKey(Course, on_delete=models.PROTECT, related_name="required_for_qualification")
-    firefighter = models.ForeignKey(Firefighter, on_delete=models.CASCADE, null=False, related_name='qualification')
-    issuer = models.ForeignKey(Authority, on_delete=models.PROTECT, null=False)
+    issue_date = models.DateField(null=False, blank=False, verbose_name=_('Issue Date'))
+    course = models.ForeignKey(Course, verbose_name=_('Course'),  on_delete=models.PROTECT,
+                               related_name="required_for_qualification")
+    firefighter = models.ForeignKey(Firefighter, verbose_name=_('Firefighter'), on_delete=models.CASCADE, null=False,
+                                    related_name='qualification')
+    issuer = models.ForeignKey(Authority, verbose_name=_('Issuing Authority'), on_delete=models.PROTECT,
+                               null=False)
 
     def valid(self):
         requirements = QualificationRequirement.objects.filter(course=self.course)
@@ -122,10 +125,11 @@ class LegallyRequiredRecurringTraining(models.Model):
 
 
 class Training(Attendance):
-    topic = models.CharField(max_length=200)
+    topic = models.CharField(max_length=200, verbose_name=_('Topic'))
     satisfies_required_trainings = models.ManyToManyField(LegallyRequiredRecurringTraining, blank=True,
                                                           help_text="Select satisfied required trainings",
-                                                          related_name="satisfied_by")
+                                                          related_name="satisfied_by",
+                                                          verbose_name=_('satisfies required training'))
 
     def __str__(self):
         return f'{self.topic} {self.start}'

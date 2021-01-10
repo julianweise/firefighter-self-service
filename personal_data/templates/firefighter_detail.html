@@ -22,7 +22,7 @@
 {% block content %}
     <div class="row">
         <div class="col-sm-4">
-            <img src="{{ firefighter.picture.url }}" width="150" class="profile-picture"
+            <img src="{{ firefighter.picture.url }}" width="120" class="profile-picture"
                  alt="{{ firefighter.first_name }} {{ firefighter.last_name }} {% translate "Picture" %}"/>
         </div>
         <div class="col-sm-8">
@@ -31,7 +31,13 @@
                     <table class="data-table">
                         <tr>
                             <td class="field-description">{% translate "Staff ID" %}:</td>
-                            <td>{{ firefighter.staff_id }}</td>
+                            <td>
+                                {% if firefighter.staff_id %}
+                                    {{ firefighter.staff_id }}
+                                {% else %}
+                                    {% translate "unknown" %}
+                                {% endif %}
+                            </td>
                         </tr>
                         <tr>
                             <td class="field-description">{% translate "First Name" %}:</td>
@@ -40,6 +46,18 @@
                         <tr>
                             <td class="field-description">{% translate "Last Name" %}:</td>
                             <td>{{ firefighter.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="field-description">{% translate "Active since" %}:</td>
+                            <td>
+                                {{ firefighter.active_since }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-description">{% translate "Member since" %}:</td>
+                            <td>
+                                {{ firefighter.joined }}
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -78,27 +96,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <h4 class="separator">{% translate "Membership" %}</h4>
-    <div class="row">
-        <div class="col-sm">
-            <table>
-                <tr>
-                    <td class="field-description">{% translate "Active since" %}:</td>
-                    <td>
-                        {{ firefighter.active_since }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="field-description">{% translate "Member since" %}:</td>
-                    <td>
-                        {{ firefighter.joined }}
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-sm"></div>
-        <div class="col-sm"></div>
     </div>
     <div class="row">
         <div class="col-sm">
@@ -172,7 +169,7 @@
                             {% if course in qualifications %}
                                 <td>{{ qualifications|get_item:course|get_obj_attr:"issue_date"|date:"SHORT_DATE_FORMAT" }}</td>
                                 <td>{{ qualifications|get_item:course|get_obj_attr:"issuer" }}</td>
-                                <td>
+                                <td class="text-center">
                                     {% if qualifications|get_item:course|call_obj_func:"valid" %}
                                         <span data-feather="check" class="text-success"></span>
                                     {% else %}
@@ -212,7 +209,7 @@
                     <div class="card-body" style="padding-top: .5rem; padding-bottom: .5rem">
                         <div class="row">
                             <div class="col-9">
-                                <table>
+                                <table class="data-table">
                                     <tr>
                                         <td><strong>{% translate "Issued" %}:</strong></td>
                                         <td>{{ f.issue_date|date:"SHORT_DATE_FORMAT" }}</td>
@@ -221,7 +218,7 @@
                                         <td><strong>{% translate "Expires" %}:</strong></td>
                                         <td>{{ f.expiration_date|date:"SHORT_DATE_FORMAT" }}</td>
                                     </tr>
-                                </table>
+                                </table class="data-table">
                             </div>
                             <div class="col-3 text-center d-flex align-items-center">
                                 {% if f.valid %}
@@ -256,7 +253,7 @@
                     <div class="card-body" style="padding-top: .5rem; padding-bottom: .5rem">
                         <div class="row">
                             <div class="col-9">
-                                <table>
+                                <table class="data-table">
                                     <tr>
                                         <td><strong>{% translate "Expires" %}:</strong></td>
                                         <td>{{ driver_license.0.expiration_date|date:"SHORT_DATE_FORMAT" }}</td>
@@ -269,7 +266,7 @@
                                             {% endfor %}
                                         </td>
                                     </tr>
-                                </table>
+                                </table class="data-table">
                             </div>
                             <div class="col-3 d-flex align-items-center">
                                 {% if driver_license.0.valid %}
