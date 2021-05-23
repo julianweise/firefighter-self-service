@@ -109,3 +109,6 @@ media/
 *.pyc
 *.db
 *.pid
+
+# Ignore server setup scripts
+server_setup/*

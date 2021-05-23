@@ -28,19 +28,19 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'm$^l#p+*v#z*z7lv+@u66_kzoj^*wh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['self-service.feuerwehr-potsdam-zentrum.de', 'firefighter-self-service.herokuapp.com']
+ALLOWED_HOSTS = ['self-service.feuerwehr-potsdam-zentrum.de', 'localhost']
 DEFAULT_FROM_EMAIL = 'doNotReply@feuerwehr-potsdam-zentrum.de'
 SERVER_EMAIL = 'system@feuerwehr-potsdam-zentrum.de'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 
 # SSL Security Settings
-SECURE_HSTS_SECONDS = 60
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_SECONDS = 60
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_HSTS_PRELOAD = True
 
 # Application definition
 
@@ -154,7 +154,6 @@ LANGUAGES = (
     ('de', gettext('German')),
     ('en', gettext('English')),
 )
-
 TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
