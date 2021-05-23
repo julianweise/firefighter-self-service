@@ -105,11 +105,11 @@ WSGI_APPLICATION = 'firefighter_self_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'firefighter_self_service',
-        'USER': 'django',
-        'PASSWORD': 'D73hd)ns%2bSid93hEq2(',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('APP_DB_NAME'),
+        'USER': os.environ.get('APP_DB_USER'),
+        'PASSWORD': os.environ.get('APP_DB_PASSWORD'),
+        'HOST': os.environ.get('APP_DB_HOST'),
+        'PORT': os.environ.get('APP_DB_PORT'),
     }
 }
 
