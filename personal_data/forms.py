@@ -30,7 +30,7 @@ class UpdatePersonalDataPersonalForm(ModelForm):
 class CreatePersonalDataForm(ModelForm):
     class Meta:
         model = Firefighter
-        fields = ['first_name', 'last_name', 'date_of_birth', 'picture', 'email', 'phone_number', 'street', 'zip',
+        fields = ['first_name', 'last_name', 'staff_id', 'date_of_birth', 'picture', 'email', 'phone_number', 'street', 'zip',
                   'city', 'pager', 'locker', 'key', 'status', 'active_since']
         widgets = {
             'date_of_birth': DateInput(attrs={'type': 'date'}),
