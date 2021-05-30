@@ -112,3 +112,6 @@ media/
 
 # Ignore server setup scripts
 server_setup/*
+
+# Ignore environment files
+*.env
