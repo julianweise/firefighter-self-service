@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'm$^l#p+*v#z*z7lv+@u66_kzoj^*wh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['self-service.feuerwehr-potsdam-zentrum.de', 'localhost']
+ALLOWED_HOSTS = ['*']
 DEFAULT_FROM_EMAIL = 'doNotReply@feuerwehr-potsdam-zentrum.de'
 SERVER_EMAIL = 'system@feuerwehr-potsdam-zentrum.de'
 EMAIL_HOST = 'localhost'

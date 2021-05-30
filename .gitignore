@@ -115,3 +115,6 @@ server_setup/*
 
 # Ignore environment files
 *.env
+
+# static file route
+/static
