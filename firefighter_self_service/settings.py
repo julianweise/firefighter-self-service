@@ -206,7 +206,14 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
-        }
+        },
+        'applogfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(SITE_ROOT, 'firefighter_self_service.log'),
+            'maxBytes': 1024 * 1024 * 20,
+            'backupCount': 10,
+        },
     },
     'loggers': {
         'testlogger': {
