@@ -29,10 +29,14 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'm$^l#p+*v#z*z7lv+@u66_kzoj^*wh
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['*']
-DEFAULT_FROM_EMAIL = 'doNotReply@feuerwehr-potsdam-zentrum.de'
+DEFAULT_FROM_EMAIL = 'no-reply@feuerwehr-potsdam-zentrum.de'
 SERVER_EMAIL = 'system@feuerwehr-potsdam-zentrum.de'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+
+EMAIL_HOST = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_URL')
+EMAIL_USE_TLS = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_USE_TLS', True)
+EMAIL_PORT = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_PORT')
+EMAIL_HOST_USER = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_PASSWORD')
 
 # SSL Security Settings
 # SECURE_HSTS_SECONDS = 60
