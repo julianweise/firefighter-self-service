@@ -21,11 +21,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-sm-4">
-            <img src="{{ firefighter.picture.url }}" width="120" class="profile-picture"
-                 alt="{{ firefighter.first_name }} {{ firefighter.last_name }} {% translate "Picture" %}"/>
-        </div>
-        <div class="col-sm-8">
+        <div class="col-sm-12">
             <div class="row">
                 <div class="col-sm">
                     <table class="data-table">
@@ -218,7 +214,7 @@
                                         <td><strong>{% translate "Expires" %}:</strong></td>
                                         <td>{{ f.expiration_date|date:"SHORT_DATE_FORMAT" }}</td>
                                     </tr>
-                                </table class="data-table">
+                                </table>
                             </div>
                             <div class="col-3 text-center d-flex align-items-center">
                                 {% if f.valid %}
@@ -266,7 +262,7 @@
                                             {% endfor %}
                                         </td>
                                     </tr>
-                                </table class="data-table">
+                                </table>
                             </div>
                             <div class="col-3 d-flex align-items-center">
                                 {% if driver_license.0.valid %}
