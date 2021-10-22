@@ -33,7 +33,7 @@ DEFAULT_FROM_EMAIL = 'no-reply@feuerwehr-potsdam-zentrum.de'
 SERVER_EMAIL = 'system@feuerwehr-potsdam-zentrum.de'
 
 EMAIL_HOST = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_URL')
-EMAIL_USE_TLS = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_USE_TLS', True)
+EMAIL_USE_TLS = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_USE_TLS', False)
 EMAIL_PORT = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_PORT')
 EMAIL_HOST_USER = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EXTERNAL_MAIL_HOST_PASSWORD')
