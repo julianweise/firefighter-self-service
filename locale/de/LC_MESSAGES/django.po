@@ -175,7 +175,7 @@ msgstr "Speichern"
 #: personal_data/templates/form_role_assignment.html:34
 #: qualification/templates/form_qualification.html:32
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: attendance/templates/form_other_service.html:5
 msgid "Add other Service"
@@ -879,7 +879,7 @@ msgstr "Name der Qualifikation"
 
 #: qualification/templates/qualification_personal.html:20
 msgid "Qualification Level"
-msgstr "Level der Qualifikation"
+msgstr "Ebene"
 
 #: qualification/templates/qualification_personal.html:22
 msgid "Valid?"
