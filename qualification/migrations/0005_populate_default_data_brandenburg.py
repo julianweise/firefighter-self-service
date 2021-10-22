@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         mks_a_requirements = CourseRequirement.objects.using(db_alias).create()
         mks_a.requirements.set([mks_a_requirements])
 
-        mks_b = Course.objects.using(db_alias).create(name="Kettensägenausbildung A", abbreviation="MKSA",
+        mks_b = Course.objects.using(db_alias).create(name="Kettensägenausbildung B", abbreviation="MKSB",
                                                       sorting_order="30", administration_level="ci",
                                                       show_in_overview=True)
         mks_b_requirements = CourseRequirement.objects.using(db_alias).create()
