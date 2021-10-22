@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         mks_a.requirements.set([mks_a_requirements])
 
         mks_b = Course.objects.using(db_alias).create(name="Kettensägenausbildung A", abbreviation="MKSA",
-                                                      sorting_order="29", administration_level="ci",
+                                                      sorting_order="30", administration_level="ci",
                                                       show_in_overview=True)
         mks_b_requirements = CourseRequirement.objects.using(db_alias).create()
         mks_b_requirements.qualification_requirement.set([mks_a])
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
 
 
     dependencies = [
-        ('qualification', '0003_populate_default_data_brandenburg'),
+        ('qualification', '0004_auto_20210613_1918')
     ]
 
     operations = [
