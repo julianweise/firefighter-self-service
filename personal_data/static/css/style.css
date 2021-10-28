@@ -195,10 +195,25 @@ table.data-table tr td {
     padding-bottom: 1em;
 }
 
+ul.nav > li.nav-item > ul.sub-menu {
+    display: none;
+}
+
+ul.nav > li.active > ul.sub-menu {
+    display: block;
+}
+
+ul.nav > li.nav-item > ul.sub-menu > li {
+    margin-left: 1rem;
+}
+
+ul.nav > li.nav-item > ul.sub-menu > li > a {
+    padding: .5rem 0;
+}
+
 table.data-table tr td:first-child {
     padding-right: 10px;
 }
-
 
 div.card table.data-table tr td {
     padding-bottom: 0;

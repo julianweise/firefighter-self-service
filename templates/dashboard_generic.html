@@ -92,12 +92,23 @@
                                 </li>
                             {% endif %}
                             {% if perms.attendance.view_all_attendance %}
-                                <li class="nav-item">
-                                    <a class="nav-link {% if url_name == 'attendance-list' %}active{% endif %}"
-                                       href="{% url 'attendance-list' %}">
+                                <li class="nav-item {% if url_name == 'attendance-list' or url_name == 'operation-list' or url_name == 'training-list' or url_name == 'other_service-list' %}active{% endif %}">
+                                    <a class="nav-link dropdown-toggle
+                                    {% if url_name == 'attendance-list' or url_name == 'operation-list' or url_name == 'training-list' or url_name == 'other_service-list' %}active{% endif %}"
+                                       href="{% url 'attendance-list' %}"
+                                       id="navbarDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
                                         <span data-feather="watch"></span>
                                         {% translate "Attendances" %}
                                     </a>
+                                    <ul class="sub-menu" aria-labelledby="navbarDropdown">
+                                      <li><a class="nav-link {% if url_name == 'operation-list' %}active{% endif %}"
+                                       href="{% url 'operation-list' %}">{% translate "Operations" %}</a></li>
+                                      <li><a class="nav-link {% if url_name == 'training-list' %}active{% endif %}"
+                                       href="{% url 'training-list' %}">{% translate "Trainings" %}</a></li>
+                                      <li><a class="nav-link {% if url_name == 'other_service-list' %}active{% endif %}"
+                                       href="{% url 'other_service-list' %}">{% translate "Other Services" %}</a></li>
+                                    </ul>
                                 </li>
                             {% endif %}
                         {% endwith %}
