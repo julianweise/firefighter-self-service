@@ -2223,6 +2223,27 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
+msgid "operation"
+msgstr "Einsatz"
+
+msgid "training"
+msgstr "Ausbildung"
+
+msgid "other service"
+msgstr "Sonstiger Dienst"
+
+msgid "Edit Operation"
+msgstr "Einsatz bearbeiten"
+
+msgid "Edit Attendance"
+msgstr "Anwesenheit bearbeiten"
+
+msgid "Edit Training"
+msgstr "Ausbildung bearbeiten"
+
+msgid "Edit Firefighter"
+msgstr "Einsatzkraft bearbeiten"
+
 #~| msgid "Topic"
 #~ msgid "topic"
 #~ msgstr "Thema"

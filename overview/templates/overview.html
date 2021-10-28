@@ -51,7 +51,7 @@
                             <tr>
                             <th scope="row">{{ forloop.counter }}</th>
                             <td>{{ attendance.start|date:"SHORT_DATETIME_FORMAT" }}</td>
-                            <td>{{ attendance.content_type.name|capfirst }}</td>
+                            <td>{%  translate attendance.content_type.name %}</td>
                             <td>{{ attendance.duration|div:60|floatformat }} {% translate "min" %}</td>
                             <td>{{ attendance.person_in_charge.first_name }} {{ attendance.person_in_charge.last_name }}</td>
                         {% endfor %}

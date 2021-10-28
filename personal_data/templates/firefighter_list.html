@@ -54,7 +54,7 @@
                         {% endfor %}
                         <td>
                             <a href="{% url 'firefighter-update' pk=firefighter.pk %}"
-                               title="Edit Operation {{ firefighter.topic }}">
+                               title="{% translate "Edit Firefighter" %} {{ firefighter.topic }}">
                                 <span data-feather="edit" style="float: left;"></span>
                             </a>
                             <a data-toggle="modal"

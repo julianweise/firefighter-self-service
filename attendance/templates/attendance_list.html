@@ -38,7 +38,7 @@
                 {% for attendance in attendances %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{% translate attendance.content_type.name|capfirst %}</td>
+                        <td>{% translate attendance.content_type.name %}</td>
                         <td>{{ attendance.start }}</td>
                         <td>{{ attendance.end }}</td>
                         <td>{{ attendance.person_in_charge }}</td>
@@ -57,13 +57,13 @@
                         </td>
                         <td>{% if attendance.comment %}{{ attendance.comment }}{% endif %}</td>
                         <td>
-                            {% with attendance.content_type.name|add:"-update" as update_view %}
+                            {% with attendance.content_type.name|replace_whitespace|add:"-update" as update_view %}
                                 <a href="{% url update_view pk=attendance.pk %}"
-                                   title="Edit Attendance">
+                                   title="{% translate "Edit Attendance" %}">
                                     <span data-feather="edit" style="float: left;"></span>
                                 </a>
                             {% endwith %}
-                            {% with attendance.content_type.name|add:"-delete" as delete_view %}
+                            {% with attendance.content_type.name|replace_whitespace|add:"-delete" as delete_view %}
                                 <a data-toggle="modal"
                                    data-target="#confirmModal"
                                    data-title="{% translate "Are you sure?" %}"

@@ -46,7 +46,7 @@
                         <td>{% if attendance.comment %}{{ attendance.comment }}{% endif %}</td>
                         <td>
                             <a href="{% url 'training-update' pk=training.pk %}"
-                               title="Edit Training {{ training.topic }}">
+                               title="{% translate "Edit Training" %} {{ training.topic }}">
                                 <span data-feather="edit" style="float: left;"></span>
                             </a>
                             <a data-toggle="modal"

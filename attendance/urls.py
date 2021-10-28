@@ -21,6 +21,6 @@ urlpatterns = [
     path('training/<int:pk>/delete/', TrainingDelete.as_view(), name='training-delete'),
     path('other_service/', OtherServiceListView.as_view(), name='other_service-list'),
     path('other_service/add/', OtherServiceCreateView.as_view(), name='other_service-add'),
-    path('other_service/<int:pk>/edit/', OtherServiceUpdateView.as_view(), name='other_service-edit'),
+    path('other_service/<int:pk>/edit/', OtherServiceUpdateView.as_view(), name='other_service-update'),
     path('other_service/<int:pk>/delete/', OtherServiceDelete.as_view(), name='other_service-delete'),
 ]
