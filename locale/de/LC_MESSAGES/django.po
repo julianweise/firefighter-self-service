@@ -315,7 +315,7 @@ msgstr "Id"
 #: equipment/templates/locker_detail.html:4 personal_data/models.py:107
 #: personal_data/templates/firefighter_detail.html:318
 msgid "Locker"
-msgstr "Spint"
+msgstr "Spind"
 
 #: equipment/templates/equipment_personal.html:38
 #: equipment/templates/key_detail.html:4 personal_data/models.py:109
