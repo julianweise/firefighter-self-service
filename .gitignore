@@ -118,3 +118,6 @@ server_setup/*
 
 # static file route
 /static
+
+# Binary language files
+*.mo
