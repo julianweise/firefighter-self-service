@@ -43,7 +43,7 @@
                                 <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
                             {% endfor %}
                         </td>
-                        <td>{{ other_service.comment }}</td>
+                        <td>{% if attendance.comment %}{{ attendance.comment }}{% endif %}</td>
                         <td>
                             <a href="{% url 'other_service-edit' pk=other_service.pk %}"
                                title="Edit Training {{ other_service.topic }}">

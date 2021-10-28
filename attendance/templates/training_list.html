@@ -43,7 +43,7 @@
                                 <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
                             {% endfor %}
                         </td>
-                        <td>{{ training.comment }}</td>
+                        <td>{% if attendance.comment %}{{ attendance.comment }}{% endif %}</td>
                         <td>
                             <a href="{% url 'training-update' pk=training.pk %}"
                                title="Edit Training {{ training.topic }}">

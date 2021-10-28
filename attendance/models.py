@@ -18,6 +18,7 @@ class Attendance(models.Model):
     class Meta:
         permissions = [
             ("view_all_attendance", "Get an overview of all attendances"),
+            ("create_confirmation", "Create a confirmation letter to attest a firefighter's attendance in an operation")
         ]
 
     def duration(self):

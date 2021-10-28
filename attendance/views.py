@@ -1,13 +1,22 @@
+from datetime import datetime
+from tempfile import NamedTemporaryFile
+
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.http import FileResponse, HttpResponseBadRequest
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.timezone import now
 from django.utils.translation import gettext as _
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView, TemplateView
+from mailmerge import MailMerge
 
 from attendance.forms import OperationForm, OtherServiceForm, TrainingForm
 from attendance.models import Operation, Attendance, OtherService
+from attendance.settings import PROTECTED_MEDIA_ROOT
+from personal_data.models import Firefighter
 from qualification.models import LegallyRequiredRecurringTraining, Training
 
 
@@ -152,3 +161,30 @@ class TrainingParticipatedListView(TemplateView):
         context['fulfilled_required_trainings'] = LegallyRequiredRecurringTraining.objects \
             .filter(satisfied_by__attendees__in=[self.request.user], satisfied_by__end__year=now().year)
         return context
+
+
+@login_required(login_url='/accounts/login/')
+@permission_required('attendance.create_confirmation')
+def download_attendance_confirmation(request, operation, user):
+    operation = get_object_or_404(Operation, id__exact=operation)
+    firefighter = get_object_or_404(Firefighter, id__exact=user)
+
+    if not firefighter in operation.attendees.all():
+        return HttpResponseBadRequest("Firefighter specified did not participate in operation specified.")
+
+    template = staticfiles_storage.path('confirmation/Einsatzbestaetigung_Vorlage.docx')
+    document = MailMerge(template)
+    document.merge(address_name=f'{firefighter.first_name} {firefighter.last_name}',
+                   address_street=str(firefighter.street),
+                   address_zip=str(firefighter.zip),
+                   address_city=str(firefighter.city),
+                   date=str(datetime.today().strftime('%d.%m.%Y')),
+                   operation_id=str(operation.operation_id),
+                   operation_date=str(operation.start.date().strftime('%d.%m.%Y')),
+                   operation_start=str(operation.start.time().strftime('%H:%M')),
+                   operation_end=str(operation.end.time().strftime('%H:%M')))
+    filename = f'Einsatzbest_{firefighter.id}_{firefighter.last_name}_{operation.start.strftime("%d.%m.%Y")}.docx'
+    with NamedTemporaryFile(suffix='.docx', mode='r+', encoding='utf8', dir=PROTECTED_MEDIA_ROOT) as f:
+        document.write(f.name)
+        return FileResponse(open(f.name, 'rb'), as_attachment=True, filename=filename)
+

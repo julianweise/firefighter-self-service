@@ -39,11 +39,16 @@
                         <td>{{ operation.operation_id }}</td>
                         <td>{{ operation.duration|div:60|floatformat }} min</td>
                         <td>
-                            {% for attendee in operation.attendees.all %}
+                         {% for attendee in operation.attendees.all %}
+                            <div>
                                 <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
-                            {% endfor %}
+                                <a href="{% url 'operation-attendance-confirmation' operation=operation.pk user=attendee.id %}">
+                                    <span data-feather="file"></span>
+                                </a>
+                            </div>
+                        {% endfor %}
                         </td>
-                        <td>{{ operation.comment }}</td>
+                        <td>{% if attendance.comment %}{{ attendance.comment }}{% endif %}</td>
                         <td>
                             <a href="{% url 'operation-update' pk=operation.pk %}"
                                title="Edit Operation {{ operation.topic }}">

@@ -4,7 +4,7 @@ from attendance.views import OperationListView, OtherServiceListView, Attendance
     TrainingDelete, \
     OtherServiceDelete, OperationUpdateView, \
     OperationCreateView, TrainingListView, TrainingCreateView, TrainingUpdateView, OtherServiceCreateView, \
-    OtherServiceUpdateView, TrainingParticipatedListView
+    OtherServiceUpdateView, TrainingParticipatedListView, download_attendance_confirmation
 
 urlpatterns = [
     path('all/', AttendanceListView.as_view(), name='attendance-list'),
@@ -12,6 +12,8 @@ urlpatterns = [
     path('operation/add/', OperationCreateView.as_view(), name='operation-add'),
     path('operation/<int:pk>/edit/', OperationUpdateView.as_view(), name='operation-update'),
     path('operation/<int:pk>/delete/', OperationDelete.as_view(), name='operation-delete'),
+    path('operation/<int:operation>/user/<int:user>/attendance-condfirmation/', download_attendance_confirmation,
+         name='operation-attendance-confirmation'),
     path('training/', TrainingListView.as_view(), name='training-list'),
     path('training-participated/', TrainingParticipatedListView.as_view(), name='training-participated-list'),
     path('training/add/', TrainingCreateView.as_view(), name='training-add'),

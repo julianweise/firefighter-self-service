@@ -45,10 +45,17 @@
                         <td>{{ attendance.duration|div:60|floatformat }} min</td>
                         <td>
                             {% for attendee in attendance.attendees.all %}
-                                <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
+                                <div>
+                                    <span class="badge badge-info">{{ attendee.first_name }} {{ attendee.last_name }}</span>
+                                    {% if attendance.content_type.name == 'operation' %}
+                                        <a href="{% url 'operation-attendance-confirmation' operation=attendance.pk user=attendee.id %}">
+                                            <span data-feather="file"></span>
+                                        </a>
+                                    {% endif %}
+                                </div>
                             {% endfor %}
                         </td>
-                        <td>{{ attendance.comment }}</td>
+                        <td>{% if attendance.comment %}{{ attendance.comment }}{% endif %}</td>
                         <td>
                             {% with attendance.content_type.name|add:"-update" as update_view %}
                                 <a href="{% url update_view pk=attendance.pk %}"
