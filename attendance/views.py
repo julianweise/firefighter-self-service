@@ -21,7 +21,7 @@ from qualification.models import LegallyRequiredRecurringTraining, Training
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.view_operation'), name='dispatch')
+@method_decorator(permission_required('attendance.view_attendance'), name='dispatch')
 class OperationListView(ListView):
     model = Operation
     context_object_name = "operations"
@@ -29,7 +29,7 @@ class OperationListView(ListView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.add_operation'), name='dispatch')
+@method_decorator(permission_required('attendance.add_attendance'), name='dispatch')
 class OperationCreateView(SuccessMessageMixin, CreateView):
     model = Operation
     template_name = "form_operation.html"
@@ -42,7 +42,7 @@ class OperationCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.change_operation'), name='dispatch')
+@method_decorator(permission_required('attendance.change_attendance'), name='dispatch')
 class OperationUpdateView(SuccessMessageMixin, UpdateView):
     model = Operation
     template_name = 'form_operation.html'
@@ -52,7 +52,7 @@ class OperationUpdateView(SuccessMessageMixin, UpdateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.delete_operation'), name='dispatch')
+@method_decorator(permission_required('attendance.delete_attendance'), name='dispatch')
 class OperationDelete(SuccessMessageMixin, DeleteView):
     model = Operation
     success_message = _("Successfully deleted Operation")
@@ -60,7 +60,7 @@ class OperationDelete(SuccessMessageMixin, DeleteView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.view_other_service'), name='dispatch')
+@method_decorator(permission_required('attendance.view_attendance'), name='dispatch')
 class OtherServiceListView(ListView):
     model = OtherService
     context_object_name = "other_services"
@@ -68,7 +68,7 @@ class OtherServiceListView(ListView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.add_other_service'), name='dispatch')
+@method_decorator(permission_required('attendance.add_attendance'), name='dispatch')
 class OtherServiceCreateView(SuccessMessageMixin, CreateView):
     model = OtherService
     template_name = "form_other_service.html"
@@ -81,7 +81,7 @@ class OtherServiceCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.change_other_service'), name='dispatch')
+@method_decorator(permission_required('attendance.change_attendance'), name='dispatch')
 class OtherServiceUpdateView(SuccessMessageMixin, UpdateView):
     model = OtherService
     template_name = "form_other_service.html"
@@ -91,7 +91,7 @@ class OtherServiceUpdateView(SuccessMessageMixin, UpdateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.delete_other_service'), name='dispatch')
+@method_decorator(permission_required('attendance.delete_attendance'), name='dispatch')
 class OtherServiceDelete(SuccessMessageMixin, DeleteView):
     model = OtherService
     success_message = _("Successfully deleted Other Service")
@@ -99,7 +99,7 @@ class OtherServiceDelete(SuccessMessageMixin, DeleteView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.view_training'), name='dispatch')
+@method_decorator(permission_required('attendance.view_attendance'), name='dispatch')
 class TrainingListView(ListView):
     model = Training
     context_object_name = "trainings"
@@ -107,7 +107,7 @@ class TrainingListView(ListView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.add_training'), name='dispatch')
+@method_decorator(permission_required('attendance.add_attendance'), name='dispatch')
 class TrainingCreateView(SuccessMessageMixin, CreateView):
     model = Training
     template_name = "form_training.html"
@@ -120,7 +120,7 @@ class TrainingCreateView(SuccessMessageMixin, CreateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.change_training'), name='dispatch')
+@method_decorator(permission_required('attendance.change_attendance'), name='dispatch')
 class TrainingUpdateView(SuccessMessageMixin, UpdateView):
     model = Training
     template_name = "form_training.html"
@@ -133,7 +133,7 @@ class TrainingUpdateView(SuccessMessageMixin, UpdateView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
-@method_decorator(permission_required('attendance.delete_training'), name='dispatch')
+@method_decorator(permission_required('attendance.delete_attendance'), name='dispatch')
 class TrainingDelete(SuccessMessageMixin, DeleteView):
     model = Training
     success_message = _("Successfully deleted Training")
@@ -149,6 +149,7 @@ class AttendanceListView(ListView):
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
+@method_decorator(permission_required('attendance.view_attendance'), name='dispatch')
 class TrainingParticipatedListView(TemplateView):
     template_name = "training_participated_list.html"
 
