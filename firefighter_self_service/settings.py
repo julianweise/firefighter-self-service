@@ -218,3 +218,7 @@ LOGGING = {
         }
     }
 }
+
+# Expire sessions
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 15 * 60  # 15 minutes
