@@ -14,7 +14,7 @@ class OverviewView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        attendances = Attendance.objects.filter(attendees__in=[self.request.user], end__lte=now())[:5]
+        attendances = Attendance.objects.filter(attendees__in=[self.request.user], end__lte=now()).order_by('-end')[:5]
         driver_licenses = DriverLicense.objects.filter(owner=self.request.user).order_by('-expiration_date')[:1]
         fitness_certificates = Fitness.objects.filter(firefighter=self.request.user) \
             .order_by('level', '-expiration_date') \
