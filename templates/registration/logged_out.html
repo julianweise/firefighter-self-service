@@ -4,8 +4,7 @@
 
 {% block content %}
     <div class="form-signin">
-        <img class="mb-4" src="{% static 'img/logo_fw.png' %}" alt="" width="150" height="150">
-        <h1 class="h3 mb-3 font-weight-normal">{% translate "Firefighter Self Service" %}</h1>
+        <img class="mb-4" src="{% static 'img/logo_fw.png' %}" alt="" width="150">
         <p>{% translate "Logged out" %}!</p>
         <a href="{% url 'login' %}">{% translate "Click here to log in again" %}!</a>
     </div>

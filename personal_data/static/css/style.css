@@ -224,10 +224,14 @@ div.card table.data-table tr td {
 }
 
 .btn-primary {
-    background-color: #00305D !important;
-    border-color: #002445 !important;
+    background-color: #00305D;
+    border-color: #002445;
 }
 
 a {
-    color: #00305D !important;
+    color: #00305D;
+}
+
+.navbar-dark .navbar-brand {
+
 }
