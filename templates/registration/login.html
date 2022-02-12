@@ -5,8 +5,7 @@
 
 {% block content %}
     <form class="form-signin" method="post" action="{% url 'login' %}">
-        <img class="mb-4" src="{% static 'img/logo_fw.png' %}" alt="" width="150" height="150">
-        <h1 class="h3 mb-3 font-weight-normal">{% translate "Firefighter Self Service" %}</h1>
+        <img class="mb-4" src="{% static 'img/logo_fw.png' %}" alt="" width="150">
         {% if form.errors %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>{% translate "Invalid credentials!" %}</strong>

@@ -222,3 +222,12 @@ div.card table.data-table tr td {
 .top-list-button {
     margin-top: 5px;
 }
+
+.btn-primary {
+    background-color: #00305D !important;
+    border-color: #002445 !important;
+}
+
+a {
+    color: #00305D !important;
+}
