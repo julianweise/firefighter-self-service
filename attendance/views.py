@@ -27,6 +27,8 @@ class OperationListView(ListView):
     context_object_name = "operations"
     template_name = "operation_list.html"
 
+    ordering = ['-end']
+
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
 @method_decorator(permission_required('attendance.add_attendance'), name='dispatch')
@@ -66,6 +68,8 @@ class OtherServiceListView(ListView):
     context_object_name = "other_services"
     template_name = "other_service_list.html"
 
+    ordering = ['-end']
+
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
 @method_decorator(permission_required('attendance.add_attendance'), name='dispatch')
@@ -104,6 +108,8 @@ class TrainingListView(ListView):
     model = Training
     context_object_name = "trainings"
     template_name = "training_list.html"
+
+    ordering = ['-end']
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
@@ -146,6 +152,8 @@ class AttendanceListView(ListView):
     model = Attendance
     context_object_name = "attendances"
     template_name = "attendance_list.html"
+
+    ordering = ['-end']
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), name='dispatch')
