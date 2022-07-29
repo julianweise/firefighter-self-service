@@ -5,13 +5,13 @@
 
 {% block page_title %}{% translate "Other Services" %}{% endblock %}
 {% block action_button %}
-    <a href="{% url 'other_service-add' %}" class="btn btn-dark">{% translate "Add Training" %}</a>
+    <a href="{% url 'other_service-add' %}" class="btn btn-dark">{% translate "Add Other Service" %}</a>
 {% endblock %}
 
 {% block content %}
     {% if other_services|length < 1 %}
         <div class="alert alert-warning text-center" role="alert">
-            {% translate "It seems like no other sevice has been taken place yet." %}
+            {% translate "It seems like no other service has been taken place yet." %}
         </div>
     {% else %}
         <div class="table-responsive">

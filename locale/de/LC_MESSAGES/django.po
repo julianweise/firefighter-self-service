@@ -1801,7 +1801,7 @@ msgstr "Juni"
 
 #: venv/lib/python3.9/site-packages/django/utils/dates.py:15
 msgid "July"
-msgstr "July"
+msgstr "Juli"
 
 #: venv/lib/python3.9/site-packages/django/utils/dates.py:15
 msgid "August"
