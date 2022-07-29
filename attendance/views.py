@@ -190,8 +190,8 @@ def download_attendance_confirmation(request, operation, user):
                    date=str(datetime.today().strftime('%d.%m.%Y')),
                    operation_id=str(operation.operation_id),
                    operation_date=str(operation.start.date().strftime('%d.%m.%Y')),
-                   operation_start=str(operation.start.time().strftime('%H:%M')),
-                   operation_end=str(operation.end.time().strftime('%H:%M')))
+                   operation_start=str(operation.start.timetz().strftime('%H:%M')),
+                   operation_end=str(operation.end.timetz().strftime('%H:%M')))
     filename = f'Einsatzbest_{firefighter.id}_{firefighter.last_name}_{operation.start.strftime("%d.%m.%Y")}.docx'
     with NamedTemporaryFile(suffix='.docx', mode='r+', encoding='utf8', dir=PROTECTED_MEDIA_ROOT) as f:
         document.write(f.name)
