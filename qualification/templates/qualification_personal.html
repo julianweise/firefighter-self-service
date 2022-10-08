@@ -34,7 +34,7 @@
                         {% if qualification.valid %}
                             <span data-feather="check" class="text-success"></span>
                         {% else %}
-                            <span data-feather="x" class="text-danger" data-toggle="tooltip" data-placement="top" title="{{ qualification.invalid_reason|join(', ')}}">
+                            <span data-feather="x" class="text-danger" data-toggle="tooltip" data-placement="top" title="{{ qualification.invalid_reason|join:', '}}">
                             </span>
                         {% endif %}
                     </td>
