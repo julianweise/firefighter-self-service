@@ -95,7 +95,7 @@ class Qualification(models.Model):
         for requirement in requirements:
             if requirement.satisfied_by(self):
                 continue
-            reasons.append(requirement.missing_requirement(self))
+            reasons = reasons + requirement.missing_requirement(self)
         return reasons
 
     def __str__(self):
@@ -183,10 +183,9 @@ class QualificationRequirement(models.Model):
                 .order_by('-end').first()
             if not training:
                 reasons.append(f"missing required training: {self.required_training.name}")
-            if not self.required_training.is_satisfied_by(training, qualification):
+            elif not self.required_training.is_satisfied_by(training, qualification):
                 reasons.append(f"last required training {self.required_training.name} on {training.end} expired")
         return reasons
-
 
     def __str__(self):
         return f'{self.course} requires fitness level {self.fitness_level} and training {self.required_training}'
