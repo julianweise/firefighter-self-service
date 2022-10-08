@@ -87,6 +87,17 @@ class Qualification(models.Model):
                     return False
         return True
 
+    def invalid_reason(self):
+        reasons = []
+        if self.valid():
+            return reasons
+        requirements = QualificationRequirement.objects.filter(course=self.course)
+        for requirement in requirements:
+            if requirement.satisfied_by(self):
+                continue
+            reasons.append(requirement.missing_requirement(self))
+        return reasons
+
     def __str__(self):
         return f'{self.course} obtained on {self.issue_date} by {self.firefighter}'
 
@@ -151,9 +162,31 @@ class QualificationRequirement(models.Model):
             training = Training.objects.filter(satisfies_required_trainings__in=[self.required_training],
                                                attendees__in=[qualification.firefighter]) \
                 .order_by('-end').first()
+            if not training:
+                return False
             if not self.required_training.is_satisfied_by(training, qualification):
                 return False
         return True
+
+    def missing_requirement(self, qualification: Qualification):
+        reasons = []
+        if self.fitness_level:
+            fitness = Fitness.objects.filter(firefighter=qualification.firefighter, level=self.fitness_level) \
+                .order_by('-expiration_date').first()
+            if not fitness:
+                reasons.append("missing fitness")
+            elif not fitness.valid():
+                reasons.append(f"fitness {fitness.level} expired: {fitness.expiration_date}")
+        if self.required_training:
+            training = Training.objects.filter(satisfies_required_trainings__in=[self.required_training],
+                                               attendees__in=[qualification.firefighter]) \
+                .order_by('-end').first()
+            if not training:
+                reasons.append(f"missing required training: {self.required_training.name}")
+            if not self.required_training.is_satisfied_by(training, qualification):
+                reasons.append(f"last required training {self.required_training.name} on {training.end} expired")
+        return reasons
+
 
     def __str__(self):
         return f'{self.course} requires fitness level {self.fitness_level} and training {self.required_training}'

@@ -16,3 +16,7 @@ $('#confirmModal').on('show.bs.modal', function (event) {
     console.log(post);
     modal.find('.modal-footer form').attr('action', post);
 })
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
