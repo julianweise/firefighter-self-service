@@ -43,7 +43,7 @@
                             <td class="text-center">
                                 {% if course in qualifications|get_item:firefighter.id %}
                                     {% if not qualifications|get_item:firefighter.id|get_item:course|call_obj_func:"valid" %}
-                                        <span data-feather="alert-triangle" class="text-warning"></span>
+                                        <span data-feather="alert-triangle" class="text-warning" data-toggle="tooltip" data-placement="top" title="{{ qualifications|get_item:firefighter.id|get_item:course|call_obj_func:'invalid_reason;|join:', '}}"></span>
                                     {% else %}
                                         <span data-feather="check" class="text-success"></span>
                                     {% endif %}
