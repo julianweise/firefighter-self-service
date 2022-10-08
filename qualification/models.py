@@ -144,7 +144,7 @@ class QualificationRequirement(models.Model):
     def satisfied_by(self, qualification: Qualification):
         if self.fitness_level:
             fitness = Fitness.objects.filter(firefighter=qualification.firefighter, level=self.fitness_level) \
-                .order_by('-expiration_date').last()
+                .order_by('-expiration_date').first()
             if not fitness or not fitness.valid():
                 return False
         if self.required_training:
