@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.timezone import now
+from django.utils import timezone
 from django.utils.translation import gettext as _
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView, TemplateView
 from mailmerge import MailMerge
@@ -183,6 +184,7 @@ def download_attendance_confirmation(request, operation, user):
 
     template = staticfiles_storage.path('confirmation/Einsatzbestaetigung_Vorlage.docx')
     document = MailMerge(template)
+    curr_timezone = timezone.get_current_timezone()
     document.merge(address_name=f'{firefighter.first_name} {firefighter.last_name}',
                    address_street=str(firefighter.street),
                    address_zip=str(firefighter.zip),
@@ -190,8 +192,8 @@ def download_attendance_confirmation(request, operation, user):
                    date=str(datetime.today().strftime('%d.%m.%Y')),
                    operation_id=str(operation.operation_id),
                    operation_date=str(operation.start.date().strftime('%d.%m.%Y')),
-                   operation_start=str(operation.start.timetz().strftime('%H:%M')),
-                   operation_end=str(operation.end.timetz().strftime('%H:%M')))
+                   operation_start=str(operation.start.astimezone(curr_timezone).timetz().strftime('%H:%M')),
+                   operation_end=str(operation.end.astimezone(curr_timezone).timetz().strftime('%H:%M')))
     filename = f'Einsatzbest_{firefighter.id}_{firefighter.last_name}_{operation.start.strftime("%d.%m.%Y")}.docx'
     with NamedTemporaryFile(suffix='.docx', mode='r+', encoding='utf8', dir=PROTECTED_MEDIA_ROOT) as f:
         document.write(f.name)
