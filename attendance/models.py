@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import gettext as _
 
 from personal_data.models import Firefighter
@@ -9,7 +10,8 @@ class Attendance(models.Model):
     start = models.DateTimeField(verbose_name=_("Start"))
     end = models.DateTimeField(verbose_name=_("End"))
     attendees = models.ManyToManyField(Firefighter, verbose_name=_("Attendees"), related_name='attendee',
-                                       help_text='Select all attendees of this event')
+                                       help_text='Select all attendees of this event',
+                                       limit_choices_to=Q(status__active=True))
     person_in_charge = models.ForeignKey(Firefighter, verbose_name=_("Person in charge"), on_delete=models.PROTECT,
                                          related_name='person_in_charge')
     comment = models.CharField(verbose_name=_("Comment"), max_length=2000, null=True, blank=True, default="")
