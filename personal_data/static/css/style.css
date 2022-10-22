@@ -229,8 +229,8 @@ div.card table.data-table tr td {
 }
 
 .btn-primary:hover, .btn-primary:active {
-    background-color: #01417d;
-    border-color: #012f59;
+    background-color: #01417d !important;
+    border-color: #012f59 !important;
 }
 
 a {
