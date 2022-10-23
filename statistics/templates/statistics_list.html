@@ -39,13 +39,13 @@
                         </td>
                         <td>{{ stats.training_total_time }}</td>
                         <td>{{ stats.operation_total_time }}</td>
-                        {% if stats.operation_total_time < 40 %}
+                        {% if stats.curr_year_total_time < 40 %}
                         <td class="text-danger">
                         {% else %}
                         <td class="text-success">
                         {% endif %}
                         {{ stats.curr_year_total_time }}</td>
-                        {% if stats.operation_total_time < 40 %}
+                        {% if stats.prev_year_total_time < 40 %}
                         <td class="text-danger">
                         {% else %}
                         <td class="text-success">
