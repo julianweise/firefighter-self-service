@@ -24,18 +24,18 @@ class StatisticsAllListView(TemplateView):
                 'last_name': firefighter.last_name,
                 'last_operation': Operation.objects.filter(attendees__in=[firefighter]).order_by('end').last(),
                 'last_training': Training.objects.filter(attendees__in=[firefighter]).order_by('end').last(),
-                'training_total_time': round(sum(
+                'training_total_time': int(sum(
                     d.duration() for d in
-                    Training.objects.filter(attendees__in=[firefighter], end__year=now().year)) / (60 * 60), 2),
-                'operation_total_time': round(sum(
+                    Training.objects.filter(attendees__in=[firefighter], end__year=now().year)) / (60 * 60)),
+                'operation_total_time': int(sum(
                     d.duration() for d in
-                    Operation.objects.filter(attendees__in=[firefighter], end__year=now().year)) / (60 * 60), 2),
-                'prev_year_total_time': round(sum(
+                    Operation.objects.filter(attendees__in=[firefighter], end__year=now().year)) / (60 * 60)),
+                'prev_year_total_time': int(sum(
                     d.duration() for d in
-                    Attendance.objects.filter(attendees__in=[firefighter], end__year=now().year - 1)) / (60 * 60), 2),
-                'curr_year_total_time': round(sum(
+                    Attendance.objects.filter(attendees__in=[firefighter], end__year=now().year - 1)) / (60 * 60)),
+                'curr_year_total_time': int(sum(
                     d.duration() for d in
-                    Attendance.objects.filter(attendees__in=[firefighter], end__year=now().year)) / (60 * 60), 2)
+                    Attendance.objects.filter(attendees__in=[firefighter], end__year=now().year)) / (60 * 60))
             }
             context['firefighter_stats'].append(stats)
         return context
