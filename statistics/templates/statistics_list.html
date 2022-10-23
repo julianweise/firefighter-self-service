@@ -1,0 +1,61 @@
+{% extends "dashboard_generic.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+{% block page_title %}{% translate "Statistics" %}{% endblock %}
+
+{% block content %}
+    {% if firefighter_stats|length < 1 %}
+        <div class="alert alert-warning text-center" role="alert">
+            {% translate "It seems like you have not added any firefighter yet." %}
+            {% translate "Simply start adding firefighters by clicking the button 'Add Firefighter'." %}
+        </div>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">{% translate "Staff ID" %}</th>
+                    <th scope="col">{% translate "First Name" %}</th>
+                    <th scope="col">{% translate "Last Name" %}</th>
+                    {% now "Y" as current_year %}
+                    <th scope="col">{% translate "Last training" %}</th>
+                    <th scope="col">{% translate "Last operation" %}</th>
+                    <th scope="col">{% translate "Training hours" %}</th>
+                    <th scope="col">{% translate "Operation hours" %}</th>
+                    <th scope="col">{% translate "Total hours" %} ({{current_year}})</th>
+                    <th scope="col">{% translate "Total hours" %} ({{current_year | add:"-1"}})</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for stats in firefighter_stats %}
+                    <tr>
+                        <td>{% if stats.staff_id %} {{stats.staff_id}} {% else %} {% translate "unknown" %} {% endif %}</td>
+                        <td>{{ stats.first_name }}</td>
+                        <td>{{ stats.last_name }}</td>
+                        <td>{{ stats.last_training.end | date:"d.m.Y"}}<br/><i>{{ stats.last_training.topic }}</i></td>
+                        <td>{{ stats.last_operation.end | date:"d.m.Y"}}<br/>
+                            <i>{{ stats.last_operation.operation_id }} / {{ stats.last_operation.get_code_word_display }}</i>
+                        </td>
+                        <td>{{ stats.training_total_time }}</td>
+                        <td>{{ stats.operation_total_time }}</td>
+                        {% if stats.operation_total_time < 40 %}
+                        <td class="text-danger">
+                        {% else %}
+                        <td class="text-success">
+                        {% endif %}
+                        {{ stats.curr_year_total_time }}</td>
+                        {% if stats.operation_total_time < 40 %}
+                        <td class="text-danger">
+                        {% else %}
+                        <td class="text-success">
+                        {% endif %}
+                        {{ stats.prev_year_total_time }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock %}

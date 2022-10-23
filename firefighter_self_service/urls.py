@@ -29,6 +29,7 @@ urlpatterns = [
                   path('fitness/', include('fitness.urls')),
                   path('events/', include('event.urls')),
                   path('qualification/', include('qualification.urls')),
+                  path('statistics/', include('statistics.urls')),
                   path('accounts/login/', auth_views.LoginView.as_view()),
                   path('accounts/', include('django.contrib.auth.urls')),
                   path('', RedirectView.as_view(url='overview/', permanent=True))

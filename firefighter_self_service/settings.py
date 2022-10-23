@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'overview',
     'attendance',
     'event',
+    'statistics',
     'mathfilters',
 ]
 

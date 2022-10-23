@@ -79,7 +79,7 @@
                             </li>
                         {% endwith %}
                     </ul>
-                    <h5 class="border-bottom" style="padding-left: .5em; margin-top: 1em">Activities</h5>
+                    <h5 class="border-bottom" style="padding-left: .5em; margin-top: 1em">Administration</h5>
                     <ul class="nav flex-column">
                         {% with request.resolver_match.url_name as url_name %}
                             {% if perms.personal_data.view_all_firefighter %}
@@ -109,6 +109,15 @@
                                       <li><a class="nav-link {% if url_name == 'other_service-list' %}active{% endif %}"
                                        href="{% url 'other_service-list' %}">{% translate "Other Services" %}</a></li>
                                     </ul>
+                                </li>
+                            {% endif %}
+                            {% if perms.statistics.view_all_statistics %}
+                                <li class="nav-item">
+                                    <a class="nav-link {% if url_name == 'statistics-all' %}active{% endif %}"
+                                       href="{% url 'statistics-all' %}">
+                                        <span data-feather="bar-chart"></span>
+                                        {% translate "Statistics" %}
+                                    </a>
                                 </li>
                             {% endif %}
                         {% endwith %}
