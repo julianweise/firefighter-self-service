@@ -13,7 +13,7 @@ class Attendance(models.Model):
                                        help_text='Select all attendees of this event',
                                        limit_choices_to=Q(status__active=True))
     person_in_charge = models.ForeignKey(Firefighter, verbose_name=_("Person in charge"), on_delete=models.PROTECT,
-                                         related_name='person_in_charge')
+                                         related_name='person_in_charge', limit_choices_to=Q(status__active=True))
     comment = models.CharField(verbose_name=_("Comment"), max_length=2000, null=True, blank=True, default="")
     content_type = models.ForeignKey(ContentType, editable=False, null=True, on_delete=models.PROTECT)
 

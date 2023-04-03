@@ -240,3 +240,8 @@ a {
 .navbar-dark .navbar-brand {
 
 }
+
+.dropdown-menu.show {
+    /* Ensure drop-down menu is not hidden by navbar */
+    z-index: 9999;
+}

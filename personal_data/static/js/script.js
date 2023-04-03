@@ -13,7 +13,6 @@ $('#confirmModal').on('show.bs.modal', function (event) {
     const modal = $(this);
     modal.find('.modal-title').text(title);
     modal.find('.modal-body-text').text(body);
-    console.log(post);
     modal.find('.modal-footer form').attr('action', post);
 })
 
